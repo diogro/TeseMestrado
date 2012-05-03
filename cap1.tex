@@ -5,26 +5,391 @@
 % Números das páginas em arábicos
 \pagenumbering{arabic}
 
-\chapter{Introdução (capítulo 1)}\label{intro}
-\section{Incluindo citações}\label{intro:historico}
+\chapter{Introdução}\label{intro}
+\section{Genética Quantitativa e Simulações Computacionais}\label{intro:historico}
 
-% O comando \label{nome} define o marcador da parte especificada.
-% Você pode citar esta seção usando o comando \ref{nome}.
-% O "~" evita uma quebra de linha entre as palavras.
-O Capítulo~\ref{intro} é uma introdução ao contexto do projeto.
-Vou exemplificar alguns comandos básicos e úteis para uma dissertação como incluir citações \citep{Sand-Jensen2007} ou ``aspas''.
-% Como o % representa um comentário e não é compilado, para fazê-lo aparecer no texto você precisa colocar uma "\" antes, como abaixo.
-Apenas \unit[4]{\%} do texto está contido em subsubseções.
+O estudo de traços quantitativos se baseia amplamente na teoria da
+genética quantitativa. 
+Essa teoria permite entender a evolução de caracteres continuos de forma
+bastante completa. 
+Para isso são utilizadas de medidas quantitativas de traços
+morfológicos. 
+A equação multi-variada de resposta à seleção, $\Delta z = G \beta$,
+proposta por \cite{Lande1979} permite ligar a mudança na média de um
+conjunto de caracteres ($\Delta z$) à seleção imposta à população
+($\beta$) e à sua matriz de covariação genética aditiva (G). 
+Além disso, esse mesmo raciocínio pode ser usado para investigar padrões
+macro-evolutivos de resposta ao longo de muitas gerações
+\citep{Lande1983, Marroig2004, Marroig2005}. 
+ 
 
-% Veja mais formas de fazer citações no texto da documentação do natbib.
-O \texttt{natbib} é bastante flexível \citep[ver detalhes em][]{Kirk2008}.
-\citet{Emlet1987} mostra outro modo de citar trabalhos no texto e como grafar o nome das espécies \emph{Drosophila melagonaster} e \subde\ usando o comando \texttt{$\backslash$emph} e um comando customizado, respectivamente.
-% Comandos como o utilizado para incluir o nome da espécie (subde e subsus) devem ser seguidos de uma \ para inserir um espaço antes da próxima palavra.
-% Esta \ não precisa ser utilizada quando o comando é seguido de ponto ou vírgula.
-\citet{Day2006} não usaram papilas de \subsus.
-% O pacote icomma permite usar a vírgula como separador decimal, já que o comportamento padrão do LaTeX é inserir um espaço maior após uma vírgula.
-O resultado de \subsus\ é 22,2.
+Porém, nossa habilidade de inferir a resposta evolutiva a muitas
+gerações de seleção depende fundamentalmente da constância da matriz G
+ao longo de muitas gerações, e a teoria de Lande não explora
+detalhadamente a dinâmica da própria matriz G, assumindo implicitamente
+nas equações sua constância ao supor que a distribuição das
+características na população é sempre gaussiana. 
+Essa suposição simplificadora de Lande se baseia em um resultado
+derivado do modelo apresentado em \cite{Crow1964}, chamado de modelo do
+continuo de alelos. 
+Neste modelo a distribuição de efeitos alélicos sobre um determinado
+caráter é contínuo, e em \cite{Kimura1965} foi demonstrada que a
+distribuição de equilibrio dos efeito alélicos em uma população sofrendo
+mutação, deriva e seleção estabilizadora é gaussiana, com a suposição de
+que os efeitos mutacionais são pequenos frente à variação existente na
+população. 
+Ou seja, assumindo que os efeitos alélicos sejam efetivamente
+gaussianos, a dinâmica da média da população pode ser completamente
+descrita apenas pela média e pela matriz de covariação desses efeitos
+\citep{Barton1987}. 
 
-\section{Referenciando seções do texto}\label{intro:contexto}
 
-Mencionei na seção~\ref{intro:historico} como citar um capítulo, agora podemos citar o Capítulo~\ref{cap2}.
+Notamos então que uma série de suposições não triviais devem ser feitas
+para que esse modelo gaussiano quadrático de Lande seja teoricamente
+plausível. 
+Esses problemas foram apresentados ao longo da década de 80 por uma
+série de artigos, principalmente e pioneiramente por \citep{Turelli1984,
+Turelli1985, Turelli1986, Barton1987}. 
+Talvez a questão mais importante seja a suposição de que os alelos
+tenham distribuição contínua poposta por \cite{Crow1964}. 
+Para que isso seja realista a taxa de mutação por locus deve ser
+suficientemente alta para manter a distribuição de alelos por locus
+gaussiana frente à deriva e seleção estabilizadora, que removem
+variabilidade \citep{Falconer1996}. 
+Além disso podemos nos perguntar se mutações novas realmente tem efeitos
+pequenos em relação a variância original da população nas direções
+morfológicas afetadas, ou se novas mutações introduzem variabilidade
+maior que originalmente presente na população. 
+O modelo proposto por
+\cite{Turelli1984} utiliza então taxas de mutação baixas e efeitos
+mutacionais altos, mas ainda mantendo o espaço de alelos contínuo.
+Nessas condições, a matriz G não seria constante ao longo do tempo e
+fatores de correção deveriam ser acrescidos à equação de resposta de
+Lande para descrições macro-evolutivas. 
+Esses fatores dependem do desvio por geração da matriz G em relação à
+matriz G média no periodo de seleção \citep{Jones2003}. 
+A estimativa desse ``efeito Turelli'' é difícil de ser realizada
+praticamente. 
+ 
+
+Em \cite{Barton1987}, os autores, interessados no problema dá dinâmica
+das variâncias de forma geral, apresentam um formalismo relativamente
+completo para lidar com o problema da evolução de todos os momentos da
+distribuição fenotípica de um traço quantitativo, abordando tanto a
+aproximação gaussiana quanto a aproximação de alelos raros, proposta por
+\cite{Turelli1984}. 
+O procedimento seguido pelos autores é escrever a dinâmica de mudança de
+todos o momentos da distribuição de efeitos alélicos da população
+sujeita a uma pressão de seleção na forma de uma subida de gradiente
+imposta por uma superfície de seleção arbritária (mas com todas as
+derivadas parciais bem definidas no espaço dos momentos)
+\citep{Arnold2001a}. 
+Isso permite abarcar o formalismo de Lande, tomando apenas os dois
+primeiros momentos (média e variância), supondo o segundo momento fixo e
+desprezando os momentos mais altos; ou incluir mudanças até uma certa
+ordem e obter os resultados de Turelli. 
+
+
+% Continuar Turelli Barton?
+
+Dada a complexidade do problema da dinâmica das variâncias em um caso
+multi-variado, o estudo da estabilidade da matriz G e suas consequências
+para o estudo da evolução de caracteres quantitativos se tornou um
+problema eminentemente experimental, sejam esses experimentos conduzidos
+de forma restrospectiva, amostrando a diversidade dos seres vivos, seja
+em experimentos manipulativos feitos com colônias de animais em
+cativeiro ou, como é o caso do presente trabalho, por via de simulações
+computacionais. 
+Vamos agora revisar as principais abordagens computacionais e empíricas
+.
+
+A sequência de artigos \cite{Jones2003, Jones2004, Jones2007} foi
+pioneira nos estudos computacionais de estabilidade da matriz G num
+contexto multivariado moderno, abordando o tema da evolução de dois
+caracteres correlacionados em diferentes situações. 
+O estilo de simulação apresentado em \cite{Jones2003} e utilizado em
+todos os artigos subsequentes serviu de ponto de partida para nossas
+simulações e será descrito em detalhes nas próximas seções.
+
+O problema mais simples, abordado em \cite{Jones2003}, consiste no
+estudo de estabilidade da matriz G associada a dois caracteres
+quantitativos com interações pleiotrópicas fixas em uma população finita
+sofrendo mutação, deriva e seleção estabilizadora gaussiana. 
+Os principais parâmetros que influem na estabilidade da matriz G nessas
+simulações são o padrão de mutação pleitotrópico e a superfície de
+seleção. 
+Ambos são descritos por matrizes de covariância. 
+Os valores na diagonal dessas matrizes representam a intensidade das
+mutações e a intensidade da seleção estabilizadora em cada traço
+separadamente. 
+Como o problema é bidimensional, essas matrizes tem apenas um valor fora
+da diagonal. 
+Esse valor é apresentado como uma correlação de mutação no caso da
+matriz mutacional ($r_\mu$) e uma correlação de seleção na matriz que
+descreve a superfície de adptidão ou {\it fitness} ($r_\omega$). 
+O valor de $r_\mu$ define o quão correlacionados serão os valores das
+mutações que afetam ambos os traços. 
+Quanto mais alto, mais correlacionados eles serão, com sua magnitude
+dada pelos valores diagonais da matriz de mutação. 
+Já o valor de $r_\omega$ define o quão forte é a seleção estabilizadora
+no sentido de manter os dois traços correlacionados. 
+Nas condições das simulações, o fator mais importante para a
+estabilidade da matriz G foi a existência de mutações correlacionadas. 
+Quando $r_\mu$ e $r_\omega$ são similares, a matriz tende a ser bastante
+estável. 
+Além disso, tamanhos populacionais grandes também contribuem para a
+estabilidade da matriz.
+Um resultado interessante é que existem tipos diferentes de estabilidade
+para matrizes de covariância. 
+Por exemplo: uma matriz pode manter seus auto-valores estáveis, não
+sofrendo alterações na quantidade de variância genética disponível, mas
+ter auto-vetores variáveis, alterando assim em qual direção do
+morfo-espaço a variabilidade populacional está disponível para responder
+a seleção. 
+Os autores ressaltam que matrizes com um auto-valor dominante tendem a
+ser mais estáveis. 
+Ou seja, correlação alta entre os dois traços leva à estabilidade da
+matriz G. 
+Isso pode ser interpretado como um primeiro indício para a importância
+da modularidade (veja abaixo), apesar de ser difícil definir
+modularidade de maneira convincente com apenas dois caracteres. 
+Em resumo, esse artigo mostra que é possível observarmos matrizes
+estáveis em condições plausivelmente naturais, e dá o primeiro passo
+para a quantificação dessas condições.
+
+O próximo passo foi a inclusão de seleção direcional em
+\cite{Jones2004}. 
+O estilo de simulação é basicamente idêntico ao artigo anterior, mas
+agora a posição do pico adaptativo gaussiano é variado, alterando assim
+a média da população e criando uma seleção direcional. 
+Além de permitir abordar a questão da estabilidade sob novas condições,
+essa nova simulação permite também explorar a reconstrução da seleção
+direcional via equação de \cite{Lande1979} e quantificar o efeito de
+Turelli devido a flutuações na matriz G. 
+Para entender o efeito Turelli, vamos explorar como a extensão da
+equação de Lande deve ser feita para abarcar a mudança evolutiva ao
+longo de várias gerações. 
+Começamos com a equação de resposta à seleção nas médias dos traços
+($\overline {z}$) para uma única geração de uma população sujeita ao
+gradiente de seleção $\beta_t$:
+
+\begin{equation}
+\Delta \overline {z} = \overline {z}_{t+1}-\overline {z}_{t}=G\beta_t
+\end{equation}
+
+Com essa equação, e de posse das médias antes e depois da seleção e da
+matriz G dessa população, podemos estimar o valor de $\beta_t$. 
+Além disso, podemos pensar em definir um gradiente médio $\beta_T$  ao
+longo de várias gerações de seleção \citep{Lande1979}, como:
+
+\begin{equation}
+\beta_{T}\equiv \sum _{t=0}^{T-1} \beta_t =  \overline {G}^{-1}\Delta \overline {z}_T 
+\end{equation}
+
+ou seja, a soma dos gradientes individuais, onde $\overline {G}$
+representa a matriz G média e $\Delta \overline {z}_T$ a mudança global
+na média dos traços. 
+\cite{Turelli1988} mostrou que essa equação se torna incorreta caso a
+flutuação da matriz G em torno da média seja grande entre uma geração e
+outra. 
+Isso fica claro expandindo essa equação de forma a mostrar os termos de
+flutuação:
+
+\begin{equation}
+   \beta_T = \overline {G}^{-1} \left[ \Delta \overline {z}_T - \sum_{t=0}^{T-1} (G_t - \overline {G}) \beta_t\right]
+\end{equation}
+
+Se o termo de Turelli (  $\sum_{t=0}^{T-1} (G_t - \overline {G})
+\beta_t$ ) for grande, a estimativa de $\beta_T$ será precária. 
+É necessário então avaliar se a estabilidade da matriz G é suficiente
+para manter esse termo pequeno pequeno o bastante para possibilitar a
+estimativa de gradientes de seleção realistas. 
+Para isso, foram realizadas simulações com 3 tipos de movimentos do pico
+adaptativo: ao longo da direção de aumento de um traço, mantendo o outro
+estável; aumentando simultanemente os dois traços, na direção usualmente
+descrita como direção de tamanho \citep{Marroig2005}; e na direção de
+aumento de um traço e diminuição do outro. 
+Estas situações são representadas pelos simbolos $\rightarrow$,
+$\nearrow$ e $\searrow$, respectivamente, fazendo uma alusão à
+representação bidimensional cartesiana dos traços. 
+Elas são interessantes por representarem tipos de seleção que interagem
+de forma diferente à presença da correlação mutacional. 
+Quando $r_\mu$ for positivo, a seleção $\nearrow$ está alinhada com o
+eixo de maior variação da matriz M. 
+Esta direção é denominada eixo de menor resistência evolutiva
+\citep{Schluter1996}, e  representa a direção do morfo-espaço com maior
+quantidade de variação para responder a seleção natural, sendo portanto
+o primeiro componente principal da matriz de covariação genética. 
+Já as outras duas direções de movimento do pico se dão em eixos
+diferentes, com o $\searrow$ sendo o mais antagônico ao eixo de menor
+resistência. 
+Sob essas condições, foi verificado que todos os fatores promotores de
+estabilidade no caso do ótimo fenotípico fixo continuam válidos. 
+Além disso, com $r_\mu$ e $r_\omega$ de mesmo sinal, ou seja, com
+alinhamento da matriz mutacional com a matriz de seleção, o movimento
+do pico adaptativo na direção da linha de menor resistencia evolutiva
+cria uma matriz G ainda mais estável. 
+Em contrapartida, seleção direcional em outras direções tende a
+desestabilizar a matriz e, para algumas combinações de parâmetros, criar
+um efeito de maladatação permanente, onde a média da população não
+coincide com o ótimo da superfície de seleção. 
+Quanto ao efeito Turelli, os resultados sugerem que mesmo em populações
+relativamente pequenas ($N_e=342$) a magnitude do efeito é entorno de
+5-7\% na norma de $\beta_T$, diminuindo para até 1-2\% em populações
+maiores ($N_e=2731$). 
+O efeito Turelli então pode ser pequeno em situações naturais, mas
+sempre existem condições onde ele pode ser relevante, como quando existe
+correlação entre $\beta_t$ e $G_t$ por muitas gerações seguidas. 
+A mensagem então é que, apesar de existirem situações onde o efeito
+Turelli é importante, não é de se esperar que estas sejam a regra. 
+Apesar disso, os autores alertam que na prática estimativas fidedignas
+de $\overline {G}$ são bastante difíceis de serem obtidas, tanto pelas
+flutuações entre gerações quanto pela dificuldade em se obter tamanhos
+amostrais adequados para estimativas de matriz G \citep{Marroig2011b}.
+
+O mais recente artigo nessa sequência \citep{Jones2007} trata da
+evolução da própria matriz mutacional e das consequências das mudanças
+nessa matriz para o confronto entre as visões de Lande (gaussiana) e de
+Turelli (alelos raros) na questão das distribuições dos efeito alélicos
+atuando em traços quantitativos. 
+Para tal foi definido um terceiro caráter que controla o valor de
+$r_\mu$ e está sujeito a mudanças via mutação, de forma análoga aos
+outros traços (veja seção \ref{cap2:mem:ModelM} para mais detalhes). 
+Isso permitiu aos autores estudar como o padrão pleitrópico/epistático,
+representado na matriz mutacional, pode variar e como isso afeta o
+fenótipo e o genótipo de uma população sujeita a seleção estabilizadora
+gaussiana, mutação e deriva. 
+Esse é a abordagem mais interessante para nossos objetivos neste
+trabalho, que visa entender em quais condições sistemas modulares podem
+evoluir. 
+Para isso uma estrutura pleiotrópica plástica é imprescindível
+\citep{Wagner1996, Pavlicev2011a}. 
+Já vimos que matrizes mutacionais e seletivas alinhadas promovem
+estabilidade da matriz G. 
+A pergunta que mais nos interessa no artigo de \cite{Jones2007} é a que
+se refere ao tipo de seleção que atua sobre o valor de $r_\mu$: seria a
+seleção estabilizadora gaussiana, descrita por um valor de correlação
+$r_\omega$, capaz de moldar o valor de $r_\mu$? Ou seja, será que ocorre
+o alinhamento da matriz mutacional (e portanto, da matriz G)  com a
+matriz da superfície de seleção? A seleção atua somente sobre traços
+fenotípicos, logo sua influência sobre a matriz mutacional é indireta. 
+Será que essa força de seleção indireta é suficiente para superar
+flutuações aleátorias na matriz mutacional e proporcionar seu
+alinhamento? Apesar de fraca, a seleção indireta sobre a matriz
+mutacional se mostrou capaz de promover alinhamento com a superfície
+adaptativa, e portanto promover uma estabilidade maior da matriz G
+\citep{Jones2007}. 
+Esse resultado é interessante por misturar a atuação de duas forças
+seletivas importantes: seleção estabilizadora clássica, ambiental,
+externa ao organizmo; e restrições internas aos organismos,
+representadas pelos seu padrão de pleiotropia e codificados aqui na
+matriz mutacional. 
+Dois tipos de restrições diferentes se influenciando mutuamente e
+afetando o padrão de coavariação e expressão fenotípica dos sistemas
+biológicos. 
+Além desse resultado, os autores mostram que nem o modelo gaussiano nem
+o de alelos raros são capazes de explicar totalmente os resultados,
+levando a uma visão intermediaria para a real distribuição dos efeitos
+alélicos nas populações.
+
+A interação entre restrições externas e internas pode ser fundamental
+para entendermos padrões naturais de covariação. 
+Vamos abordar agora evidências empíricas ao problema da estabilidade da
+matriz G e suas consequências evolutivas, tema de trabalho há mais de 10
+anos do Laboratório de Evolução de Mamíferos.
+
+Em \cite{Marroig2001}, os autores utilizam o clado Platyrrhini, de
+primatas neo-tropicais como modelo, obtendo estimativas e comparando de
+forma filogenéticamente estruturada os 16 gêneros, quanto às suas
+matrizes de covariação fenotípica para 39 traços craniânos. 
+Essa comparação revelou similaridades altas entre todos os genêros. 
+Além disso, os níveis de similaridade presentes eram pouco
+correlacionadas com a filogenia e sim com fatores ambientais, como a
+dieta de cada espécie. 
+Isso reforça a ideia de alinhamento das matrizes de covariação com o
+ambiente seletivo ao qual cada população é sujeita. 
+Além disso, a similaridade alta dos padrões, mesmo num clado com 30
+milhões de anos de divergência e com variação morfológica notável,
+aponta para uma estabilidade marcante da matriz G. 
+Além da comparação de padrões, em \cite{Marroig2005, Marroig2010} os
+autores abordam a influência desses padrões genéticos estáveis na
+evolução dos traços fenotípicos dentro dos primatas neo-tropicais. 
+Segundo eles, a influência de restrições genéticas é clara e deve ser
+levada em conta nas tentativas de entender os processos evolutivos que
+formaram os grupos atuais.
+
+Expandindo o padrão de estabilidade da matriz G, em \cite{Porto2008} e
+\cite{Marroig2009} comparações entre matrizes obtidas para todas as
+ordens de mamíferos confirmam novamente o padrão de estabilidade matriz
+G, além de evidenciar a importância da modularidade para compreensão das
+respostas evolutivas possíveis e observadas. 
+
+
+Modularidade se refere ao padrão de organização dos seres vivos, onde
+algumas partes são mais relacionadas entre si do que com outras partes
+do mesmo organismo. 
+Essa relação pode ser medida de diversas formas, como interação física
+entre proteinas, padrões de expressão entre genes, ou, como é o caso no
+no presente trabalho, correlação entre traços quantitativos. 
+Esse grupo de caracteristicas muito relacionadas entre si consituem um
+módulo. 
+Os módulos caracterizados por alta correlação entre traços dentro do
+módulo e baixa correlação entre traços de módulos diferentes são
+chamados de módulos variacionais. 
+Estes são frequentemente identificados como relacionados a funções
+específicas, como mastigação, inserção muscular ou proteção
+\citep{Cheverud1997}. 
+A associação entre função e modularidade, em vários níveis
+organizacionais \citep{Costanzo2010}, novamente sugerem uma origem
+seletiva para a organização modular. 
+Vamos abordar essa hipótese nas próximas seções.
+
+A relação entre a organização modular e a evolução pode ser descrita por
+algumas estatísticas associadas ao padrão de covariação das populações
+\citep{Hansen2008}. 
+Uma dessas estatísticas é a flexibilidade evolutiva, definida como a
+correlação média entre a resposta observada numa população e o gradiente
+de seleção que gerou essa resposta. 
+Quanto mais alta a flexibilidade, mais capaz a população é de responder
+na direção morfológica privilegiada pela seleção natural. 
+A evolvabilidade, complementar à flexibilidade, mede o quão grande foi a
+mudança na direção do gradiente de seleção, ou, mais claramente, mede
+quanta variação havia disponível na direção privilégiada pela seleção. 
+Essas estatísticas permitem descrever a capacidade de mudança evolutivas
+nas populações, e podem ser usadas de forma preditiva
+\citep{Marroig2010}. 
+
+
+Além de interferir em como os organismos respondem à seleção natural, a
+modularidade também é fruto da seleção \citep{Wagner1996, Wagner2007}. 
+Como o padrão modular é praticamente ubíquo em sistemas biológicos, o
+problema de como ele surgiu é difícil de ser abordado de forma
+experimental. 
+Algumas evidências para condições para emergência da modularidade são
+encontradas em experimentos com sistemas muito simples, como cadeias de
+RNA \citep{Ancel2000} ou redes metabólicas simplificadas
+\citep{Espinosa-Soto2010}. 
+Em ambos os casos, a seleção funcional é fundamental para a emergência
+de modularidade no nível estudado.
+
+Em sistemas quantitativos, \cite{Pavlicev2010} mostraram que em um
+sistema contando com variação epistática no padrão de correlação de dois
+caracteres, a seleção direcional é capaz de promover a fixação do alelo
+responsável pela manutenção de alta correlação entre os traços sobre
+seleção direcional simultânea  (seleção do tipo $\nearrow$ em
+\cite{Jones2004}). 
+Esse artigo, porém, faz uso direto da equação de seleção de
+\cite{Lande1979} e não simula explicitamente os alelos responsáveis pelo
+fenótipo sobre seleção direcional, se restringindo aos alelos
+responsáveis pela correlação entre os traços na matriz G. 
+A existência desses alelos responsáveis pela covariação entre traços foi
+comprovada experimentalmente, e estes foram chamados de loci
+quantitativos de relação, ou rQTLs \citep{Pavlicev2008a}. 
+De qualquer forma, essa é mais uma evidência do poder da seleção
+direcional de criar associação entre traços e portanto promover a
+modularidade em condições naturais.
+
+A seguir, vamos expor em detalhes nossos métodos de simulação e abordar
+diretamente a questão de quais condições promovem a evolução de sistemas
+com módulos variacionais, além da estabilidade desses padrões de
+covariação.

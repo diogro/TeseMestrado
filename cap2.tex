@@ -1,188 +1,280 @@
 \pagestyle{empty}
 \cleardoublepage
 \pagestyle{fancy}
-\chapter{Um assunto legal (capítulo 2)}\label{cap2}
+\chapter{Modelagem}\label{cap2}
 
 \section{Introdução}\label{cap2:intro}
 
-Se desejar inclua um resumo antes desta introdução usando o modelo do \emph{abstract} que está no arquivo \texttt{pre.tex}.
-Optei por não incluir um resumo por capítulo.
+O primeiro passo do projeto foi escolher o modelo a ser implementado.
+Foi necessário encontrar uma técnica computacional que permitisse
+simular explicitamente cada inviduo de uma população com alelos de efeitos
+contínuos em traços morfológicos. 
+Esses traços seriam então apresentados à seleção natural.
+As populações são dipóides, hermafroditas e se reproduzem sexuadamente,
+com gerações discretas e tamanho populacional fixo.
+Existem algumas possibilidades de como implementar as mutações e
+a transição de efeitos alélicos para traços fenotípicos.
 
-\section{Materiais e Métodos}\label{cap2:mem}
+\section{Modelos}\label{cap2:mem}
 
-\subsection{Unidades, frações e fórmulas}\label{cap2:mem:unit}
+\subsection{Modelo com Matriz $M$}\label{cap2:mem:ModelM}
 
-Você pode dividir cada seção em subseções para organizar melhor o conteúdo.
-
-% Usando o pacote units
-O pacote \texttt{units} fornece comandos para formatar unidades e frações como \nicefrac{animal}{vegetal} (\nicefrac{A}{V}) e \unitfrac[500]{µm}{s}.
-Ou mesmo \unit[7,5]{h} após a elevação.
-
-Note como formatar a unidade de temperatura e outro exemplo de fração à temperatura constante de \unit[24]{°C}; a concentração final foi de 100~\nicefrac{células}{mL}.
-Ao invés de usar o pacote \texttt{units} (como no começo do parágrafo) você pode usar o comando \texttt{$\backslash$,} para obter o meio espaço entre o número e sua unidade, com 0,6\,g e 7,7\,g.
-
-Um dos pontos fortes do \LaTeX\ é a praticidade e beleza das fórmulas matemáticas\footnote{Não que isso seja uma fórmula matemática de verdade\ldots, mas isto é uma nota de rodapé ;-)}:
-\begin{equation}\label{eq:ind}\notag
-IG=\frac{\text{peso úmido da gônada}}{\text{peso úmido do exemplar - (peso úmido da gônada)}}
+O modelo usado em \cite{Jones2003, Jones2004, Jones2007} se baseia em um
+conjunto de alelos pleiotrópicos.
+Nesse sistema, todos os alelos afetam todos os traços.
+Num sistema com $p$ traços, podemos pensar em cada um
+dos $m$ alelos como sendo um vetor em $\mathbb{R}^p$.
+O conjunto de todos os alelos $x^i$ seria escrito como:
+\begin{equation}
+x^i = ( x^i_1, x^i_2,\ldots, x^i_p), i \in \{1,\ldots, m\}, x^i \in \mathbb{R}^p
+\end{equation}
+onde cada um dos $x^i_j$ com $j \in \{1,\ldots, p\}$ é um número real
+representando o efeito aditivo do alelo $i$ no traço $j$
+Cada um dos
+$p$ traços é formado pela soma dos efeitos alélicos de cada um dos
+$m$ alelos agindo sobre esse traço, além de um efeito ambiental $e$, com
+distribuição normal e média zero.
+Um traço $z_j$ é dado
+por:
+\begin{equation}
+z_j = \sum_{i=1}^m x^i_j + e, z_j \in \mathbb{R}, e \sim N(0, 1)
 \end{equation}
 
-% A inserção de fórmulas no meio do texto requer o uso de $fórmula$ (cifrões)
-a concentração final foi de $8\times10^5$ e $1\times10^6$ \nicefrac{células}{mL}.
-A cultura foi mantida num ciclo de $12:12$ horas.
-Também é possível inserir fórmulas no meio do texto como $2,7\pm\unit[1,1]{g}$ ($n=119$), com amostras entre \unit[0,6]{g} e \unit[7,7]{g} e $P=0,007$.
+A seleção nesse modelo é gaussiana.
+Logo, a aptidão do indivíduo com fenótipo $z$ é dada por:
+
+\begin{equation}
+W(z) = exp \left[-\frac{1}{2} ((z-\theta)^T \omega^{-1} (z-\theta))\right] 
+\label{selecao}
+\end{equation}
+
+onde $\omega$ representa a matriz de covariação da superfície de seleção
+gaussiana e $\theta$ o pico adaptativo, ou seja, o fenótipo com maior
+aptidão.
+Alterando $\theta$ podemos impor regimes de seleção direcional.
+A cada geração a função $W(z)$ representa a probabilidade de reprodução
+de um indivíduo com fenótipo $z$.
+Quanto maior $W(z)$ em relação aos outros indivíduos, mais descendentes
+o indivíduo $z$ terá na próxima geração.
+A seleção estabilizadora é controlada pela matriz $\omega$, e
+pode ser de dois tipos: correlacionada e não correlacionada.
+A seleção estabilizadora mais simples, não correlacionada, é codificada
+em uma matriz $\omega$ diagonal e não influencia a correlação entre os
+traços, apenas sua média e variância.
+Já a seleção estabilizadora correlacionada é dada por uma matriz
+$\omega$ com valores não nulos fora da diagonal e afeta a correlação
+entre os traços. 
+
+As mutações nesse modelo são gaussianas e afetam um alelo por vez.
+A frequência com que acontecem mutações é dada por uma probabilidade de
+mutação por alelo por geração, definida {\it a priori}.
+O valor de um alelo $x^i$ é alterado por uma variação $ \delta x$.
+Após a mutação, $x^i$ assume um certo valor $x'^i$:
+
+\begin{equation}
+x'^i = x^i + \delta x = ( x^i_1 + \delta x_1, x^i_2 + \delta x_2,\ldots, x^i_p + \delta x_p)
+\end{equation}
+
+O valor de $\delta x$ é tomado de uma distribuição gaussiana com média
+zero e matriz de covariância $M$, chamada matriz mutacional:
+
+\begin{equation}
+\delta x \sim N(0, M) = exp \left[-\frac{1}{2} (\delta x^T M^{-1} \delta x)\right] , \delta x \in \mathbb{R}^p
+\end{equation}
+
+A matriz $M$ resume todo o conjunto de interações pleiotrópicas em cada
+individuo, definindo como os efeitos de cada alelo se correlacionam no
+que diz respeito aos diferentes traços fenotípicos.
+A diagonal da matriz $M$, ou seja, as variâncias mutacionais, que
+definem a escala dos efeitos mutacionais, é definida {\it a priori}.
+Já os valores fora da diagonal, as covariâncias mutacionais, podem ser
+definidas a priori \citep{Jones2003, Jones2004} ou podem ser definidas
+por um segundo conjunto de genes com seus próprios efeitos alélicos
+aditivos \citep{Jones2007}.
+Uma matriz mutacional variável permite explorar como mudanças nos
+efeitos pleiotrópicos se comportam em diferentes condições.
+A matriz mutacional é controlada por um conjunto de alelos mutacionais
+$\mu^{ij}_k$ (com $k \in \{1,\ldots,m_\mu\}$), que codificam um valor de
+correlação mutacional $r_\mu^{ij}$, que por sua vez são usado para gerar
+o valor da covariação entre os traços $i$ e $j$ na matriz $M$:
+\begin{equation}
+M_{ij} = r_\mu^{ij} \sqrt {M_{ii}M_{jj}}
+\end{equation}
+com
+\begin{equation}
+r_\mu^{ij} = \Phi \left(\sum_{k=1}^{m_\mu} \mu^{ij}_k\right)
+\end{equation}
+Como todos os $r_\mu^{ij}$ são correlações, o valor deles deve ir de
+$-1$ a $1$.
+A função $\Phi$ faz esse papel, levando a soma de valores
+aditivos dos $\mu^{ij}_k$ de valores reais a valores entre $-1$ e $1$.
+Um exemplo de função $\Phi$, usado em \cite{Jones2007} é:
+
+\begin{equation}
+\Phi (x) = \frac{2e^{2x}}{1+e^{2x}} - 1
+\end{equation}
+% phi = plot ((2*exp(2*x))/(1 + exp(2*x))) 1
+
+Essa função garante que os valores de $r_\mu^{ij}$ permaneçam em
+intervalos possíveis para valores de correlação.
+
+Quando temos apenas dois traços, a correção dada pela função $\Phi$ é
+suficiente para garantir que a matriz $M$ seja bem definida.
+Porém, quando vamos tratar de sistemas com mais caracteres precisamos
+tomar cuidados adicionais.
+Isso se deve ao fato da matriz $M$ ser uma matriz de covariância, e
+portanto necessariamente positiva definida \citep{Anderson1984}.
+Existem várias condições equivalentes para garantir que uma matriz seja
+positiva definida, por exemplo ter todos os auto-valores estritamente
+positivos ou a existência da sua descomposição de Cholesky\footnote{A
+   decomposição de Cholesky de uma matriz positiva definida simétrica
+$C$ é dada por $C=LL^*$, onde $L$ é uma matriz triangular e o asterisco
+representa a transposição complexa conjugada.}.
+Na extensão para mais de dois traços, nós optamos por verificar se a
+matriz $M$ é positiva definida aplicando a decomposição de Cholesky:
+caso a decomposição existisse, ela pode ser usada para gerar os valores
+de $\delta x$ de forma eficiente; caso a decomposição não existisse um
+procedimendo de extensão \citep{Marroig2011b} era realizado,
+substituindo todos os auto-valores não positivos pelo último positivo.
+Esse procedimento garante uma matriz ainda próxima à matriz $M$
+original, mas positiva definida.
+A escolha desse procedimento é relativamente arbritária, mas
+considerações de eficiência computacional são importantes, pois a
+obteção de auto-valores é bastante custosa.
+
+\subsection{Modelo com Matriz $B$}\label{cap2:mem:ModelB}
+
+Além de testar o uso do modelo utilizando a matriz $M$ para mais de dois
+traços, nós optamos por criar também um modelo próprio, inspirado pela
+descrição feita em \cite{Wagner1984}.
+O modelo descrido por Wagner também faz uso do valor dos efeitos
+alélicos $x \in \mathbb{R}^m$.
+Nesse caso, porém, a transição para o fenótipo $z \in \mathbb{R}^p$ é
+feita via uma função ontogenética $f$
+
+\begin{equation}
+z = f(x), f:\mathbb{R}^m \rightarrow \mathbb{R}^{p}
+\end{equation}
+
+A função ontogenética resume todas as interações pleitrópicas e
+epistáticas, e pode ser altamente não linear e complexa.
+Supondo que $f$ seja diferenciável, podemos aproximá-la por uma série de
+Taylor:
+
+\begin{equation}
+z = f(x) = f(0) + x^T D[f(0)] + \frac{1}{2!} x^T D^2 [f(0)] x + \ldots
+\end{equation}
+
+Tomando $f(0) = 0$ e mantendo apenas o termo linear, podemos considerar
+a aproximação linear da função $f$ como:
+
+\begin{equation}
+z = f(x) = D[f(0)]x = Bx + e
+\label{matrizB}
+\end{equation}
+
+Onde $B$ é definida como uma ``matriz ontogenética'', que descreve de
+forma simplificada como os efeitos aditivos são convertidos em um
+fenótipo, resumindo, de forma binaria e linear, todos os efeitos
+pleiotrópicos e espitáticos entre os alelos aditivos.
+Como no modelo anterior, acrescentamos também um valor de ruido
+ambiental $e$, com distribuição multivariada normal e média zero.
+A princípio as entradas da matriz $B$ poderiam tomar qualquer valor
+real, porém como simplificação nós optamos por simular a matriz $B$ como
+sendo apenas uma matriz de influência, ou seja, no nosso modelo ela
+codifica se um determinado gene tem seu valor aditivo adicionado a um
+traço ou não.
+Resumidamente, caso $B_{ij} = 1$ o traço $z_j$ tem seu valor
+incrementado por $x_i$, caso contrário ($B_{ij} = 0$) não.
+Nessas condições a equação \ref{matrizB} continua válida.
+A razão entre a dimensão do vetor de valores aditivos $m$ e o número de
+traços $p$ é relevante \citep{Wagner1984}, pois ela define a grosso modo
+a quantidade de recombinação presente no modelo.
+Quando maior for a razão $m/p$, mais
+recombinação teremos, pois os alelos são herdados de forma independente.
+
+Mutações são consideravelmente mais simples que no caso da
+matriz $M$, porém são divididas em duas classes: as genéticas e as
+ontogenéticas.
+As genéticas afetam o valor de cada $x_i$ individualmente, e possuem uma
+taxa de mutação $\mu$ por geração por loci definida {\it a priori}.
+Uma mutação no loci $i$ altera o valor de $x_i$ por um valor real tomado
+de uma distribuição normal com média zero e variância pré-definida.
+Já as mutações ontogenéticas alteram a matriz $B$, afetando cada casela
+da matriz com probabilidade $\mu_B$ por geração por casela.
+Uma mutação na posição $ij$ altera o valor de $B_{ij}$ de $0$ para $1$
+ou vice-versa.
+Como esses dois tipos de mutação impõem dinâmicas temporais em escalas
+diferentes para os dois níveis de complexidade, nós testamos razões
+variadas para $\mu$ e $\mu_B$
+
+A seleção nesse modelo toma a mesma forma que no caso anterior, expressa
+na equação \ref{selecao}.
+Novamente a seleção estabilizadora pode ser correlacionada ou não
+correlacionada, dependendo da matriz $\omega$ e a seleção direcional é
+aplicada utilizando um ótimo variável na superfície gaussiana.
+
+\subsection{Parâmetros}
+
+Alguns parêmetros foram mantidos constantes em todas as simulações.
+Os valores da variância mutacional de todos os traços foi fixada em 0.5
+no modelo com matriz $M$ e 0.2 no modelo com matriz $B$.
+No caso do modelo com matriz $M$ o valor da variância das mutações no
+alelos mutacionais foi de 0.05.
+A variância dos efeitos ambientais foi fixada em 0.4 nas simulações com
+matriz $M$ e 0.8 nas simulações com matriz $B$.
+O valor da variância ambiental define a escala do modelo e é importante
+na determinação de herdabilidade dos traços.
+A taxa de mutação nos alelos aditivos ($\mu$) foi mantida em 0.0005 em
+todas simulações.
+Todos esses parâmetros foram escolhidos de forma a manter a
+herdabilidade dos traços por volta de 0.6, um valor biologicamente
+plausível e capaz de responder a seleção direcional de forma eficiente.
+
+Nas simulações nós alteramos o tamanho populacional ($Ne$), o número de
+traços ($p$), o número de alelos ($m$), a taxa de mutação nas caselas da
+matriz $B$ ($\mu_B$), e o tipo de seleção (estabilizadora e direcional).
+Altermos também a intensidade da seleção direcional.
+Para isso, modificamos o quanto o pico adaptativo era alterado para cada
+traço a cada geração, de $0.01$ até $0.2$.
+Esse deslocamento por traço é chamado de $\Delta_S$.
+A variância fenotípica das populações em equilibrio mutação-seleção
+direcional era por volta de $1.6$.
+Então, nossa seleção mais intensa implicava um movimento de pico de
+cerca de $0.15$ desvios padrões por geração por traço ($\Delta_S=0.2$),
+resultando num movimento total de cerca de 150 desvios padrões por
+traço; enquanto a seleção mais fraca um movimento de $0.007$ desvios
+padrões por geração por traço ($\Delta_S=0.01$), resultando num
+movimento total de cerca de 7 desvios padrões.
+
+\subsection{Estatísticas}
+
+Quantificar a evolução das relações entre os traços quantificadas na
+matriz de covariância é fundamental para a interpretação dos resultados
+das simulações. 
+Podemos simplesmente inspecionar visualmente as matrizes, mas medidas
+quantitativas são importantes quando o volume de dados se torna
+suficientemente grande. 
+Para isso, vamos explorar algumas estatísticas descritivas já utilizadas em
+estudos de biologia tradicionais e apresentar técnicas novas para a
+quantificação de modularidade baseadas nas matrizes de correlação.
+
+Quando conhecemos de antemão a estrutura modular apresentada na matriz
+de correlação, podemos quantificar o nível de modularidade medindo
+apenas a médias das correlação dentro de e entre módulos, quantidade
+conhecida como razão das médias, ou AVGRatio do inglês {\it AVeraGe Ratio}. 
+Certamente essa medida é informativa em quantificar o quão evidentes são
+os módulos variacionais expressos na população por quantificar a
+diferença no nível de correlação dentre e entre módulos. 
+Apesar disso, essa medida exige conhecimento prévio da estrutura de
+modularidade presente na população. 
+Esse certamente não é o caso quando amostrando uma população natural.
+Para sanar esse problema, propomos também uma estatistica de
+modularidade inspirada em tecnicas de detecção de comunidades em redes
+\citep{Newman2006, Reichardt2006}.
 
 
-Citando programa de processamento de imagens \emph{ImageJ} \citep{Rasband1997} e a linguagem \emph{R} \citep{R2005} para a morfometria ($P<0,050$).
-Os testes estão em fonte \texttt{monoespaçada}, os estágios em \textbf{negrito} e os dados na forma $\text{média} \pm \text{desvio padrão}$.
-\subsection{Cultivo das subsubseções}\label{cap2:mem:gametas}
 
-\subsubsection{Embrião}
 
-Você também pode criar subsubseções como essa, caso necessário.
 
-\subsection{Descrições}\label{cap2:mem:micro}
 
-Subseção após a subseção com subsubseção.
-
-\subsubsection{Fêmeas}\label{cap3:res:femeas}
-
-Mais uma subsubseção.
-
-% Outro ambiente útil é o description, como exemplificado abaixo.
-\begin{description}
-  \item[Estágio1 $(n=27)$:] Descrição minuciosa deste estágio.
-    Estou incluindo um pouco de texto extra para mostrar como a formatação fica impecável.
-    Uma boa formatação não distrai o leitor e proporciona maior clareza e prazer durante a leitura.
-  \item[Estágio2 $(n=25)$:] Descrição minuciosa deste estágio.
-    Estou incluindo um pouco de texto extra para mostrar como a formatação fica impecável.
-    Uma boa formatação não distrai o leitor e proporciona maior clareza e prazer durante a leitura.
-\end{description}
-
-As descrições também podem ser colocadas uma dentro da outra.
-
-\begin{description}
-  \item[Tipo1:] Descrição minuciosa.
-    Estou incluindo um pouco de texto extra para mostrar como a formatação fica impecável.
-    A razão $\frac{\text{núcleo}}{\text{citoplasma}}\times100=51,0\pm\unit[11,9]{\%}$.
-  \item[Tipo2:] ~
-    \begin{description}
-      \item[Subtipo2.1:] Descrição minuciosa deste tipo.
-	Estou incluindo um pouco de texto extra para mostrar como a formatação fica impecável.
-      \item[Subtipo2.2:] Descrição minuciosa deste tipo.
-	Estou incluindo um pouco de texto extra para mostrar como a formatação fica impecável.
-    \end{description}
-  \item[Tipo3:] Descrição minuciosa deste tipo.
-	Estou incluindo um pouco de texto extra para mostrar como a formatação fica impecável.
-\end{description}
-
-\subsubsection{Tabelas}\label{cap3:res:morf}
-
-Utilize tabelas como a Tabela~\ref{tab:exemplo}.
-
-% Para criar tabelas
-\begin{table}[htbp]
-    \caption[Tabela com \texttt{booktabs}]{Exemplo de legenda de tabela criada com o pacote \texttt{booktabs}.}
-    \label{tab:exemplo}
-    \vspace{1em}
-    \centering
-    \begin{tabular}{l r@{\,} l}
-        \toprule
-        Eventos     & \multicolumn{2}{c}{Tempo}\\
-        \midrule
-        Entrada     & 0   & \\
-        Elevação    & 40  & s   \\
-        Corrida     & 6   & min \\
-        Saída       & 15  & min \\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-Outra tabela de exemplo onde utilizamos o teste \texttt{t} (Tabela~\ref{tab:areap}).
-No caso, o modelo de regressão linear é descrito pela equação $y=0,799x+0,699$.
-
-\begin{table}[htbp]
-    \caption[Tabelas com valores de $P$]{Um exemplo de tabela comum em trabalhos científicos mostrando valores de $P$ em uma comparação estatística, $\alpha=0,05$.}
-    \label{tab:areap}
-    \vspace{1em}
-    \centering
-    \begin{tabular}{l r r r r r}
-        \toprule
-        ~	        & Estágio1          & Estágio2      & Estágio3	        & Estágio4\\
-        \midrule
-        Estágio2	& 1,000		    & -		    & -		        & -\\
-        Estágio3	& 0,883		    & 1,000	    & -		        & -\\
-        Estágio4	& \textbf{<0,001}   &\textbf{<0,001}& \textbf{<0,001}   & -\\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-\section{Resultados}\label{cap2:res}
-
-\subsection{Figuras simples}\label{cap2:res:figs}
-
-Subseção de novo, mas coloco algumas figuras para mostrar resultados (Figura~\ref{fig:last}).
-Também é possível definir o tamanho da figura relativamente (e.g., metade da largura do texto; Figura~\ref{fig:last2}).
-
-% Veja a documentação para mais detalhes de como inserir figuras
-% O texto entre [] na legenda será utilizado na lista de figuras (no preâmbulo), sendo ideal para substituir legendas maiores
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\textwidth]{lastgraph}
-    \caption[Figura simples]{Figura abstrata simples com largura igual à largura do texto.}
-    \label{fig:last}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.5\textwidth]{lastgraph}
-    \caption[Outra figura simples]{Figura abstrata simples com largura igual à metade da largura do texto.}
-    \label{fig:last2}
-\end{figure}
-
-\subsection{Figuras compostas e abreviações}\label{cap2:res:figs2}
-
-Você também pode inserir múltiplas figuras em uma só, permitindo alinhá-las de forma flexível e consistente (ver Figura~\ref{fig:fsm}).
-
-% Usando o pacote nomencl
-% Detalhe importante, leia as instruções no site para fazer a lista de abreviações aparecer.
-% http://code.google.com/p/mestre-em-latex/wiki/ListaDeAbreviaturas
-Para selecionar abreviações que serão incluídas na lista no começo do documento veja o arquivo \texttt{cap2.tex}; como a seguir as células mesenquimais primárias (CMP) iniciam sua ingressão.%
-\nomenclature{CMP}{células mesenquimais primárias}
-
-% Note como incluir as sublegendas para cada subfigura (subfloat) e como citá-las na legenda usando o comando subref.
-% Note também como incluir as referências às abreviações (nomenclature) utilizadas para que sejam listadas no preâmbulo.
-\begin{figure}[htbp]
-    \centering
-    \subfloat[Subfigura1]{\label{fig:t1}\includegraphics[width=200pt]{fsm}}\vspace{11pt}
-    \subfloat[Subfigura2]{\label{fig:t2}\includegraphics[width=200pt]{fsm}}\\
-    \vspace{-18pt}
-    \subfloat[Subfigura3]{\label{fig:t3}\includegraphics[width=200pt]{fsm}}\vspace{11pt}
-    \subfloat[Subfigura4]{\label{fig:t4}\includegraphics[width=200pt]{fsm}}%
-    \caption[Figura com subfiguras]{Exemplo de figura com subfiguras. \subref{fig:t1}~Subfigura1 (\textbf{og}) na lâmina. \subref{fig:t2}~Subfigura2 (\textbf{oppv}). \subref{fig:t3}~Subfigura3 aderida (\textbf{opv}). \subref{fig:t4}~Subfigura4. \textbf{sg}, seio genital; \textbf{ln}, lúmen.}%
-    \nomenclature{og}{oogônia}%
-    \nomenclature{oppv}{oócitos primários pré-vitelogênicos}%
-    \nomenclature{opv}{oócitos primários vitelogênicos}%
-    \nomenclature{sg}{seio genital}%
-    \nomenclature{ln}{lúmen}
-    \label{fig:fsm}
-\end{figure}
-
-\section{Discussão}\label{cap2:disc}
-
-A evolução deste caráter pode ser vista de duas formas:
-
-% Este é um dos modos de iniciar uma lista ordenada.
-% Note que é possível inserir listas dentro de listas.
-\begin{enumerate}
-  \item{Condição inicial $\longrightarrow$ Condição final}\label{hipo:1}
-    \begin{itemize}
-      \item{Primeira conseqüência}
-      \item{Segunda conseqüência}
-    \end{itemize}
-  \item{Outra condição inicial $\longrightarrow$ Condição intermediária $\longrightarrow$ Outra condição final}\label{hipo:2}
-    \begin{itemize}
-      \item{Conseqüência alternativa}
-    \end{itemize}
-\end{enumerate}
-
-Você pode citar ítens assinalados, como a hipótese \ref{hipo:1} e a alternativa \ref{hipo:2}.

@@ -1,188 +1,445 @@
 \pagestyle{empty}
 \cleardoublepage
 \pagestyle{fancy}
-\chapter{Um assunto legal (capítulo 2)}\label{cap2}
+\chapter{Teste e Validação dos Modelos}\label{cap3}
 
-\section{Introdução}\label{cap2:intro}
+\section{Resultados e Discussão $\cdot$ Matriz $M$}\label{cap3:ModelM}
 
-Se desejar inclua um resumo antes desta introdução usando o modelo do \emph{abstract} que está no arquivo \texttt{pre.tex}.
-Optei por não incluir um resumo por capítulo.
+\subsection{Seleção Estabilizadora}
 
-\section{Materiais e Métodos}\label{cap2:mem}
+Para implementar o modelo com matriz $M$ inicialmente procuramos
+reproduzir os resultados obtidos em \cite{Jones2007}, focando no
+alinhamento entre matriz G e matriz $\omega$ pela seleção indireta na
+matriz $M$. Esse efeito pode ser observado na figura \ref{jones2tracos},
+onde vemos a correlação entre dois traços aumentando em resposta à
+atuação da seleção estabilizadora correlacionada.  
 
-\subsection{Unidades, frações e fórmulas}\label{cap2:mem:unit}
+\begin{center}
+\begin{figure}[htbp]
+  \includegraphics[width=150mm, height=80mm]{figuras/jones2tracos.png}
+  \caption{Evolução da correlação entre dois traços ligados por efeitos
+  mutacionais pleiotrópicos sobre seleção estabilizadora correlacionada.
+  Nesta simulação $r_\omega=0.8$, $Ne=5000$, $p=2$, $m=50$}
+  \label{jones2tracos}
+\end{figure}
+\end{center}
 
-Você pode dividir cada seção em subseções para organizar melhor o conteúdo.
+Como nosso objetivo é expandir a modelagem para mais traços, em seguida
+adicionamos um traço ao sistema. Nesse caso, as considerações sobre a
+dificuldade de manter a matriz $M$ positiva definida já se aplicam,
+sendo necessário fazer uso da correção de auto-valores. Mesmo assim, o
+resultado é bastante semelhante, ainda com a correlação entre os 3 traços
+se alinhando com a matriz $\omega$ (figuras
+\ref{jones3tracos} e \ref{MatJones3tracos}). 
 
-% Usando o pacote units
-O pacote \texttt{units} fornece comandos para formatar unidades e frações como \nicefrac{animal}{vegetal} (\nicefrac{A}{V}) e \unitfrac[500]{µm}{s}.
-Ou mesmo \unit[7,5]{h} após a elevação.
 
-Note como formatar a unidade de temperatura e outro exemplo de fração à temperatura constante de \unit[24]{°C}; a concentração final foi de 100~\nicefrac{células}{mL}.
-Ao invés de usar o pacote \texttt{units} (como no começo do parágrafo) você pode usar o comando \texttt{$\backslash$,} para obter o meio espaço entre o número e sua unidade, com 0,6\,g e 7,7\,g.
+\begin{center}
+\begin{figure}[htbp]
+  \includegraphics[width=150mm, height=80mm]{figuras/jones3tracos.png}
+  \caption{Evolução da correlação entre três traços ligados por efeitos
+  mutacionais pleiotrópicos sobre seleção estabilizadora correlacionada.
+  A seleção propicia a integração entre dois traços (linha vermelha) e a desistegração
+  desses dois com o terceiro (linhas azul e verde). Nesta simulação
+  $r_\omega$ como na equação \ref{romega}, $Ne=5000$, $p=3$, $m=50$.}
+  \label{jones3tracos}
+\end{figure}
+\end{center}
 
-Um dos pontos fortes do \LaTeX\ é a praticidade e beleza das fórmulas matemáticas\footnote{Não que isso seja uma fórmula matemática de verdade\ldots, mas isto é uma nota de rodapé ;-)}:
-\begin{equation}\label{eq:ind}\notag
-IG=\frac{\text{peso úmido da gônada}}{\text{peso úmido do exemplar - (peso úmido da gônada)}}
+Na figura \ref{MatJones3tracos}
+vemos representações gráficas da matriz de correlação fenotípica ao final da
+simulação e da matriz $\omega$ de seleção estabilizadora correlacionada.
+Caselas mais claras indicam correlação maior. Nesse caso a matriz de
+correlação mutacional usada foi:
+
+\begin{equation}
+Corr(\omega) = \left( \begin{smallmatrix} 1 & 0.9 & 0.1\\  0.9 & 1 & 0.1 \\ 0.1 & 0.1 & 1 \end{smallmatrix}  \right)
+\label{romega}
 \end{equation}
 
-% A inserção de fórmulas no meio do texto requer o uso de $fórmula$ (cifrões)
-a concentração final foi de $8\times10^5$ e $1\times10^6$ \nicefrac{células}{mL}.
-A cultura foi mantida num ciclo de $12:12$ horas.
-Também é possível inserir fórmulas no meio do texto como $2,7\pm\unit[1,1]{g}$ ($n=119$), com amostras entre \unit[0,6]{g} e \unit[7,7]{g} e $P=0,007$.
+E a matriz de covariância mutacional: 
 
+\begin{equation}
+\omega = \left( \begin{smallmatrix} 9 & 8.1 & 0.9\\  8.1 & 9 & 0.9 \\ 0.9 & 0.9 & 9 \end{smallmatrix}  \right)
+\end{equation}
 
-Citando programa de processamento de imagens \emph{ImageJ} \citep{Rasband1997} e a linguagem \emph{R} \citep{R2005} para a morfometria ($P<0,050$).
-Os testes estão em fonte \texttt{monoespaçada}, os estágios em \textbf{negrito} e os dados na forma $\text{média} \pm \text{desvio padrão}$.
-\subsection{Cultivo das subsubseções}\label{cap2:mem:gametas}
-
-\subsubsection{Embrião}
-
-Você também pode criar subsubseções como essa, caso necessário.
-
-\subsection{Descrições}\label{cap2:mem:micro}
-
-Subseção após a subseção com subsubseção.
-
-\subsubsection{Fêmeas}\label{cap3:res:femeas}
-
-Mais uma subsubseção.
-
-% Outro ambiente útil é o description, como exemplificado abaixo.
-\begin{description}
-  \item[Estágio1 $(n=27)$:] Descrição minuciosa deste estágio.
-    Estou incluindo um pouco de texto extra para mostrar como a formatação fica impecável.
-    Uma boa formatação não distrai o leitor e proporciona maior clareza e prazer durante a leitura.
-  \item[Estágio2 $(n=25)$:] Descrição minuciosa deste estágio.
-    Estou incluindo um pouco de texto extra para mostrar como a formatação fica impecável.
-    Uma boa formatação não distrai o leitor e proporciona maior clareza e prazer durante a leitura.
-\end{description}
-
-As descrições também podem ser colocadas uma dentro da outra.
-
-\begin{description}
-  \item[Tipo1:] Descrição minuciosa.
-    Estou incluindo um pouco de texto extra para mostrar como a formatação fica impecável.
-    A razão $\frac{\text{núcleo}}{\text{citoplasma}}\times100=51,0\pm\unit[11,9]{\%}$.
-  \item[Tipo2:] ~
-    \begin{description}
-      \item[Subtipo2.1:] Descrição minuciosa deste tipo.
-	Estou incluindo um pouco de texto extra para mostrar como a formatação fica impecável.
-      \item[Subtipo2.2:] Descrição minuciosa deste tipo.
-	Estou incluindo um pouco de texto extra para mostrar como a formatação fica impecável.
-    \end{description}
-  \item[Tipo3:] Descrição minuciosa deste tipo.
-	Estou incluindo um pouco de texto extra para mostrar como a formatação fica impecável.
-\end{description}
-
-\subsubsection{Tabelas}\label{cap3:res:morf}
-
-Utilize tabelas como a Tabela~\ref{tab:exemplo}.
-
-% Para criar tabelas
-\begin{table}[htbp]
-    \caption[Tabela com \texttt{booktabs}]{Exemplo de legenda de tabela criada com o pacote \texttt{booktabs}.}
-    \label{tab:exemplo}
-    \vspace{1em}
-    \centering
-    \begin{tabular}{l r@{\,} l}
-        \toprule
-        Eventos     & \multicolumn{2}{c}{Tempo}\\
-        \midrule
-        Entrada     & 0   & \\
-        Elevação    & 40  & s   \\
-        Corrida     & 6   & min \\
-        Saída       & 15  & min \\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-Outra tabela de exemplo onde utilizamos o teste \texttt{t} (Tabela~\ref{tab:areap}).
-No caso, o modelo de regressão linear é descrito pela equação $y=0,799x+0,699$.
-
-\begin{table}[htbp]
-    \caption[Tabelas com valores de $P$]{Um exemplo de tabela comum em trabalhos científicos mostrando valores de $P$ em uma comparação estatística, $\alpha=0,05$.}
-    \label{tab:areap}
-    \vspace{1em}
-    \centering
-    \begin{tabular}{l r r r r r}
-        \toprule
-        ~	        & Estágio1          & Estágio2      & Estágio3	        & Estágio4\\
-        \midrule
-        Estágio2	& 1,000		    & -		    & -		        & -\\
-        Estágio3	& 0,883		    & 1,000	    & -		        & -\\
-        Estágio4	& \textbf{<0,001}   &\textbf{<0,001}& \textbf{<0,001}   & -\\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-\section{Resultados}\label{cap2:res}
-
-\subsection{Figuras simples}\label{cap2:res:figs}
-
-Subseção de novo, mas coloco algumas figuras para mostrar resultados (Figura~\ref{fig:last}).
-Também é possível definir o tamanho da figura relativamente (e.g., metade da largura do texto; Figura~\ref{fig:last2}).
-
-% Veja a documentação para mais detalhes de como inserir figuras
-% O texto entre [] na legenda será utilizado na lista de figuras (no preâmbulo), sendo ideal para substituir legendas maiores
+\begin{center}
 \begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\textwidth]{lastgraph}
-    \caption[Figura simples]{Figura abstrata simples com largura igual à largura do texto.}
-    \label{fig:last}
+  \includegraphics[width=150mm, height=80mm]{figuras/Mat3tracos}
+   \caption{Comparação entre a matriz de correlação final para o 3
+   traços após 10000
+   gerações de seleção e a matriz $\omega$ da superfície de seleção.}
+  \label{MatJones3tracos}
 \end{figure}
+\end{center}
 
+Quando procuramos ampliar o número de traços, porém, o alinhamento da
+matriz G com a matriz $\omega$ se mostrou problemático. Nesse caso a
+matriz de correlação da superfície de seleção continha dois módulos, e
+era dada por:
+
+\begin{equation}
+Corr(\omega) = \left( 
+\begin{smallmatrix} 
+1 & 0.8 & 0.8 & 0.8 & 0.8 & 0 & 0 & 0 & 0 & 0\\  
+0.8 & 1 & 0.8 & 0.8 & 0.8 & 0 & 0 & 0 & 0 & 0\\  
+0.8 & 0.8 & 1 & 0.8 & 0.8 & 0 & 0 & 0 & 0 & 0\\  
+0.8 & 0.8 & 0.8 & 1 & 0.8 & 0 & 0 & 0 & 0 & 0\\  
+0.8 & 0.8 & 0.8 & 0.8 & 1 & 0 & 0 & 0 & 0 & 0\\  
+0 & 0 & 0 & 0 & 0 & 1 & 0.8 & 0.8 & 0.8 & 0.8\\ 
+0 & 0 & 0 & 0 & 0 & 0.8 & 1 & 0.8 & 0.8 & 0.8\\
+0 & 0 & 0 & 0 & 0 & 0.8 & 0.8 & 1 & 0.8 & 0.8\\
+0 & 0 & 0 & 0 & 0 & 0.8 & 0.8 & 0.8 & 1 & 0.8\\
+0 & 0 & 0 & 0 & 0 & 0.8 & 0.8 & 0.8 & 0.8 & 1
+\end{smallmatrix}  \right)
+\label{matw}
+\end{equation}
+
+Na figura \ref{jones10tracos} vemos a trajetória típica das correlações
+fenotípicas com uma matriz $\omega$ com dois módulos (ver figura
+\ref{MatJones10tracos}).  Aqui não existe mais a distinção entre
+correlações dentro de módulos (altas) e entre módulos (baixas). Na figura
+\ref{MatJones10tracos} fica claro que não existe semelhança entre as
+matrizes G e $\omega$. Realizamos essas simulações com uma gama grande
+de intensidades de seleção e chegando até 100000 gerações de seleção,
+sem nenhum indício de alinhamento entre as matrizes $\omega$ e G.  
+
+\begin{center}
 \begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.5\textwidth]{lastgraph}
-    \caption[Outra figura simples]{Figura abstrata simples com largura igual à metade da largura do texto.}
-    \label{fig:last2}
+  \includegraphics[width=150mm, height=80mm]{figuras/jones10tracos.png}
+  \caption{Evolução da correlação entre dez traços ligados por efeitos
+  mutacionais pleiotrópicos sobre seleção estabilizadora correlacionada.
+  Apesar de a seleção promover a integração entre os 5 primeiros e os 5
+  últimos traços e a desintegração entre esse módulos, isso não se
+  transmite à matriz de correlação. Nesta simulação
+    $r_\omega$ como na equação \ref{matw}, $Ne=5000$, $p=10$, $m=50$.}
+  \label{jones10tracos}
 \end{figure}
+\end{center}
 
-\subsection{Figuras compostas e abreviações}\label{cap2:res:figs2}
-
-Você também pode inserir múltiplas figuras em uma só, permitindo alinhá-las de forma flexível e consistente (ver Figura~\ref{fig:fsm}).
-
-% Usando o pacote nomencl
-% Detalhe importante, leia as instruções no site para fazer a lista de abreviações aparecer.
-% http://code.google.com/p/mestre-em-latex/wiki/ListaDeAbreviaturas
-Para selecionar abreviações que serão incluídas na lista no começo do documento veja o arquivo \texttt{cap2.tex}; como a seguir as células mesenquimais primárias (CMP) iniciam sua ingressão.%
-\nomenclature{CMP}{células mesenquimais primárias}
-
-% Note como incluir as sublegendas para cada subfigura (subfloat) e como citá-las na legenda usando o comando subref.
-% Note também como incluir as referências às abreviações (nomenclature) utilizadas para que sejam listadas no preâmbulo.
+\begin{center}
 \begin{figure}[htbp]
-    \centering
-    \subfloat[Subfigura1]{\label{fig:t1}\includegraphics[width=200pt]{fsm}}\vspace{11pt}
-    \subfloat[Subfigura2]{\label{fig:t2}\includegraphics[width=200pt]{fsm}}\\
-    \vspace{-18pt}
-    \subfloat[Subfigura3]{\label{fig:t3}\includegraphics[width=200pt]{fsm}}\vspace{11pt}
-    \subfloat[Subfigura4]{\label{fig:t4}\includegraphics[width=200pt]{fsm}}%
-    \caption[Figura com subfiguras]{Exemplo de figura com subfiguras. \subref{fig:t1}~Subfigura1 (\textbf{og}) na lâmina. \subref{fig:t2}~Subfigura2 (\textbf{oppv}). \subref{fig:t3}~Subfigura3 aderida (\textbf{opv}). \subref{fig:t4}~Subfigura4. \textbf{sg}, seio genital; \textbf{ln}, lúmen.}%
-    \nomenclature{og}{oogônia}%
-    \nomenclature{oppv}{oócitos primários pré-vitelogênicos}%
-    \nomenclature{opv}{oócitos primários vitelogênicos}%
-    \nomenclature{sg}{seio genital}%
-    \nomenclature{ln}{lúmen}
-    \label{fig:fsm}
+  \includegraphics[width=150mm, height=80mm]{figuras/Mat10tracos}
+  \caption{Comparação entre a matriz de correlação final para o 10 traços após 10000
+   gerações de seleção representadas na figura \ref{jones10tracos} e a matriz $\omega$ da superfície de seleção.}
+  \label{MatJones10tracos}
 \end{figure}
+\end{center}
 
-\section{Discussão}\label{cap2:disc}
 
-A evolução deste caráter pode ser vista de duas formas:
+\subsection{Seleção Direcional}
 
-% Este é um dos modos de iniciar uma lista ordenada.
-% Note que é possível inserir listas dentro de listas.
-\begin{enumerate}
-  \item{Condição inicial $\longrightarrow$ Condição final}\label{hipo:1}
-    \begin{itemize}
-      \item{Primeira conseqüência}
-      \item{Segunda conseqüência}
-    \end{itemize}
-  \item{Outra condição inicial $\longrightarrow$ Condição intermediária $\longrightarrow$ Outra condição final}\label{hipo:2}
-    \begin{itemize}
-      \item{Conseqüência alternativa}
-    \end{itemize}
-\end{enumerate}
+Em seguida, procuramos explorar como a inclusão de seleção direcional afetaria o
+alinhamento das matrizes G e $\omega$. Utilizamos novamente uma matriz
+$\omega$ modular e acresentamos seleção direcional correlacionada, de
+mudança conjunta na média dos traços dentro de cada um dos módulos, e
+mudanças antagônicas entre módulos. Ou seja, os 5 primeiros traços
+tiveram seu ótimo fenotípico aumentado a uma taxa constante 
+ e os 5 últimos traços tiveram seu ótimo reduzido de forma simétrica ($\Delta_S=0.2$).  As populações
+respondem a essa seleção de forma satisfátoria, alterando suas médias de
+acordo com a posição do ótimo. Após 10000 gerações de seleção
+direcional,
+nós observamos a matriz final e a evolução de todas as correlações
+genéticas nesse período. Os resultados podem ser vistos nas figuras
+\ref{jones10tracosDirecional} e \ref{MatJones10tracosDirecional}. Mesmo
+nessas condições, não observamos a emergência de módulos variacionais na
+matriz G, que indicaria semelhança com a matriz $\omega$ e o padrão de
+seleção direcional correlacionada.
 
-Você pode citar ítens assinalados, como a hipótese \ref{hipo:1} e a alternativa \ref{hipo:2}.
+\begin{center}
+\begin{figure}[htbp]
+  \includegraphics[width=150mm, height=80mm]{figuras/jones10tracosDirecional.png}
+  \caption{Evolução da correlação entre dez traços ligados por efeitos
+  mutacionais pleiotrópicos sobre seleção estabilizadora correlacionada
+  e seleção direcional intensa para mudança correlacionada dentros dos
+  módulos. Novamente, isso não se traduz na matriz de correlação genética.}
+  \label{jones10tracosDirecional}
+\end{figure}
+\end{center}
+
+\begin{center}
+\begin{figure}[htbp]
+  \includegraphics[width=150mm, height=80mm]{figuras/Mat10tracosDirecional}
+   \caption{Comparação entre a matriz de correlação final para 10
+   traços após 10000
+   gerações de seleção direcional e estabilizadora representadas na figura \ref{jones10tracosDirecional} com a matriz $\omega$ da superfície de seleção.}
+  \label{MatJones10tracosDirecional}
+\end{figure}
+\end{center}
+
+Acreditamos que essa dificuldade em reproduzir os resultados encontrados
+em sistemas com 2 e 3
+traços no sistema com 10 traços se deve ao aumento considerável do
+espaço possível de variação que a inclusão de cada novo traço
+representa. O morfo-espaço cresce rapidamente com a inclusão de cada novo
+traço, e as possibilidades para a matriz $M$ também. A seleção indireta
+então se torna muito fraca para promover o alinhamento entre as
+matrizes, e a mutação não explora de forma adequada o espaço da matriz
+mutacional, levando a uma situação de não alinhamento mesmo com uma pressão
+seletiva considerável.
+
+\section{Resultados e Discussão $\cdot$ Matriz $B$}
+
+\subsection{Seleção Estabilizadora}
+
+No segundo tipo de modelagem, começamos já com 10 traços sofrendo
+seleção estabilizadora correlacionada dada pela matriz apresentada na
+equação \ref{matw}. Exploramos então a influência de várias razões entre
+a taxa de mutação nos alelos aditivos ($\mu$) e a taxa de mutação nas
+caselas da matriz $B$ ($\mu_B$).  Essa razão $\mu/\mu_B$ define como será a
+dinâmica temporal de mudança entre dois níveis: o dos efeitos
+aditivos e o da atribuição desses efeitos aos traços quantitativos.
+Conforme vemos na figura \ref{MatBEstab}, apesar de mudanças na
+magnitude das correlações com o aumento da razão $\mu/\mu_B$, não observamos o surgimento de módulos
+variacionais apenas com seleção estabilizadora correlacionada.
+
+\begin{center}
+\begin{figure}[htbp]
+  \includegraphics[width=150mm, height=180mm]{figuras/MatBEstabRMu}
+   \caption{Matriz final média de 10 corridas para diferentes razões de
+   $\mu$ e $\mu_B$, com seleção estabilizadora correlacionada com 2
+   módulos.}
+  \label{MatBEstab}
+\end{figure}
+\end{center}
+
+
+\subsection{Seleção Direcional}
+
+Com a inclusão de seleção direcional, como na figura
+\ref{MatJones10tracosDirecional}, e $\mu/\mu_B = 0.1$, ainda não
+observamos a formação de módulos na matriz G (figura \ref{RMu01}). 
+
+\begin{center}
+\begin{figure}[htbp]
+  \includegraphics[width=150mm, height=80mm]{figuras/RMu01Omega}
+   \caption{Comparação entre a matriz de correlação final média de 10
+   corridas para o 10 traços após 10000
+   gerações de seleção direcional e estbilizadora com a matriz $\omega$ da superfície de seleção e $\frac{\mu}{\mu_B}=0.1$, $Ne=2500$, $\Delta_S=0.2$, $m/p=2$}
+  \label{RMu01}
+\end{figure}
+\end{center}
+
+Porém, como vemos na figura \ref{MatBDirecional-RMu}, o aumento  na
+razão $\mu/\mu_B$ aliada à seleção direcional é capaz de alterar essa
+situação. Esse aumento parece promover um sistema capaz de responder de
+forma eficiente às pressões seletivas impostas e gerar uma matriz G com
+a estrutura modular privilegiada pela seleção estabilizadora e
+direcional. Lembramos que na ausência de seleção direcional esse efeito
+não é observado, mesmo com as mesmas razões $\mu/\mu_B$.  Além disso,
+parece haver um pico na modularidade das matrizes com $\mu/\mu_B = 5$,
+sugerindo uma possível otimização entre a escala temporal de mudança em cada
+nível de complexidade, porém isso deve ser confirmado com mais corridas
+e com diferentes combinações de parâmetros de tamanho populacional,
+força de seleção e número de alelos aditivos.
+
+Na figura \ref{MatBDirecionalNe2500RMu5} vemos um exemplo de corrida com
+$N_e = 2500$ e $\mu/\mu_B=5$, mostrando claramente a separação de grupos
+de correlação dentro de e entre módulos. Posteriormente, vamos explorar a
+influência do tamanho populacional na estabilidade das matrizes geradas
+pelas nossas simulações (figura \ref{posselecao}).
+
+\begin{center}
+\begin{figure}[htbp]
+  \includegraphics[width=150mm, height=180mm]{figuras/MatBDirecRMu}
+   \caption{Matriz final média de 10 corridas para diferentes razões de
+   $\frac{\mu}{\mu_B}$, com seleção estabilizadora correlacionada com 2
+   módulos e seleção direcional correlacionada favorecendo os mesmos
+   módulos. ($N_e=2500$, $\Delta_S=0.2$, $m/n=2$)}
+  \label{MatBDirecional-RMu}
+\end{figure}
+\end{center}
+
+\begin{center}
+\begin{figure}[htbp]
+  \includegraphics[width=150mm, height=80mm]{figuras/direcionalNe2500RMu5.png}
+  \caption{Evolução da correlação entre dez traços ligados por efeitos
+  pleiotrópicos controlados por uma função ontogenética linear binária
+  variável, sofrendo seleção estabilizadora correlacionada
+  e seleção direcional intensa para mudança correlacionada dentros dos
+  módulos durante as 10000 gerações. 
+  ($N_e = 2500$, $\mu/\mu_B=5$, $\Delta_S=0.2$, $m/p=2$)}
+  \label{MatBDirecionalNe2500RMu5}
+\end{figure}
+\end{center}
+
+Estamos interessados também na força de seleção direcional
+necessária para gerar a estrutura modular nas matrizes de covariação.
+Nas figuras \ref{MatBIntSel110} e \ref{MatBIntSel1120} vemos matrizes
+médias finais para 10 corridas com $N_e = 1000$, $\mu/\mu_B=5$ e intensidade de
+seleção variável. 
+
+Para isso, modificamos o quanto o pico adaptativo era
+alterado para cada traço a cada geração, de $0.01$ até $0.2$ por
+geração durante 10000 gerações. 
+
+A medida que aumentamos a intensidade de seleção os modulos se tornam
+mais evidentes, mas acima de uma certa intensidade (delta $\simeq 0.06$)
+esse efeito se torna mais discreto.  Esse platô na resposta a seleção
+direcional pode ser explicado por como funciona a nossa seleção. Quando
+a variância entre as aptidões na população for suficientemente alta,
+apenas os indivíduos com maior aptidão vão se reproduzir, e, dentro de
+limites\footnote{ Quando o pico se encotra suficientemente longe da média
+da população, a variância nos valores de aptidão cai novamente, pois
+todos os indivíduos tem aptidão próxima de zero, e a chance de um
+indivíduo se reproduzir deixa de depender do fenótipo. Isso é uma
+limitação do esquema de seleção estritamente gaussiano.}, as mudanças em
+$\Delta_S$ não alteram quais são esses indivíduos.
+
+\begin{center}
+\begin{figure}[htbp]
+  \includegraphics[width=150mm, height=180mm]{figuras/MatBDirecionalIntSel110}
+   \caption{Matriz final média de 10 corridas com
+   $\frac{\mu}{\mu_B} = 5$, $Ne = 1000$, $m/p=2$, sofrendo seleção estabilizadora correlacionada com 2
+   módulos e seleção direcional com diferentes valores de $\Delta_S$.}
+  \label{MatBIntSel110}
+\end{figure}
+\end{center}
+
+\begin{center}
+\begin{figure}[htbp]
+  \includegraphics[width=150mm, height=180mm]{figuras/MatBDirecionalIntSel1120}
+   \caption{Matriz final média de 10 corridas com
+   $\frac{\mu}{\mu_B} = 5$, $Ne = 1000$, $m/p=2$, sofrendo seleção estabilizadora correlacionada com 2
+   módulos e seleção direcional com diferentes valores de $\Delta_S$.}
+  \label{MatBIntSel1120}
+\end{figure}
+\end{center}
+
+Outra questão relevante é o quão estáveis são os padrões de covariação
+modulares gerados pela seleção direcional e estabilizadora.  Para
+responder a essa pergunta nós sujeitamos populações de tamanhos
+diferentes a uma mesma pressão seletiva intensa durante 5000 gerações
+(periodo suficiente para o surgimento de módulos), seguidas de 5000
+gerações de seleção estabilizadora correlacionada. Apesar da diferença
+entre as correlações dentro e entre modulos diminuir, ainda observamos
+uma distinção estável entre elas (figura \ref{posselecao}). O efeito do
+tamanho populacional é especialmente marcante nessas condições, com
+populações grandes se mostrando mais eficientes na manutenção prolongada
+dos padrões estabelecidos pela seleção direcional (figura
+\ref{posselecao}).
+
+\begin{center}
+\begin{figure}[htbp]
+  \subfloat [$Ne = 250$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecao250.png}}
+  \subfloat [$Ne = 500$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecao500.png}}
+  \subfloat [$Ne = 1000$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecao1000.png}}
+\end{figure}
+\begin{figure}[htbp]
+  \subfloat [$Ne = 2500$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecao2500.png}}
+  \subfloat [$Ne = 5000$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecao5000.png}}
+  \subfloat [$Ne = 10000$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecao10000.png}}
+  \caption{Evolução da correlação entre dez traços ligados por efeitos
+  pleiotrópicos controlados por uma matriz $B$ variável, sofrendo seleção estabilizadora correlacionada e seleção
+  direcional para mudança correlacionada dentros dos módulos
+  durante as 5000 primeiras gerações, seguidos de 5000 gerações de
+  seleção estabilizadora correlacionada ($\Delta_S = 0.2$, $\mu/\mu_B=5$, $m/p=2$). }
+  \label{posselecao}
+\end{figure}
+\end{center}
+
+
+\begin{center}
+\begin{figure}[htbp]
+  \subfloat [$Ne = 250$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecaoSemEstab250.png}}
+  \subfloat [$Ne = 500$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecaoSemEstab500.png}}
+  \subfloat [$Ne = 1000$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecaoSemEstab1000.png}}
+\end{figure}
+\begin{figure}[htbp]
+  \subfloat [$Ne = 2500$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecaoSemEstab2500.png}}
+  \subfloat [$Ne = 5000$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecaoSemEstab5000.png}}
+  \subfloat [$Ne = 10000$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecaoSemEstab10000.png}}
+  \caption{Evolução da correlação entre dez traços ligados por efeitos
+  pleiotrópicos controlados por uma matriz $B$ variável, sofrendo seleção estabilizadora correlacionada e seleção
+  direcional para mudança correlacionada dentros dos módulos
+  durante as 5000 primeiras gerações, seguidos de 5000 gerações de
+  seleção estabilizadora não correlacionada ($\Delta_S = 0.2$, $\mu/\mu_B=5$, $m/p=2$). }
+  \label{posselecaoSemEstab}
+\end{figure}
+\end{center}
+
+Ainda na questão da estabilidade dos padrões de covariação, o papel da
+seleção estabilizadora correlacionada pode ser avaliado sujeitando as
+populações à seleção direcional e estabilizadora correlacionada por 5000
+gerações, seguidas de 5000 gerações de seleção estabilizadora não
+correlacionada, apenas mantendo a média de cada traço individualmente.
+Na figura \ref{posselecaoSemEstab} podemos ver a importância da seleção
+estabilizadora correlacionada na manutenção dos padrões modulares
+gerados pela seleção direcional. Comparando cada tamanho populacional
+mostrado nas figuras \ref{posselecao} e \ref{posselecaoSemEstab} podemos
+ver uma degradação muito mais acentuada dos padrões modulares na
+ausência da seleção estabilizadora correlacionada. 
+
+A importância da seleção estabilizadora para explicar padrões de estase
+no registro fóssil foi amplamente discutida em \cite{Charlesworth1982a}.
+No contexto de padrões de covariação, seleção estabilizadora
+correlacionada também foi apontada como uma provável explicação para 
+a estabilidade de padrões de covariação observados na natureza
+\citep{Cheverud1984, Marroig2001, Porto2008}. Nossos resultados dão
+credibilidade a essa hipótese. A origem dessa seleção estabilizadora
+pode ser atribuida a fatores internos dos organismos, como restrições
+ontogenéticas responsáveis pela coesão entre as partes do indivíduo.
+Como essas restrições estão sempre presentes, a seleção correlacionada
+está sempre presente e os padrões tendem a se manter estáveis.
+
+Um parâmetro ainda não mencionado é o número de alelos $m$ envolvidos na
+determinação do valor fenotípico de cada um dos $p$ traços. No nosso
+esquema de simulação, aumentar o valor da razão $m/p$ é análogo a
+aumentar a força de recombinação, pois o valor de $m$ define o número de unidades
+recombinantes segregando na população. Podemos pensar em $m$ como o
+número de cromossomos no genôma do indivíduo, em vez de pensar nele como
+número de alelos individualmente. Até agora a razão $m/p$ foi mantida em
+2, um valor suficiente para promover respostas complexas de todos os
+traços mas ainda computacionalmente viável. A figura \ref{MB} mostra como o
+aumento na razão $m/p$ afeta a evolução das correlações fenotípicas nas
+populações sujeitas a seleção direcional intensa e seleção
+estabilizadora correlacionada. 
+
+\begin{center}
+\begin{figure}[htbp]
+  \subfloat [$m/p = 2$]{\includegraphics[width=50mm, height=55mm]{figuras/MB20.png}}
+  \subfloat [$m/p = 3$]{\includegraphics[width=50mm, height=55mm]{figuras/MB30.png}}
+  \subfloat [$m/p = 4$]{\includegraphics[width=50mm, height=55mm]{figuras/MB40.png}}
+\end{figure}
+\begin{figure}[htbp]
+  \subfloat [$m/p = 5$]{\includegraphics[width=50mm, height=55mm]{figuras/MB50.png}}
+  \subfloat [$m/p = 6$]{\includegraphics[width=50mm, height=55mm]{figuras/MB60.png}}
+  \subfloat [$m/p = 7$]{\includegraphics[width=50mm, height=55mm]{figuras/MB70.png}}
+\end{figure}
+\begin{figure}[htbp]
+  \subfloat [$m/p = 8$]{\includegraphics[width=50mm, height=55mm]{figuras/MB80.png}}
+  \subfloat [$m/p = 9$]{\includegraphics[width=50mm, height=55mm]{figuras/MB90.png}}
+  \subfloat [$m/p = 10$]{\includegraphics[width=50mm, height=55mm]{figuras/MB100.png}}
+  \caption{Evolução da correlação entre dez traços ligados por efeitos
+  pleiotrópicos controlados por uma função ontogenética linear binária
+  variável sofrendo seleção estabilizadora correlacionada e seleção
+  direcional intensa para mudança correlacionada dentros dos módulos,
+  para diferentes valores do número de alelos. ($Ne=5000$, $\mu/\mu_B=5$, $\Delta_S=0.2$)}
+  \label{MB}
+\end{figure}
+\end{center}
+
+Vemos na figura \ref{MB} que o aumento do número de alelos torna o
+sistema mais lento em adquirir um caráter modular. Isso pode ser
+associado com o aumento na recombinação, que age na direção oposta a das
+forças seletivas direcionais e estabilizadora correlacionada. Isso nos
+levou a crer que tempos mais longos de seleção poderiam gerar o mesmo
+resultado que o obtido com valores baixos de $m/p$. Na figura \ref{MBLR}
+vemos duas corridas longas, de 20000 gerações, com $m/p = 9$ e $10$,
+mostrando o tempo de estabilização mais longo e a modularidade mais
+discreta, com menor diferença nas correlações dentro de e entre módulos.
+Isso pode ser associado à força de recombinação aumentada.
+
+\begin{center}
+\begin{figure}[htbp]
+  \subfloat [$m/p = 9$]{\includegraphics[width=150mm, height=55mm]{figuras/MBLR90.png}}
+\end{figure}
+\begin{figure}[htbp]
+  \subfloat [$m/p = 10$]{\includegraphics[width=150mm, height=55mm]{figuras/MBLR100.png}}
+  \caption{Evolução da correlação entre dez traços ligados por efeitos
+  pleiotrópicos controlados por uma função ontogenética linear binária
+  variável sofrendo seleção estabilizadora correlacionada e seleção
+  direcional intensa para mudança correlacionada dentros dos módulos,
+  para diferentes valores do número de alelos. ($Ne=5000$, $\mu/\mu_B=5$, $\Delta_S=0.2$)}
+  \label{MBLR}
+\end{figure}
+\end{center}

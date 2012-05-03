@@ -262,7 +262,7 @@ quantificação de modularidade baseadas nas matrizes de correlação.
 Quando conhecemos de antemão a estrutura modular apresentada na matriz
 de correlação, podemos quantificar o nível de modularidade medindo
 apenas a médias das correlação dentro de e entre módulos, quantidade
-conhecida como razão das médias, ou AVGRatio do inglês {\it AVeraGe Ratio}. 
+conhecida como razão das médias, ou AVG-Ratio do inglês {\it AVeraGe Ratio}. 
 Certamente essa medida é informativa em quantificar o quão evidentes são
 os módulos variacionais expressos na população por quantificar a
 diferença no nível de correlação dentre e entre módulos. 
@@ -270,11 +270,63 @@ Apesar disso, essa medida exige conhecimento prévio da estrutura de
 modularidade presente na população. 
 Esse certamente não é o caso quando amostrando uma população natural.
 Para sanar esse problema, propomos também uma estatistica de
-modularidade inspirada em tecnicas de detecção de comunidades em redes
-\citep{Newman2006, Reichardt2006}.
+modularidade inspirada em técnicas de detecção de comunidades em redes
+\citep{Newman2006,Newman2006a,Reichardt2006}.
+O princípio dessa técnica é alocar cada traço em um módulo de modo que
+algum parametro de modularidade seja máximo.
+Para isso, definimos a modularidade $H$ de uma matriz de correlação $A$
+como sendo:
 
+\begin{equation}
+   H = \sum_{i \neq j} \left[ A_{ij} - \frac{k_ik_j}{2m} \right] \delta(g_i, g_j)
+\end{equation}
 
+Os termos $g_i$ e $g_j$ representam a partição dos traços, ou seja, em
+qual grupo os traços $i$ e $j$ se encontram. 
+A função $\delta(\cdot,\cdot)$ é a função delta de Kronecker, ou seja:
 
+\begin{equation}
+   \delta (x,y) = \left \{ 
+      \begin{array}{rl}
+          1 & \text{se } x = y\\
+          0 & \text{se } x \neq y\\
+      \end{array} \right.
+\end{equation}
 
+Portanto apenas traços no mesmo módulo contribuem para o valor de $H$.
+Já os $k_i$ e $k_j$  representam o valor total de correlação atribuido a
+cada traço, ou, mais claramente, a soma da correlação de cada traço com
+todos os outros:
 
+\begin{equation}
+   k_i = \sum_{j \neq i} A_{ij}
+\end{equation}
+
+E $m$ representa a soma de todos os $k$ ($m=\sum_i k_i$). 
+O termo $\frac{k_ik_j}{2m}$ funciona como um tipo de espectativa nula
+para a distribuição das correlações entre os traços $i$ e $j$ dado que
+cada em deles possui, na matriz $A$, um valor de correlação total
+dado por $k_i$ e $k_j$.
+Essa escolha para a especatativa nula aparece naturalmente quando
+impomos que ela deva ser simétrica entre os traços e que dependa
+unicamente de $k_i$ e $k_j$ \citep[Para detalhes veja][]{Newman2006a}.
+Portanto, traços no mesmo módulo que possuam correlação maior que a
+esperada ao acaso contribuem para aumentar a modularidade $H$, enquanto
+traços no mesmo módulo com correlação abaixo da esperada ao acaso
+contribuem para diminuir $H$.
+
+Definida a função $H$ de modularidade, temos que encontrar a partição
+dos traços (os valores de $g_i$) que maximizem a função $H$. 
+Isso é feito com a técnica de Monte Carlo utilizando um algoritmo
+do tipo Metropolis-Hasting \citep{Metropolis1953}.
+A partição que maximize $H$ é tomada como a estrutura de modularidade do
+sistema e o valor de $H$ final como um índice de modularidade,
+comparável ao AVG-Ratio. 
+Neste trabalho, pela estrutura de modularidade ser conhecida, o único próposito 
+de usar essa técnica de detecção de módulos é {\it quantificar} a 
+modularidade das matrizes sem utilizar o conhecimento prévio de sua
+estrutura.
+Em situções naturais, onde não conhecemos a estrutura de modularidade,
+essa técnica poderia ser usada para inferir a estrutura de modularidade
+utilizando apenas da matriz de correlação.
 

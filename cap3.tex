@@ -101,6 +101,12 @@ fenotípicas com uma matriz $\omega$ com dois módulos (ver figura
 \ref{MatJones10tracos}).  
 Aqui não existe mais a distinção entre
 correlações dentro de módulos (altas) e entre módulos (baixas). 
+Os resultados da evolução da modularidade $L$ e do AVGRatio confirmam a
+ausência de modularização do sistema. 
+A modularidade $L$ apresenta uma leve subida ao longo da simulação, mas
+o AVG-Ratio permanece estável (Figura \ref{jones10tracosStats}). 
+Isso se deve à modularidade $L$ capturar qualquer tipo de modularidade
+na matriz, não só aquela associada a superfície de seleção. 
 Na figura \ref{MatJones10tracos} fica claro que não existe semelhança
 entre as matrizes G e $\omega$. 
 Realizamos essas simulações com uma gama grande de intensidades de
@@ -111,20 +117,30 @@ alinhamento entre as matrizes $\omega$ e G.
 \begin{figure}[htbp]
   \includegraphics[width=150mm, height=80mm]{figuras/jones10tracos.png}
   \caption{Evolução da correlação entre dez traços ligados por efeitos
-  mutacionais pleiotrópicos sobre seleção estabilizadora correlacionada.
-  Apesar de a seleção promover a integração entre os 5 primeiros e os 5
-  últimos traços e a desintegração entre esse módulos, isso não se
-  transmite à matriz de correlação. Nesta simulação
-    $r_\omega$ como na equação \ref{matw}, $Ne=5000$, $p=10$, $m=50$.}
+  mutacionais pleiotrópicos sobre seleção estabilizadora
+  correlacionada. Apesar de a seleção promover a integração entre os
+  5 primeiros e os 5 últimos traços e a desintegração entre esse
+  módulos, isso não se transmite à matriz de correlação. Nesta simulação
+  $r_\omega$ como na equação \ref{matw}, $Ne=5000$, $p=10$, $m=50$.}
   \label{jones10tracos}
 \end{figure}
 \end{center}
 
 \begin{center}
 \begin{figure}[htbp]
+  \includegraphics[width=150mm, height=80mm]{figuras/jones10tracosStats.png}
+  \caption{Evolução da modularidade $L$ e AVG-Ratio para as matrizes de
+  correlação representadas na figura \ref{jones10tracos}}
+  \label{jones10tracosStats}
+\end{figure}
+\end{center}
+
+\begin{center}
+\begin{figure}[htbp]
   \includegraphics[width=150mm, height=80mm]{figuras/Mat10tracos}
-  \caption{Comparação entre a matriz de correlação final para o 10 traços após 10000
-   gerações de seleção representadas na figura \ref{jones10tracos} e a matriz $\omega$ da superfície de seleção.}
+  \caption{Comparação entre a matriz de correlação final para o 10
+  traços após 10000 gerações de seleção representadas na figura
+  \ref{jones10tracos} e a matriz $\omega$ da superfície de seleção.}
   \label{MatJones10tracos}
 \end{figure}
 \end{center}
@@ -145,7 +161,7 @@ suas médias de acordo com a posição do ótimo.
 Após 10000 gerações de seleção direcional, nós observamos a matriz final
 e a evolução de todas as correlações genéticas nesse período. 
 Os resultados podem ser vistos nas figuras \ref{jones10tracosDirecional}
-e \ref{MatJones10tracosDirecional}. 
+, \ref{jones10tracosDirecionalStats} e \ref{MatJones10tracosDirecional}. 
 Mesmo nessas condições, não observamos a emergência de módulos
 variacionais na matriz G, que indicaria semelhança com a matriz $\omega$
 e o padrão de seleção direcional correlacionada. 
@@ -163,10 +179,20 @@ e o padrão de seleção direcional correlacionada.
 
 \begin{center}
 \begin{figure}[htbp]
+  \includegraphics[width=150mm, height=80mm]{figuras/jones10tracosDirecionalStats.png}
+  \caption{Evolução da modularidade $L$ e AVG-Ratio para as matrizes de
+  correlação representadas na figura \ref{jones10tracosDirecional}}
+  \label{jones10tracosDirecionalStats}
+\end{figure}
+\end{center}
+
+\begin{center}
+\begin{figure}[htbp]
   \includegraphics[width=150mm, height=80mm]{figuras/Mat10tracosDirecional}
-   \caption{Comparação entre a matriz de correlação final para 10
-   traços após 10000
-   gerações de seleção direcional e estabilizadora representadas na figura \ref{jones10tracosDirecional} com a matriz $\omega$ da superfície de seleção.}
+   \caption{Comparação entre a matriz de correlação final para 10 traços
+   após 10000 gerações de seleção direcional e estabilizadora
+   representadas na figura \ref{jones10tracosDirecional} com a matriz
+   $\omega$ da superfície de seleção.}
   \label{MatJones10tracosDirecional}
 \end{figure}
 \end{center}

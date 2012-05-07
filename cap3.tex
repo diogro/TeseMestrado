@@ -210,6 +210,17 @@ mesmo com uma pressão seletiva considerável.
 
 \section{Resultados e Discussão $\cdot$ Matriz $B$}
 
+Todas as simulações dessa seção começam com o mesmo estado inicial, com
+a matriz $B$ totalmente formada por $1$, ou seja, integração total, e
+todos os valores aditivos $0$, ou seja, todos os traços nulos. 
+As primeiras gerações são dependentes desses estado inicial e não trazem
+informação. Após cerca de $1000$ gerações o sistema já se encontra em
+equilibrio seleção-mutação-deriva e pode ser analizado independentemente
+do estado inicial.
+Isso se reflete em todos gráficos como um transiente instável, seguido
+de estabilidade dependente principalmente do tamanho populacional.
+Discutimos esses efeitos e outros na próxima seção.
+
 \subsection{Seleção Estabilizadora}
 
 No segundo tipo de modelagem, começamos já com 10 traços sofrendo
@@ -239,20 +250,20 @@ estabilizadora correlacionada.
 \begin{center}
    \begin{figure}[htbp]
       \centering
-      \subfloat [$mu/mu_B = 1$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats1.png}}\vspace{11pt}
-      \subfloat [$mu/mu_B = 2$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats2.png}}\\ 
+      \subfloat [$\mu/\mu_B = 1$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats1.png}}\vspace{11pt}
+      \subfloat [$\mu/\mu_B = 2$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats2.png}}\\ 
       \vspace{-18pt}
-      \subfloat [$mu/mu_B = 3$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats3.png}}\vspace{11pt} 
-      \subfloat [$mu/mu_B = 4$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats4.png}}\\
+      \subfloat [$\mu/\mu_B = 3$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats3.png}}\vspace{11pt} 
+      \subfloat [$\mu/\mu_B = 4$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats4.png}}\\
       \vspace{-18pt}
-      \subfloat [$mu/mu_B = 5$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats5.png}}\vspace{11pt}
-      \subfloat [$mu/mu_B = 6$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats6.png}}\\
+      \subfloat [$\mu/\mu_B = 5$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats5.png}}\vspace{11pt}
+      \subfloat [$\mu/\mu_B = 6$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats6.png}}\\
       \vspace{-18pt}
-      \subfloat [$mu/mu_B = 7$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats7.png}}\vspace{11pt}
-      \subfloat [$mu/mu_B = 8$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats8.png}}\\
+      \subfloat [$\mu/\mu_B = 7$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats7.png}}\vspace{11pt}
+      \subfloat [$\mu/\mu_B = 8$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats8.png}}\\
       \vspace{-18pt}
-      \subfloat [$mu/mu_B = 9$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats9.png}}\vspace{11pt}
-      \subfloat [$mu/mu_B = 10$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats10.png}}\\
+      \subfloat [$\mu/\mu_B = 9$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats9.png}}\vspace{11pt}
+      \subfloat [$\mu/\mu_B = 10$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats10.png}}\\
       \caption{Evolução típica de AVG-Ratio e modularidade $L$ para diferentes razões de
       $\mu$ e $\mu_B$, com seleção estabilizadora correlacionada com 2 módulos.}
       \label{EstabRMuStats}
@@ -284,11 +295,21 @@ eficiente às pressões seletivas impostas e gerar uma matriz G com a
 estrutura modular privilegiada pela seleção estabilizadora e direcional. 
 Lembramos que na ausência de seleção direcional esse efeito não é
 observado, mesmo com as mesmas razões $\mu/\mu_B$. 
-Além disso, parece haver um pico na modularidade das matrizes com
-$\mu/\mu_B = 5$, sugerindo uma possível otimização entre a escala
-temporal de mudança em cada nível de complexidade, porém isso deve ser
-confirmado com mais corridas e com diferentes combinações de parâmetros
-de tamanho populacional, força de seleção e número de alelos aditivos. 
+Na figura \ref{DirecionalRMuStats} vemos que razões baixas de $\mu/\mu_B$ levam
+a sistemas bastante instáveis, apesar de modulares.
+Para $\mu/\mu_B=1$, ou seja, com a taxa de mutação igual nos níveis
+aditivo e ontogenético, o valor de AVG-Ratio flutua violentamente entre
+as gerações, sugerindo uma modularidade muito instável.
+A partir de $\mu/\mu_B=4$ o sistema se torna muito mais estável e
+progressivamente menos modular.
+Nós optamos por utilizar o valor $\mu/\mu_B=5$ nas simulações
+subsequentes.
+Essa opção se deu por uma série de fatores: nesse valor o sistema ainda
+apresenta um aumento de modularidade ao longo das gerações; os valores
+de modularidade $L$ e AVG-Ratio são bastante concordantes, sugerindo que
+os módulos favorecidos pela seleção estão efetivamente sendo expressos
+na população; e, por último, o sistema possui uma estabilidade razoável
+sem se tornar estático.
 
 Na figura \ref{MatBDirecionalNe2500RMu5} vemos um exemplo de corrida com
 $N_e = 2500$ e $\mu/\mu_B=5$, mostrando claramente a separação de grupos
@@ -309,8 +330,33 @@ estabilidade das matrizes geradas pelas nossas simulações (figura
 \end{center}
 
 \begin{center}
+   \begin{figure}[htbp]
+      \centering
+      \subfloat [$\mu/\mu_B = 1$]{\includegraphics[width=70mm, height=30mm]{figuras/DirecionalRMuStats1.png}}\vspace{11pt}
+      \subfloat [$\mu/\mu_B = 2$]{\includegraphics[width=70mm, height=30mm]{figuras/DirecionalRMuStats2.png}}\\ 
+      \vspace{-18pt}
+      \subfloat [$\mu/\mu_B = 3$]{\includegraphics[width=70mm, height=30mm]{figuras/DirecionalRMuStats3.png}}\vspace{11pt} 
+      \subfloat [$\mu/\mu_B = 4$]{\includegraphics[width=70mm, height=30mm]{figuras/DirecionalRMuStats4.png}}\\
+      \vspace{-18pt}
+      \subfloat [$\mu/\mu_B = 5$]{\includegraphics[width=70mm, height=30mm]{figuras/DirecionalRMuStats5.png}}\vspace{11pt}
+      \subfloat [$\mu/\mu_B = 6$]{\includegraphics[width=70mm, height=30mm]{figuras/DirecionalRMuStats6.png}}\\
+      \vspace{-18pt}
+      \subfloat [$\mu/\mu_B = 7$]{\includegraphics[width=70mm, height=30mm]{figuras/DirecionalRMuStats7.png}}\vspace{11pt}
+      \subfloat [$\mu/\mu_B = 8$]{\includegraphics[width=70mm, height=30mm]{figuras/DirecionalRMuStats8.png}}\\
+      \vspace{-18pt}
+      \subfloat [$\mu/\mu_B = 9$]{\includegraphics[width=70mm, height=30mm]{figuras/DirecionalRMuStats9.png}}\vspace{11pt}
+      \subfloat [$\mu/\mu_B = 10$]{\includegraphics[width=70mm, height=30mm]{figuras/DirecionalRMuStats10.png}}\\
+      \caption{Evolução típica de AVG-Ratio e modularidade $L$ para diferentes razões de
+      $\mu$ e $\mu_B$, com seleção establizadora correlacionada com 2
+      módulos e seleção direcional correlacionada favorecendo os mesmos
+      módulos. Atenção para a mudança de escala nos eixos verticais. ($N_e=2500$, $\Delta_S=0.2$, $m/n=2$)}
+      \label{DirecionalRMuStats}
+   \end{figure}
+\end{center}
+
+\begin{center}
 \begin{figure}[htbp]
-  \includegraphics[width=150mm, height=80mm]{figuras/direcionalNe2500RMu5.png}
+  \includegraphics[width=150mm, height=55mm]{figuras/direcionalRMu5Ne2500IntSel200.png}
   \caption{Evolução da correlação entre dez traços ligados por efeitos
   pleiotrópicos controlados por uma função ontogenética linear binária
   variável, sofrendo seleção estabilizadora correlacionada
@@ -326,10 +372,15 @@ para gerar a estrutura modular nas matrizes de covariação.
 Nas figuras \ref{MatBIntSel110} e \ref{MatBIntSel1120} vemos matrizes
 médias finais para 10 corridas com $N_e = 1000$, $\mu/\mu_B=5$ e
 intensidade de seleção variável. 
-
 Para isso, modificamos o quanto o pico adaptativo era alterado para cada
 traço a cada geração, de $0.01$ até $0.2$ por geração durante 10000
 gerações. 
+Nas figuras \ref{IntSelStats10100} e \ref{IntSelStats110200} vemos
+evoluções típicas de AVG-Ratio e modularidade $L$ para corridas com
+várias intensidades de seleção, mostrando o quão estáveis e o quão
+rápido os padrões modulares se estabelecem nessas condições.
+Vemos que mesmo com um tamanho populacional considerável ($Ne = 2500$)
+ainda observamos flutuções grandes.
 
 A medida que aumentamos a intensidade de seleção os modulos se tornam
 mais evidentes, mas acima de uma certa intensidade (delta $\simeq 0.06$)
@@ -356,6 +407,31 @@ mudanças em $\Delta_S$ não alteram quais são esses indivíduos.
 \end{center}
 
 \begin{center}
+   \begin{figure}[htbp]
+      \centering
+      \subfloat [$\Delta_S = 0.01$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats10.png}}\vspace{11pt}
+      \subfloat [$\Delta_S = 0.02$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats20.png}}\\ 
+      \vspace{-18pt}
+      \subfloat [$\Delta_S = 0.03$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats30.png}}\vspace{11pt} 
+      \subfloat [$\Delta_S = 0.04$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats40.png}}\\
+      \vspace{-18pt}
+      \subfloat [$\Delta_S = 0.05$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats50.png}}\vspace{11pt}
+      \subfloat [$\Delta_S = 0.06$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats60.png}}\\
+      \vspace{-18pt}
+      \subfloat [$\Delta_S = 0.07$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats70.png}}\vspace{11pt}
+      \subfloat [$\Delta_S = 0.08$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats80.png}}\\
+      \vspace{-18pt}
+      \subfloat [$\Delta_S = 0.09$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats90.png}}\vspace{11pt}
+      \subfloat [$\Delta_S = 0.1$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats100.png}}\\
+      \caption{ AVG-Ratio e modularidade $L$ para corridas com
+         $\frac{\mu}{\mu_B} = 5$, $Ne = 2500$, $m/p=2$, sofrendo seleção
+         estabilizadora correlacionada com 2 módulos e seleção direcional com
+         diferentes valores de $\Delta_S$.}
+      \label{IntSelStats10100}
+   \end{figure}
+\end{center}
+
+\begin{center}
 \begin{figure}[htbp]
   \includegraphics[width=150mm, height=180mm]{figuras/MatBDirecionalIntSel1120}
    \caption{Matriz final média de 10 corridas com
@@ -363,6 +439,31 @@ mudanças em $\Delta_S$ não alteram quais são esses indivíduos.
    módulos e seleção direcional com diferentes valores de $\Delta_S$.}
   \label{MatBIntSel1120}
 \end{figure}
+\end{center}
+
+\begin{center}
+   \begin{figure}[htbp]
+      \centering
+      \subfloat [$\Delta_S = 0.11$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats110.png}}\vspace{11pt}
+      \subfloat [$\Delta_S = 0.12$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats120.png}}\\ 
+      \vspace{-18pt}
+      \subfloat [$\Delta_S = 0.13$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats130.png}}\vspace{11pt} 
+      \subfloat [$\Delta_S = 0.14$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats140.png}}\\
+      \vspace{-18pt}
+      \subfloat [$\Delta_S = 0.15$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats150.png}}\vspace{11pt}
+      \subfloat [$\Delta_S = 0.16$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats160.png}}\\
+      \vspace{-18pt}
+      \subfloat [$\Delta_S = 0.17$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats170.png}}\vspace{11pt}
+      \subfloat [$\Delta_S = 0.18$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats180.png}}\\
+      \vspace{-18pt}
+      \subfloat [$\Delta_S = 0.19$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats190.png}}\vspace{11pt}
+      \subfloat [$\Delta_S = 0.2$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats200.png}}\\
+      \caption{ AVG-Ratio e modularidade $L$ para corridas com
+         $\frac{\mu}{\mu_B} = 5$, $Ne = 2500$, $m/p=2$, sofrendo seleção
+         estabilizadora correlacionada com 2 módulos e seleção direcional com
+         diferentes valores de $\Delta_S$.}
+      \label{IntSelStats110200}
+   \end{figure}
 \end{center}
 
 Outra questão relevante é o quão estáveis são os padrões de covariação
@@ -377,18 +478,19 @@ diminuir, ainda observamos uma distinção estável entre elas (figura
 O efeito do tamanho populacional é especialmente marcante nessas
 condições, com populações grandes se mostrando mais eficientes na
 manutenção prolongada dos padrões estabelecidos pela seleção direcional
-(figura \ref{posselecao}). 
+(figuras \ref{posselecao} e \ref{posselecaoStats}). 
 
 \begin{center}
 \begin{figure}[htbp]
-  \subfloat [$Ne = 250$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecao250.png}}
-  \subfloat [$Ne = 500$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecao500.png}}
-  \subfloat [$Ne = 1000$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecao1000.png}}
-\end{figure}
-\begin{figure}[htbp]
-  \subfloat [$Ne = 2500$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecao2500.png}}
-  \subfloat [$Ne = 5000$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecao5000.png}}
-  \subfloat [$Ne = 10000$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecao10000.png}}
+  \centering
+  \subfloat [$Ne = 250$]{\includegraphics[width=70mm, height=50mm]{figuras/posselecao250.png}}\vspace{11pt}
+  \subfloat [$Ne = 500$]{\includegraphics[width=70mm, height=50mm]{figuras/posselecao500.png}}\\
+  \vspace{-18pt}
+  \subfloat [$Ne = 1000$]{\includegraphics[width=70mm, height=50mm]{figuras/posselecao1000.png}}\vspace{11pt}
+  \subfloat [$Ne = 2500$]{\includegraphics[width=70mm, height=50mm]{figuras/posselecao2500.png}}\\
+  \vspace{-18pt}
+  \subfloat [$Ne = 5000$]{\includegraphics[width=70mm, height=50mm]{figuras/posselecao5000.png}}\vspace{11pt}
+  \subfloat [$Ne = 10000$]{\includegraphics[width=70mm, height=50mm]{figuras/posselecao10000.png}}\\
   \caption{Evolução da correlação entre dez traços ligados por efeitos
   pleiotrópicos controlados por uma matriz $B$ variável, sofrendo seleção estabilizadora correlacionada e seleção
   direcional para mudança correlacionada dentros dos módulos
@@ -398,17 +500,34 @@ manutenção prolongada dos padrões estabelecidos pela seleção direcional
 \end{figure}
 \end{center}
 
+\begin{center}
+\begin{figure}[htbp]
+  \centering
+  \subfloat [$Ne = 250$]{\includegraphics[width=70mm, height=50mm]{figuras/PosSelStatsNe250.png}}\vspace{11pt}
+  \subfloat [$Ne = 500$]{\includegraphics[width=70mm, height=50mm]{figuras/PosSelStatsNe500.png}}\\
+  \vspace{-18pt}
+  \subfloat [$Ne = 1000$]{\includegraphics[width=70mm, height=50mm]{figuras/PosSelStatsNe1000.png}}\vspace{11pt}
+  \subfloat [$Ne = 2500$]{\includegraphics[width=70mm, height=50mm]{figuras/PosSelStatsNe2500.png}}\\
+  \vspace{-18pt}
+  \subfloat [$Ne = 5000$]{\includegraphics[width=70mm, height=50mm]{figuras/PosSelStatsNe5000.png}}\vspace{11pt}
+  \subfloat [$Ne = 10000$]{\includegraphics[width=70mm, height=50mm]{figuras/PosSelStatsNe10000.png}}\\
+  \caption{Evolução de modularidade $L$ e AVG-Ratio para as correlações
+     apresentadas na figura \ref{posselecao} ($\Delta_S = 0.2$, $\mu/\mu_B=5$, $m/p=2$).}
+  \label{posselecaoStats}
+\end{figure}
+\end{center}
+
 
 \begin{center}
 \begin{figure}[htbp]
-  \subfloat [$Ne = 250$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecaoSemEstab250.png}}
-  \subfloat [$Ne = 500$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecaoSemEstab500.png}}
-  \subfloat [$Ne = 1000$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecaoSemEstab1000.png}}
-\end{figure}
-\begin{figure}[htbp]
-  \subfloat [$Ne = 2500$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecaoSemEstab2500.png}}
-  \subfloat [$Ne = 5000$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecaoSemEstab5000.png}}
-  \subfloat [$Ne = 10000$]{\includegraphics[width=50mm, height=80mm]{figuras/posselecaoSemEstab10000.png}}
+  \subfloat [$Ne = 250$]{\includegraphics[width=70mm, height=50mm]{figuras/posselecaoSemEstab250.png}}\vspace{11pt}
+  \subfloat [$Ne = 500$]{\includegraphics[width=70mm, height=50mm]{figuras/posselecaoSemEstab500.png}}\\
+  \vspace{-18pt}
+  \subfloat [$Ne = 1000$]{\includegraphics[width=70mm, height=50mm]{figuras/posselecaoSemEstab1000.png}}\vspace{11pt}
+  \subfloat [$Ne = 2500$]{\includegraphics[width=70mm, height=50mm]{figuras/posselecaoSemEstab2500.png}}\\
+  \vspace{-18pt}
+  \subfloat [$Ne = 5000$]{\includegraphics[width=70mm, height=50mm]{figuras/posselecaoSemEstab5000.png}}\vspace{11pt}
+  \subfloat [$Ne = 10000$]{\includegraphics[width=70mm, height=50mm]{figuras/posselecaoSemEstab10000.png}}\\
   \caption{Evolução da correlação entre dez traços ligados por efeitos
   pleiotrópicos controlados por uma matriz $B$ variável, sofrendo seleção estabilizadora correlacionada e seleção
   direcional para mudança correlacionada dentros dos módulos
@@ -418,17 +537,35 @@ manutenção prolongada dos padrões estabelecidos pela seleção direcional
 \end{figure}
 \end{center}
 
+\begin{center}
+\begin{figure}[htbp]
+  \centering
+  \subfloat [$Ne = 250$]{\includegraphics[width=70mm, height=50mm]{figuras/SemEstabPosSelStatsNe250.png}}\vspace{11pt}
+  \subfloat [$Ne = 500$]{\includegraphics[width=70mm, height=50mm]{figuras/SemEstabPosSelStatsNe500.png}}\\
+  \vspace{-18pt}
+  \subfloat [$Ne = 1000$]{\includegraphics[width=70mm, height=50mm]{figuras/SemEstabPosSelStatsNe1000.png}}\vspace{11pt}
+  \subfloat [$Ne = 2500$]{\includegraphics[width=70mm, height=50mm]{figuras/SemEstabPosSelStatsNe2500.png}}\\
+  \vspace{-18pt}
+  \subfloat [$Ne = 5000$]{\includegraphics[width=70mm, height=50mm]{figuras/SemEstabPosSelStatsNe5000.png}}\vspace{11pt}
+  \subfloat [$Ne = 10000$]{\includegraphics[width=70mm, height=50mm]{figuras/SemEstabPosSelStatsNe10000.png}}\\
+  \caption{Evolução de modularidade $L$ e AVG-Ratio para as correlações
+     apresentadas na figura \ref{posselecao} ($\Delta_S = 0.2$, $\mu/\mu_B=5$, $m/p=2$).}
+  \label{posselecaoSemEstabStats}
+\end{figure}
+\end{center}
+
 Ainda na questão da estabilidade dos padrões de covariação, o papel da
 seleção estabilizadora correlacionada pode ser avaliado sujeitando as
 populações à seleção direcional e estabilizadora correlacionada por 5000
 gerações, seguidas de 5000 gerações de seleção estabilizadora não
 correlacionada, apenas mantendo a média de cada traço individualmente.
-Na figura \ref{posselecaoSemEstab} podemos ver a importância da seleção
-estabilizadora correlacionada na manutenção dos padrões modulares
-gerados pela seleção direcional. 
+Nas figura \ref{posselecaoSemEstab} e \ref{posselecaoSemEstabStats}
+podemos ver a importância da seleção estabilizadora correlacionada na
+manutenção dos padrões modulares gerados pela seleção direcional. 
 Comparando cada tamanho populacional mostrado nas figuras
-\ref{posselecao} e \ref{posselecaoSemEstab} podemos ver uma degradação
-muito mais acentuada dos padrões modulares na ausência da seleção
+\ref{posselecao}, \ref{posselecaoStats} e \ref{posselecaoSemEstab},
+\ref{posselecaoSemEstabStats} podemos ver uma degradação muito mais
+acentuada dos padrões modulares na ausência da seleção
 estabilizadora correlacionada. 
 
 A importância da seleção estabilizadora para explicar padrões de estase
@@ -460,19 +597,18 @@ intensa e seleção estabilizadora correlacionada.
 
 \begin{center}
 \begin{figure}[htbp]
-  \subfloat [$m/p = 2$]{\includegraphics[width=50mm, height=55mm]{figuras/MB20.png}}
-  \subfloat [$m/p = 3$]{\includegraphics[width=50mm, height=55mm]{figuras/MB30.png}}
-  \subfloat [$m/p = 4$]{\includegraphics[width=50mm, height=55mm]{figuras/MB40.png}}
-\end{figure}
-\begin{figure}[htbp]
-  \subfloat [$m/p = 5$]{\includegraphics[width=50mm, height=55mm]{figuras/MB50.png}}
-  \subfloat [$m/p = 6$]{\includegraphics[width=50mm, height=55mm]{figuras/MB60.png}}
-  \subfloat [$m/p = 7$]{\includegraphics[width=50mm, height=55mm]{figuras/MB70.png}}
-\end{figure}
-\begin{figure}[htbp]
-  \subfloat [$m/p = 8$]{\includegraphics[width=50mm, height=55mm]{figuras/MB80.png}}
-  \subfloat [$m/p = 9$]{\includegraphics[width=50mm, height=55mm]{figuras/MB90.png}}
-  \subfloat [$m/p = 10$]{\includegraphics[width=50mm, height=55mm]{figuras/MB100.png}}
+   \centering
+  \subfloat [$m/p = 2$]{\includegraphics[width=70mm, height=40mm]{figuras/MB20.png}}\vspace{11pt}
+  \subfloat [$m/p = 3$]{\includegraphics[width=70mm, height=40mm]{figuras/MB30.png}}\\
+  \vspace{-18pt}
+  \subfloat [$m/p = 4$]{\includegraphics[width=70mm, height=40mm]{figuras/MB40.png}}\vspace{11pt}
+  \subfloat [$m/p = 5$]{\includegraphics[width=70mm, height=40mm]{figuras/MB50.png}}\\
+  \vspace{-18pt}
+  \subfloat [$m/p = 6$]{\includegraphics[width=70mm, height=40mm]{figuras/MB60.png}}\vspace{11pt}
+  \subfloat [$m/p = 7$]{\includegraphics[width=70mm, height=40mm]{figuras/MB70.png}}\\
+  \vspace{-18pt}
+  \subfloat [$m/p = 8$]{\includegraphics[width=70mm, height=40mm]{figuras/MB80.png}}\vspace{11pt}
+  \subfloat [$m/p = 9$]{\includegraphics[width=70mm, height=40mm]{figuras/MB90.png}}\\
   \caption{Evolução da correlação entre dez traços ligados por efeitos
   pleiotrópicos controlados por uma função ontogenética linear binária
   variável sofrendo seleção estabilizadora correlacionada e seleção
@@ -497,10 +633,10 @@ Isso pode ser associado à força de recombinação aumentada.
 
 \begin{center}
 \begin{figure}[htbp]
-  \subfloat [$m/p = 9$]{\includegraphics[width=150mm, height=55mm]{figuras/MBLR90.png}}
-\end{figure}
-\begin{figure}[htbp]
-  \subfloat [$m/p = 10$]{\includegraphics[width=150mm, height=55mm]{figuras/MBLR100.png}}
+  \centering
+  \subfloat [$m/p = 9$]{\includegraphics[width=150mm, height=55mm]{figuras/MBLR90.png}}\vspace{11pt}
+  \vspace{-18pt}
+  \subfloat [$m/p = 10$]{\includegraphics[width=150mm, height=55mm]{figuras/MBLR100.png}}\vspace{11pt}
   \caption{Evolução da correlação entre dez traços ligados por efeitos
   pleiotrópicos controlados por uma função ontogenética linear binária
   variável sofrendo seleção estabilizadora correlacionada e seleção

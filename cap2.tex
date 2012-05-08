@@ -214,7 +214,7 @@ Novamente a seleção estabilizadora pode ser correlacionada ou não
 correlacionada, dependendo da matriz $\omega$ e a seleção direcional é
 aplicada utilizando um ótimo variável na superfície gaussiana.
 
-\subsection{Parâmetros}
+\section{Parâmetros}
 
 Alguns parêmetros foram mantidos constantes em todas as simulações.
 Os valores da variância mutacional de todos os traços foi fixada em 0.5
@@ -247,7 +247,7 @@ traço; enquanto a seleção mais fraca um movimento de $0.007$ desvios
 padrões por geração por traço ($\Delta_S=0.01$), resultando num
 movimento total de cerca de 7 desvios padrões.
 
-\subsection{Estatísticas}
+\section{Estatísticas}
 
 Quantificar a evolução das relações entre os traços quantificadas na
 matriz de covariância é fundamental para a interpretação dos resultados
@@ -330,4 +330,30 @@ Em situções naturais, onde não conhecemos a estrutura de modularidade,
 essa técnica poderia ser usada para inferir a estrutura de modularidade
 utilizando apenas da matriz de correlação.
 
+\section{Resumo de Parâmetros}
 
+Para facilitar a leitura do texto, apresentamos aqui um resumo dos
+parâmetros relevantes aos modelos.
+
+\begin{table}[htbp]
+    \caption[Tabela de abreviações]{Tabela com simbolos e abreviações
+    usadas nas simulações}
+    \label{tab:exemplo}
+    \vspace{1em}
+    \centering
+    \begin{tabular}{c c c}
+        \toprule
+        Simbolo     & Interpretação & Modelo\\
+        \midrule
+        $p$     & número de traços & $M$ e $B$\\
+        $m$     & número de alelos aditivos & $M$ e $B$\\
+        $Ne$    & tamanho populacional & $M$ e $B$   \\
+        $\omega$     & matriz de seleção estabilizadora & $M$ e $B$\\
+        $\mu$     & taxa de mutação por alelo aditivo por geração & $M$ e $B$\\
+        $\mu_B$     & taxa de mutação por casela da matriz $B$ & $B$\\
+        $\Delta_S$     & taxa de mudança do pico adaptativo & $M$ e $B$\\
+                       &   por geração de seleção direcional & \\
+
+        \bottomrule
+    \end{tabular}
+\end{table}

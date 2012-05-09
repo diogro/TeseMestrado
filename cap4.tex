@@ -40,13 +40,15 @@ Como a população é bastante grande ($Ne = 5000$), a remoção é lenta e o
 equilibrio mutação-deriva se dá num valor de variância muito alto
 (comparado com a variância ambiental ou variância do erro $e$, veja
 capítulo \ref{cap2}, equação \ref{matrizB}). 
-Nas mesmas figuras, após X gerações de deriva, foi imposto um regime de
+Nas mesmas figuras, após 10000 gerações de deriva, foi imposto um regime de
 seleção estabilizadora correlacionada. 
 Imediatamente as variâncias genéticas e fenotípicas caem bruscamente
 para os valores de equilibrio seleção-mutação-deriva, e o sistema se
 estabiliza nesses valores. 
 Podemos ver no painel \ref{Corr} o efeito sobre as correlações,
-que também diminuem (?????). 
+que também diminuem com a remoção seletiva da variabilidade dessa
+população. 
+A seleção estabilizadora é mantida por 10000 gerações.
 
 \begin{center}
    \begin{figure}[htbp]
@@ -61,63 +63,145 @@ que também diminuem (?????).
    \end{figure}
 \end{center}
 
-Tomados esses cuidados com a inicialização da população, iniciamos o
+\section{Seleção Direcional}
+
+Tomados os cuidados com a inicialização da população, iniciamos o
 regime de seleção direcional com intensidade variaveis, como na seção
 \ref{cap3:DirecB}. 
 Novamente nossa seleção é medida por mudanças no pico adaptativo, com
 $\Delta_S$ de $0.01$ até $0.2$. 
 Valores de AVG-Ratio e modularidade $L$ para essas corridas podem ser
-vistos nas figuras \ref{MFMStats1} e \ref{MFMStats2}. 
-Incluimos também as últimas gerações de seleção estabilizadora por
-clareza, a seleção direcional começa a atual a partir da geração 20000.  
+vistos na figura \ref{MFMStats}. 
+Incluimos também, por clareza, as últimas gerações de seleção
+estabilizadora, a seleção direcional começa a atual a partir da geração
+20000. 
 
+Nessa condições o sistema se modulariza rapidamente a partir de uma dada
+intesidade de seleção. 
+Vimos o mesmo efeito na figura \ref{IntSelStats10100}, por exemplo.
+Podemos ainda dissecar o efeito da seleção direcional nas correlações
+dentro e entre módulos, olhando para a evolução de cada uma
+separadamente. 
+Na figura \ref{AVGEntreIntra} podemos ver essa separação para diferentes
+valores de $\Delta_S$. 
+O padrão de aumento das correlações entre módulos é esperado. 
+Além disso, observados uma concomitante diminuição das correlações entre
+módulos. 
+Como cada módulo responde a forças seletivas antagônicas a correlação
+entre eles tente a diminuir, permitindo que os traços dentro de cada
+módulos evoluam independentemente dos outros módulos. 
+Isso é coerente com simulações em sistemas simples feitas por
+\cite{Pavlicev2010} utilizando a equação
+de reposta a seleção de \cite{Lande1979} e a existência de rQTLs
+\citep{Pavlicev2008a}. 
+Neste artigo os autores descrevem como seleção direcional pode favorecer
+ativamente a criação de linhas de menor resistência evolutiva
+\citep[direções do espaço morfológico ricas em
+variação, veja][]{Schluter1996},  alinhadas com a seleção. 
+Nossos resultados mostram que isso pode acontecer em sistemas
+consideravelmente mais complexos, via seleção indireta nos padrões de
+covariação, gerando variação nas direções privilegiadas pela seleção
+direcional. 
+
+Seleção direcional parece então ser fundamental para o surgimento de
+módulos variacionais nas nossas simulações. 
+Porém a situação onde todos os traços de um complexo morfológico estão
+sobre seleção simultânea divergente não parece ser uma regra na
+natureza. 
+Seria a seleção natural sobre apenas um conjuntos de traços capaz de
+gerar modularidade do mesmo tipo?
+Para responder essa pergunta nós começamos com a mesma população
+inicial, mas agora apenas um dos módulos era sujeito a seleção
+direcional, com o outro conjunto de traços mantido constante pela
+seleção estabilizadora. 
+Novamente a matriz de seleção da superficie adaptativa era não diagonal,
+impondo seleção estabilizadora correlacionada na população.
+Esse cenário evolutivo é conhecido como evolução ``corredor'', por uma
+parte dos traços está se movendo por ação da seleção direcional (ao
+longo do corredor) enquando o outro conjunto está constante por ação de
+seleção estabilizadora (entre as paredes do corredor). 
+Na figura \ref{CoAVG} vemos a evolução das correlações dentro e entre
+módulos para esse cenário evolutivo. 
+Primeiro destacamos que novamente as correlações entre módulo decaem, de
+forma semelhante ao caso de seleção direcional divergente nos dois
+módulos. 
+O módulo sobre seleção direcional também se comporta de forma semelhante
+ao caso anterior, com correlações aumentando ao longo da simulação. 
+Porém, nesse caso são geradas 3 classes de correlação. 
+As correlações dentro do módulo sofrendo apenas seleção estabilizadora
+também aumentam, ainda que de forma menos acentuada que as do módulo que
+sofre seleção direcional. 
+Em alguns casos as correlações dentro do módulo com seleção
+estabilizadora chegam ao mesmo nivel médio que o módulo sofrendo seleção
+direcional, como no painel \ref{CoAVG:Igual}. 
+A medida que a seleção direcional aumenta a distinção entre os dois
+módulos se torna mais acentuada. 
+Esses resultados apontam para um mecanismo plausível de formação de
+módulos variacionais em populações naturais. 
+Como a seleção em um grupo de traços é suficiente para gerar
+modularidade no conjunto completo do individuo, eventos subsequentes de
+seleção direcional em grupos distintos de traços morfológicos pode gerar
+o padrão intrincado de módulos que observamos na natureza. 
 
 \begin{center}
    \begin{figure}[htbp]
       \centering
       \subfloat [$\Delta_S = 0.01$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats10.png}}\vspace{11pt}
-      \subfloat [$\Delta_S = 0.02$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats20.png}}\\ 
+      \subfloat [$\Delta_S = 0.03$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats30.png}}\\ 
       \vspace{-18pt}
-      \subfloat [$\Delta_S = 0.03$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats30.png}}\vspace{11pt} 
-      \subfloat [$\Delta_S = 0.04$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats40.png}}\\
-      \vspace{-18pt}
-      \subfloat [$\Delta_S = 0.05$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats50.png}}\vspace{11pt}
-      \subfloat [$\Delta_S = 0.06$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats60.png}}\\
-      \vspace{-18pt}
-      \subfloat [$\Delta_S = 0.07$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats70.png}}\vspace{11pt}
-      \subfloat [$\Delta_S = 0.08$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats80.png}}\\
+      \subfloat [$\Delta_S = 0.05$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats50.png}}\vspace{11pt} 
+      \subfloat [$\Delta_S = 0.07$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats70.png}}\\
       \vspace{-18pt}
       \subfloat [$\Delta_S = 0.09$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats90.png}}\vspace{11pt}
-      \subfloat [$\Delta_S = 0.1$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats100.png}}\\
+      \subfloat [$\Delta_S = 0.11$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats110.png}}\\
+      \vspace{-18pt}
+      \subfloat [$\Delta_S = 0.13$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats130.png}}\vspace{11pt}
+      \subfloat [$\Delta_S = 0.15$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats150.png}}\\
+      \vspace{-18pt}
+      \subfloat [$\Delta_S = 0.17$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats170.png}}\vspace{11pt}
+      \subfloat [$\Delta_S = 0.19$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats190.png}}\\
       \caption{ AVG-Ratio e modularidade $L$ para corridas com
          $\mu/\mu_B = 5$, $Ne = 5000$, $m/p=5$, sofrendo seleção
          estabilizadora correlacionada com 2 módulos e seleção direcional com
          diferentes valores de $\Delta_S$.}
-      \label{MFMStats1}
+      \label{MFMStats}
    \end{figure}
 \end{center}
 
 \begin{center}
    \begin{figure}[htbp]
       \centering
-      \subfloat [$\Delta_S = 0.11$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats110.png}}\vspace{11pt}
-      \subfloat [$\Delta_S = 0.12$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats120.png}}\\ 
+      \subfloat [$\Delta_S = 0.01$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPlusMinus10.png}}\vspace{11pt}
+      \subfloat [$\Delta_S = 0.03$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPlusMinus30.png}}\\ 
       \vspace{-18pt}
-      \subfloat [$\Delta_S = 0.13$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats130.png}}\vspace{11pt} 
-      \subfloat [$\Delta_S = 0.14$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats140.png}}\\
+      \subfloat [$\Delta_S = 0.90$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPlusMinus90.png}}\vspace{11pt}
+      \subfloat [$\Delta_S = 0.11$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPlusMinus110.png}}\\
       \vspace{-18pt}
-      \subfloat [$\Delta_S = 0.15$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats150.png}}\vspace{11pt}
-      \subfloat [$\Delta_S = 0.16$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats160.png}}\\
+      \subfloat [$\Delta_S = 0.18$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPlusMinus180.png}}\vspace{11pt}
+      \subfloat [$\Delta_S = 0.20$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPlusMinus200.png}}\\
+      \caption{ Evolução da média das correlações dentro de cada módulo
+      e entre módulos de uma população sofrendo seleção estabilizadora
+      correlacionada com 2 módulos e seleção direcional com diferentes
+      valores de $\Delta_S$. $\mu/\mu_B = 5$, $Ne = 5000$, $m/p=5$}
+      \label{AVGEntreIntra}
+   \end{figure}
+\end{center}
+
+\begin{center}
+   \begin{figure}[htbp]
+      \centering
+      \subfloat [$\Delta_S = 0.01$]{\includegraphics[width=70mm, height=50mm]{figuras/CoAVGPM10.png}}\vspace{11pt}
+      \subfloat [$\Delta_S = 0.03$]{\includegraphics[width=70mm, height=50mm]{figuras/CoAVGPM30.png}}\\ 
       \vspace{-18pt}
-      \subfloat [$\Delta_S = 0.17$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats170.png}}\vspace{11pt}
-      \subfloat [$\Delta_S = 0.18$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats180.png}}\\
+      \subfloat [$\Delta_S = 0.90$]{\includegraphics[width=70mm, height=50mm]{figuras/CoAVGPM90.png}}\vspace{11pt}
+      \subfloat [$\Delta_S = 0.11$]{\label{CoAVG:Igual}\includegraphics[width=70mm, height=50mm]{figuras/CoAVGPM110.png}}\\
       \vspace{-18pt}
-      \subfloat [$\Delta_S = 0.19$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats190.png}}\vspace{11pt}
-      \subfloat [$\Delta_S = 0.2$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats200.png}}\\
-      \caption{ AVG-Ratio e modularidade $L$ para corridas com
-         $\mu/\mu_B = 5$, $Ne = 5000$, $m/p=5$, sofrendo seleção
-         estabilizadora correlacionada com 2 módulos e seleção direcional com
-         diferentes valores de $\Delta_S$.}
-      \label{MFMStats2}
+      \subfloat [$\Delta_S = 0.18$]{\includegraphics[width=70mm, height=50mm]{figuras/CoAVGPM180.png}}\vspace{11pt}
+      \subfloat [$\Delta_S = 0.20$]{\includegraphics[width=70mm, height=50mm]{figuras/CoAVGPM200.png}}\\
+      \caption{ Evolução da média das correlações dentro de cada módulo
+      e entre módulos de uma população sofrendo seleção estabilizadora
+      correlacionada com 2 módulos e seleção direcional em apenas um dos
+      módulos, com valores de $\Delta_S$. $\mu/\mu_B = 5$, $Ne = 5000$, $m/p=5$}
+      \label{CoAVG}
    \end{figure}
 \end{center}

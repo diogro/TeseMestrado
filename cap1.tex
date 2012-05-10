@@ -10,16 +10,16 @@
 
 O estudo de traços quantitativos se baseia amplamente na teoria da
 genética quantitativa. 
-Essa teoria permite entender a evolução de caracteres continuos de forma
+Essa teoria permite entender a evolução de caracteres contínuos de forma
 bastante completa. 
 Para isso são utilizadas de medidas quantitativas de traços
 morfológicos. 
-A equação multi-variada de resposta à seleção, $\Delta z = G \beta$,
+A equação multivariada de resposta à seleção, $\Delta z = G \beta$,
 proposta por \cite{Lande1979} permite ligar a mudança na média de um
 conjunto de caracteres ($\Delta z$) à seleção imposta à população
 ($\beta$) e à sua matriz de covariação genética aditiva (G). 
 Além disso, esse mesmo raciocínio pode ser usado para investigar padrões
-macro-evolutivos de resposta ao longo de muitas gerações
+microevolutivos de resposta ao longo de muitas gerações
 \citep{Lande1983, Marroig2004, Marroig2005}. 
  
 
@@ -34,7 +34,7 @@ derivado do modelo apresentado em \cite{Crow1964}, chamado de modelo do
 continuo de alelos. 
 Neste modelo a distribuição de efeitos alélicos sobre um determinado
 caráter é contínuo, e em \cite{Kimura1965} foi demonstrada que a
-distribuição de equilibrio dos efeito alélicos em uma população sofrendo
+distribuição de equilíbrio dos efeito alélicos em uma população sofrendo
 mutação, deriva e seleção estabilizadora é gaussiana, com a suposição de
 que os efeitos mutacionais são pequenos frente à variação existente na
 população. 
@@ -51,7 +51,7 @@ Esses problemas foram apresentados ao longo da década de 80 por uma
 série de artigos, principalmente e pioneiramente por \citep{Turelli1984,
 Turelli1985, Turelli1986, Barton1987}. 
 Talvez a questão mais importante seja a suposição de que os alelos
-tenham distribuição contínua poposta por \cite{Crow1964}. 
+tenham distribuição contínua proposta por \cite{Crow1964}. 
 Para que isso seja realista a taxa de mutação por locus deve ser
 suficientemente alta para manter a distribuição de alelos por locus
 gaussiana frente à deriva e seleção estabilizadora, que removem
@@ -65,9 +65,9 @@ O modelo proposto por
 mutacionais altos, mas ainda mantendo o espaço de alelos contínuo.
 Nessas condições, a matriz G não seria constante ao longo do tempo e
 fatores de correção deveriam ser acrescidos à equação de resposta de
-Lande para descrições macro-evolutivas. 
+Lande para descrições macro evolutivas. 
 Esses fatores dependem do desvio por geração da matriz G em relação à
-matriz G média no periodo de seleção \citep{Jones2003}. 
+matriz G média no período de seleção \citep{Jones2003}. 
 A estimativa desse ``efeito Turelli'' é difícil de ser realizada
 praticamente. 
  
@@ -93,10 +93,10 @@ ordem e obter os resultados de Turelli.
 % Continuar Turelli Barton?
 
 Dada a complexidade do problema da dinâmica das variâncias em um caso
-multi-variado, o estudo da estabilidade da matriz G e suas consequências
+multivariado, o estudo da estabilidade da matriz G e suas consequências
 para o estudo da evolução de caracteres quantitativos se tornou um
 problema eminentemente experimental, sejam esses experimentos conduzidos
-de forma restrospectiva, amostrando a diversidade dos seres vivos, seja
+de forma retrospectiva, amostrando a diversidade dos seres vivos, seja
 em experimentos manipulativos feitos com colônias de animais em
 cativeiro ou, como é o caso do presente trabalho, por via de simulações
 computacionais. 
@@ -116,7 +116,7 @@ estudo de estabilidade da matriz G associada a dois caracteres
 quantitativos com interações pleiotrópicas fixas em uma população finita
 sofrendo mutação, deriva e seleção estabilizadora gaussiana. 
 Os principais parâmetros que influem na estabilidade da matriz G nessas
-simulações são o padrão de mutação pleitotrópico e a superfície de
+simulações são o padrão de mutação pleiotrópico e a superfície de
 seleção. 
 Ambos são descritos por matrizes de covariância. 
 Os valores na diagonal dessas matrizes representam a intensidade das
@@ -126,7 +126,7 @@ Como o problema é bidimensional, essas matrizes tem apenas um valor fora
 da diagonal. 
 Esse valor é apresentado como uma correlação de mutação no caso da
 matriz mutacional ($r_\mu$) e uma correlação de seleção na matriz que
-descreve a superfície de adptidão ou {\it fitness} ($r_\omega$). 
+descreve a superfície de aptidão ou {\it fitness} ($r_\omega$). 
 O valor de $r_\mu$ define o quão correlacionados serão os valores das
 mutações que afetam ambos os traços. 
 Quanto mais alto, mais correlacionados eles serão, com sua magnitude
@@ -141,12 +141,12 @@ Além disso, tamanhos populacionais grandes também contribuem para a
 estabilidade da matriz.
 Um resultado interessante é que existem tipos diferentes de estabilidade
 para matrizes de covariância. 
-Por exemplo: uma matriz pode manter seus auto-valores estáveis, não
+Por exemplo: uma matriz pode manter seus autovalores estáveis, não
 sofrendo alterações na quantidade de variância genética disponível, mas
-ter auto-vetores variáveis, alterando assim em qual direção do
-morfo-espaço a variabilidade populacional está disponível para responder
+ter autovetores variáveis, alterando assim em qual direção do
+morfoespaço a variabilidade populacional está disponível para responder
 a seleção. 
-Os autores ressaltam que matrizes com um auto-valor dominante tendem a
+Os autores ressaltam que matrizes com um autovalor dominante tendem a
 ser mais estáveis. 
 Ou seja, correlação alta entre os dois traços leva à estabilidade da
 matriz G. 
@@ -206,11 +206,11 @@ para manter esse termo pequeno o bastante para possibilitar a
 estimativa de gradientes de seleção realistas. 
 Para isso, foram realizadas simulações com 3 tipos de movimentos do pico
 adaptativo: ao longo da direção de aumento de um traço, mantendo o outro
-estável; aumentando simultanemente os dois traços, na direção usualmente
+estável; aumentando simultaneamente os dois traços, na direção usualmente
 descrita como direção de tamanho, por representar aumento simultâneo de
 todas os traços do indivíduo \citep{Marroig2005}; e na direção de
 aumento de um traço e diminuição do outro. 
-Estas situações são representadas pelos simbolos $\rightarrow$,
+Estas situações são representadas pelos símbolos $\rightarrow$,
 $\nearrow$ e $\searrow$, respectivamente, fazendo uma alusão à
 representação bidimensional cartesiana dos traços. 
 Elas são interessantes por representarem tipos de seleção que interagem
@@ -218,7 +218,7 @@ de forma diferente à presença da correlação mutacional.
 Quando $r_\mu$ for positivo, a seleção $\nearrow$ está alinhada com o
 eixo de maior variação da matriz M. 
 Esta direção é denominada eixo de menor resistência evolutiva
-\citep{Schluter1996}, e  representa a direção do morfo-espaço com maior
+\citep{Schluter1996}, e  representa a direção do morfoespaço com maior
 quantidade de variação para responder a seleção natural, sendo portanto
 o primeiro componente principal da matriz de covariação genética. 
 Já as outras duas direções de movimento do pico se dão em eixos
@@ -256,7 +256,7 @@ atuando em traços quantitativos.
 Para tal foi definido um terceiro caráter que controla o valor de
 $r_\mu$ e está sujeito a mudanças via mutação, de forma análoga aos
 outros traços (veja seção \ref{cap2:mem:ModelM} para mais detalhes). 
-Isso permitiu aos autores estudar como o padrão pleitrópico/epistático,
+Isso permitiu aos autores estudar como o padrão pleiotrópico/epistático,
 representado na matriz mutacional, pode variar e como isso afeta o
 fenótipo e o genótipo de uma população sujeita a seleção estabilizadora
 gaussiana, mutação e deriva. 
@@ -275,18 +275,18 @@ o alinhamento da matriz mutacional (e portanto, da matriz G)  com a
 matriz da superfície de seleção? A seleção atua somente sobre traços
 fenotípicos, logo sua influência sobre a matriz mutacional é indireta. 
 Será que essa força de seleção indireta é suficiente para superar
-flutuações aleátorias na matriz mutacional e proporcionar seu
+flutuações aleatórias na matriz mutacional e proporcionar seu
 alinhamento? Apesar de fraca, a seleção indireta sobre a matriz
 mutacional se mostrou capaz de promover alinhamento com a superfície
 adaptativa, e portanto promover uma estabilidade maior da matriz G
 \citep{Jones2007}. 
 Esse resultado é interessante por misturar a atuação de duas forças
 seletivas importantes: seleção estabilizadora clássica, ambiental,
-externa ao organizmo; e restrições internas aos organismos,
+externa ao organismo; e restrições internas aos organismos,
 representadas pelos seu padrão de pleiotropia e codificados aqui na
 matriz mutacional. 
 Dois tipos de restrições diferentes se influenciando mutuamente e
-afetando o padrão de coavariação e expressão fenotípica dos sistemas
+afetando o padrão de covariação e expressão fenotípica dos sistemas
 biológicos. 
 Além desse resultado, os autores mostram que nem o modelo gaussiano nem
 o de alelos raros são capazes de explicar totalmente os resultados,
@@ -300,10 +300,10 @@ matriz G e suas consequências evolutivas, tema de trabalho há mais de 10
 anos do Laboratório de Evolução de Mamíferos.
 
 Em \cite{Marroig2001}, os autores utilizam o clado Platyrrhini, de
-primatas neo-tropicais como modelo, obtendo estimativas e comparando de
-forma filogenéticamente estruturada os 16 gêneros, quanto às suas
-matrizes de covariação fenotípica para 39 traços craniânos. 
-Essa comparação revelou similaridades altas entre todos os genêros. 
+primatas neotropicais como modelo, obtendo estimativas e comparando de
+forma filogeneticamente estruturada os 16 gêneros, quanto às suas
+matrizes de covariação fenotípica para 39 traços cranianos. 
+Essa comparação revelou similaridades altas entre todos os gêneros. 
 Além disso, os níveis de similaridade presentes eram pouco
 correlacionadas com a filogenia e sim com fatores ambientais, como a
 dieta de cada espécie. 
@@ -314,7 +314,7 @@ milhões de anos de divergência e com variação morfológica notável,
 aponta para uma estabilidade marcante da matriz G. 
 Além da comparação de padrões, em \cite{Marroig2005, Marroig2010} os
 autores abordam a influência desses padrões genéticos estáveis na
-evolução dos traços fenotípicos dentro dos primatas neo-tropicais. 
+evolução dos traços fenotípicos dentro dos primatas neotropicais. 
 Segundo eles, a influência de restrições genéticas é clara e deve ser
 levada em conta nas tentativas de entender os processos evolutivos que
 formaram os grupos atuais.
@@ -330,9 +330,9 @@ Modularidade se refere ao padrão de organização dos seres vivos, onde
 algumas partes são mais relacionadas entre si do que com outras partes
 do mesmo organismo. 
 Essa relação pode ser medida de diversas formas, como interação física
-entre proteinas, padrões de expressão entre genes, ou, como é o caso no
+entre proteínas, padrões de expressão entre genes, ou, como é o caso no
 no presente trabalho, correlação entre traços quantitativos. 
-Esse grupo de caracteristicas muito relacionadas entre si consituem um
+Esse grupo de características muito relacionadas entre si constituem um
 módulo. 
 Os módulos caracterizados por alta correlação entre traços dentro do
 módulo e baixa correlação entre traços de módulos diferentes são

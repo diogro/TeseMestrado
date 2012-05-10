@@ -27,36 +27,38 @@ Esse efeito pode ser observado na figura \ref{jones2tracos}, onde vemos
 a correlação entre dois traços aumentando em resposta à atuação da
 seleção estabilizadora correlacionada.  
 
-\begin{center}
+
 \begin{figure}[htbp]
+  \centering
   \includegraphics[width=150mm, height=80mm]{figuras/jones2tracos.png}
   \caption{Evolução da correlação entre dois traços ligados por efeitos
   mutacionais pleiotrópicos sobre seleção estabilizadora correlacionada.
   Nesta simulação $r_\omega=0.8$, $Ne=5000$, $p=2$, $m=50$}
   \label{jones2tracos}
 \end{figure}
-\end{center}
+
 
 Como nosso objetivo é expandir a modelagem para mais traços, em seguida
 adicionamos um traço ao sistema. 
 Nesse caso, as considerações sobre a dificuldade de manter a matriz $M$
 positiva definida já se aplicam, sendo necessário fazer uso da correção
-de auto-valores. 
+de autovalores. 
 Mesmo assim, o resultado é bastante semelhante, ainda com a correlação
 entre os 3 traços se alinhando com a matriz $\omega$ (figuras
 \ref{jones3tracos} e \ref{MatJones3tracos}). 
 
-\begin{center}
+
 \begin{figure}[htbp]
+  \centering
   \includegraphics[width=150mm, height=80mm]{figuras/jones3tracos.png}
   \caption{Evolução da correlação entre três traços ligados por efeitos
   mutacionais pleiotrópicos sobre seleção estabilizadora correlacionada.
-  A seleção propicia a integração entre dois traços (linha vermelha) e a desistegração
+  A seleção propicia a integração entre dois traços (linha vermelha) e a desintegração
   desses dois com o terceiro (linhas azul e verde). Nesta simulação
   $r_\omega$ como na equação \ref{romega}, $Ne=5000$, $p=3$, $m=50$.}
   \label{jones3tracos}
 \end{figure}
-\end{center}
+
 
 Na figura \ref{MatJones3tracos} vemos representações gráficas da matriz
 de correlação fenotípica ao final da simulação e da matriz $\omega$ de
@@ -75,15 +77,16 @@ E a matriz de covariância mutacional:
 \omega = \left( \begin{smallmatrix} 9 & 8.1 & 0.9\\  8.1 & 9 & 0.9 \\ 0.9 & 0.9 & 9 \end{smallmatrix}  \right)
 \end{equation}
 
-\begin{center}
+
 \begin{figure}[htbp]
+  \centering
   \includegraphics[width=150mm, height=80mm]{figuras/Mat3tracos}
    \caption{Comparação entre a matriz de correlação final para o 3
    traços após 10000
    gerações de seleção e a matriz $\omega$ da superfície de seleção.}
   \label{MatJones3tracos}
 \end{figure}
-\end{center}
+
 
 Quando procuramos ampliar o número de traços, porém, o alinhamento da
 matriz G com a matriz $\omega$ se mostrou problemático. 
@@ -112,7 +115,7 @@ fenotípicas com uma matriz $\omega$ com dois módulos (ver figura
 \ref{MatJones10tracos}).  
 Aqui não existe mais a distinção entre
 correlações dentro de módulos (altas) e entre módulos (baixas). 
-Os resultados da evolução da modularidade $L$ e do AVGRatio confirmam a
+Os resultados da evolução da modularidade $L$ e do AVG-Ratio confirmam a
 ausência de modularização do sistema. 
 A modularidade $L$ apresenta uma leve subida ao longo da simulação, mas
 o AVG-Ratio permanece estável (Figura \ref{jones10tracosStats}). 
@@ -124,8 +127,9 @@ Realizamos essas simulações com uma gama grande de intensidades de
 seleção e chegando até 100000 gerações de seleção, sem nenhum indício de
 alinhamento entre as matrizes G e $\omega$.  
 
-\begin{center}
+
 \begin{figure}[htbp]
+  \centering
   \includegraphics[width=150mm, height=80mm]{figuras/jones10tracos.png}
   \caption{Evolução da correlação entre dez traços ligados por efeitos
   mutacionais pleiotrópicos sobre seleção estabilizadora
@@ -135,39 +139,41 @@ alinhamento entre as matrizes G e $\omega$.
   $r_\omega$ como na equação \ref{matw}, $Ne=5000$, $p=10$, $m=50$.}
   \label{jones10tracos}
 \end{figure}
-\end{center}
 
-\begin{center}
+
+
 \begin{figure}[htbp]
+  \centering
   \includegraphics[width=150mm, height=80mm]{figuras/jones10tracosStats.png}
   \caption{Evolução da modularidade $L$ e AVG-Ratio para as matrizes de
   correlação representadas na figura \ref{jones10tracos}}
   \label{jones10tracosStats}
 \end{figure}
-\end{center}
 
-\begin{center}
+
+
 \begin{figure}[htbp]
+  \centering
   \includegraphics[width=150mm, height=80mm]{figuras/Mat10tracos}
   \caption{Comparação entre a matriz de correlação final para o 10
   traços após 10000 gerações de seleção representadas na figura
   \ref{jones10tracos} e a matriz $\omega$ da superfície de seleção.}
   \label{MatJones10tracos}
 \end{figure}
-\end{center}
+
 
 
 \subsection{Seleção Direcional}
 
 Em seguida, procuramos explorar como a inclusão de seleção direcional afetaria o
 alinhamento das matrizes G e $\omega$. 
-Utilizamos novamente uma matriz $\omega$ modular e acresentamos seleção
+Utilizamos novamente uma matriz $\omega$ modular e acrescentamos seleção
 direcional correlacionada, de mudança conjunta na média dos traços
 dentro de cada um dos módulos, e mudanças antagônicas entre módulos. 
 Ou seja, os 5 primeiros traços tiveram seu ótimo fenotípico aumentado a
 uma taxa constante e os 5 últimos traços tiveram seu ótimo reduzido de
 forma simétrica ($\Delta_S=0.2$). 
-As populações respondem a essa seleção de forma eficiênte, alterando
+As populações respondem a essa seleção de forma eficiente, alterando
 suas médias de acordo com a posição do ótimo. 
 Após 10000 gerações de seleção direcional, observamos a matriz final
 e a evolução de todas as correlações genéticas nesse período. 
@@ -177,28 +183,31 @@ Mesmo nessas condições, não observamos a emergência de módulos
 variacionais na matriz G, que indicaria semelhança com a matriz $\omega$
 e o padrão de seleção direcional correlacionada. 
 
-\begin{center}
+
 \begin{figure}[htbp]
+  \centering
   \includegraphics[width=150mm, height=80mm]{figuras/jones10tracosDirecional.png}
   \caption{Evolução da correlação entre dez traços ligados por efeitos
   mutacionais pleiotrópicos sobre seleção estabilizadora correlacionada
-  e seleção direcional intensa para mudança correlacionada dentros dos
+  e seleção direcional intensa para mudança correlacionada dentro dos
   módulos. Novamente, isso não se traduz na matriz de correlação genética.}
   \label{jones10tracosDirecional}
 \end{figure}
-\end{center}
 
-\begin{center}
+
+
 \begin{figure}[htbp]
+  \centering
   \includegraphics[width=150mm, height=80mm]{figuras/jones10tracosDirecionalStats.png}
   \caption{Evolução da modularidade $L$ e AVG-Ratio para as matrizes de
   correlação representadas na figura \ref{jones10tracosDirecional}}
   \label{jones10tracosDirecionalStats}
 \end{figure}
-\end{center}
 
-\begin{center}
+
+
 \begin{figure}[htbp]
+  \centering
   \includegraphics[width=150mm, height=80mm]{figuras/Mat10tracosDirecional}
    \caption{Comparação entre a matriz de correlação final para 10 traços
    após 10000 gerações de seleção direcional e estabilizadora
@@ -206,13 +215,13 @@ e o padrão de seleção direcional correlacionada.
    $\omega$ da superfície de seleção.}
   \label{MatJones10tracosDirecional}
 \end{figure}
-\end{center}
+
 
 Acreditamos que essa dificuldade em reproduzir os resultados encontrados
 em sistemas com 2 e 3 traços no sistema com 10 traços se deve ao aumento
 considerável do espaço possível de variação que a inclusão de cada novo
 traço representa. 
-O morfo-espaço cresce rapidamente com a inclusão de cada novo traço, e
+O morfoespaço cresce rapidamente com a inclusão de cada novo traço, e
 o espaço permitido para a matriz $M$ também. 
 A seleção indireta, então, se torna muito fraca para promover o
 alinhamento entre as matrizes, e a mutação não explora de forma adequada
@@ -229,8 +238,8 @@ a matriz $B$ totalmente formada por $1$, ou seja, integração total, e
 todos os valores aditivos $0$, ou seja, todos os traços nulos. 
 As primeiras gerações são dependentes desses estado inicial e não trazem
 informação. 
-Após cerca de $1000$ gerações o sistema se encontra em equilibrio
-seleção-mutação-deriva e pode ser analizado independentemente do estado
+Após cerca de $1000$ gerações o sistema se encontra em equilíbrio
+seleção-mutação-deriva e pode ser analisado independentemente do estado
 inicial. 
 Isso se reflete em todos gráficos como um transiente instável, seguido
 de estabilidade dependente principalmente do tamanho populacional.
@@ -252,38 +261,39 @@ magnitude das correlações com o aumento da razão $\mu/\mu_B$, não
 observamos o surgimento de módulos variacionais apenas com seleção
 estabilizadora correlacionada. 
 
-\begin{center}
+
 \begin{figure}[htbp]
+  \centering
   \includegraphics[width=150mm, height=180mm]{figuras/MatBEstabRMu}
    \caption{Matriz final média de 10 corridas para diferentes razões de
    $\mu$ e $\mu_B$, com seleção estabilizadora correlacionada com 2
    módulos.}
   \label{MatBEstab}
 \end{figure}
-\end{center}
 
-\begin{center}
-   \begin{figure}[htbp]
-      \centering
-      \subfloat [$\mu/\mu_B = 1$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats1.png}}\vspace{11pt}
-      \subfloat [$\mu/\mu_B = 2$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats2.png}}\\ 
-      \vspace{-18pt}
-      \subfloat [$\mu/\mu_B = 3$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats3.png}}\vspace{11pt} 
-      \subfloat [$\mu/\mu_B = 4$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats4.png}}\\
-      \vspace{-18pt}
-      \subfloat [$\mu/\mu_B = 5$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats5.png}}\vspace{11pt}
-      \subfloat [$\mu/\mu_B = 6$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats6.png}}\\
-      \vspace{-18pt}
-      \subfloat [$\mu/\mu_B = 7$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats7.png}}\vspace{11pt}
-      \subfloat [$\mu/\mu_B = 8$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats8.png}}\\
-      \vspace{-18pt}
-      \subfloat [$\mu/\mu_B = 9$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats9.png}}\vspace{11pt}
-      \subfloat [$\mu/\mu_B = 10$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats10.png}}\\
-      \caption{Evolução típica de AVG-Ratio e modularidade $L$ para diferentes razões de
-      $\mu$ e $\mu_B$, com seleção estabilizadora correlacionada com 2 módulos.}
-      \label{EstabRMuStats}
-   \end{figure}
-\end{center}
+
+
+\begin{figure}[htbp]
+   \centering
+   \subfloat [$\mu/\mu_B = 1$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats1.png}}\vspace{11pt}
+   \subfloat [$\mu/\mu_B = 2$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats2.png}}\\ 
+   \vspace{-18pt}
+   \subfloat [$\mu/\mu_B = 3$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats3.png}}\vspace{11pt} 
+   \subfloat [$\mu/\mu_B = 4$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats4.png}}\\
+   \vspace{-18pt}
+   \subfloat [$\mu/\mu_B = 5$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats5.png}}\vspace{11pt}
+   \subfloat [$\mu/\mu_B = 6$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats6.png}}\\
+   \vspace{-18pt}
+   \subfloat [$\mu/\mu_B = 7$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats7.png}}\vspace{11pt}
+   \subfloat [$\mu/\mu_B = 8$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats8.png}}\\
+   \vspace{-18pt}
+   \subfloat [$\mu/\mu_B = 9$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats9.png}}\vspace{11pt}
+   \subfloat [$\mu/\mu_B = 10$]{\includegraphics[width=70mm, height=30mm]{figuras/EstabRMuStats10.png}}\\
+   \caption{Evolução típica de AVG-Ratio e modularidade $L$ para diferentes razões de
+   $\mu$ e $\mu_B$, com seleção estabilizadora correlacionada com 2 módulos.}
+   \label{EstabRMuStats}
+\end{figure}
+
 
 
 \subsection{Seleção Direcional}
@@ -322,16 +332,17 @@ os módulos favorecidos pela seleção estão efetivamente sendo expressos
 na população; e, por último, o sistema possui uma estabilidade razoável
 sem se tornar incapaz de responder a seleção. 
 
-\begin{center}
-   \begin{figure}[htbp]
-      \includegraphics[width=150mm, height=80mm]{figuras/RMu01Omega}
-      \caption{Comparação entre a matriz de correlação final média de 10
-         corridas para o 10 traços após 10000 gerações de seleção direcional e
-         estbilizadora com a matriz $\omega$ da superfície de seleção e
-         $\frac{\mu}{\mu_B}=0.1$, $Ne=2500$, $\Delta_S=0.2$, $m/p=2$}
-      \label{RMu01}
-   \end{figure}
-\end{center}
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=150mm, height=80mm]{figuras/RMu01Omega}
+   \caption{Comparação entre a matriz de correlação final média de 10
+      corridas para o 10 traços após 10000 gerações de seleção direcional e
+      estabilizadora com a matriz $\omega$ da superfície de seleção e
+   $\frac{\mu}{\mu_B}=0.1$, $Ne=2500$, $\Delta_S=0.2$, $m/p=2$}
+   \label{RMu01}
+\end{figure}
+
 
 Na figura \ref{MatBDirecionalNe2500RMu5} vemos um exemplo de corrida com
 $N_e = 2500$ e $\mu/\mu_B=5$, mostrando claramente a separação de grupos
@@ -340,8 +351,9 @@ Posteriormente, vamos explorar a influência do tamanho populacional na
 estabilidade das matrizes geradas pelas nossas simulações (figura
 \ref{posselecao}). 
 
-\begin{center}
+
 \begin{figure}[htbp]
+  \centering
   \includegraphics[width=150mm, height=180mm]{figuras/MatBDirecRMu}
    \caption{Matriz final média de 10 corridas para diferentes razões de
    $\frac{\mu}{\mu_B}$, com seleção estabilizadora correlacionada com 2
@@ -349,9 +361,9 @@ estabilidade das matrizes geradas pelas nossas simulações (figura
    módulos. ($N_e=2500$, $\Delta_S=0.2$, $m/n=2$)}
   \label{MatBDirecional-RMu}
 \end{figure}
-\end{center}
 
-\begin{center}
+
+
    \begin{figure}[htbp]
       \centering
       \subfloat [$\mu/\mu_B = 1$]{\includegraphics[width=70mm, height=30mm]{figuras/DirecionalRMuStats1.png}}\vspace{11pt}
@@ -369,25 +381,26 @@ estabilidade das matrizes geradas pelas nossas simulações (figura
       \subfloat [$\mu/\mu_B = 9$]{\includegraphics[width=70mm, height=30mm]{figuras/DirecionalRMuStats9.png}}\vspace{11pt}
       \subfloat [$\mu/\mu_B = 10$]{\includegraphics[width=70mm, height=30mm]{figuras/DirecionalRMuStats10.png}}\\
       \caption{Evolução típica de AVG-Ratio e modularidade $L$ para diferentes razões 
-      $\mu/\mu_B$, com seleção establizadora correlacionada com 2
+      $\mu/\mu_B$, com seleção estabilizadora correlacionada com 2
       módulos e seleção direcional correlacionada favorecendo os mesmos
       módulos. Atenção para a mudança de escala nos eixos verticais. ($N_e=2500$, $\Delta_S=0.2$, $m/n=2$)}
       \label{DirecionalRMuStats}
    \end{figure}
-\end{center}
 
-\begin{center}
+
+
 \begin{figure}[htbp]
+  \centering
   \includegraphics[width=150mm, height=55mm]{figuras/direcionalRMu5Ne2500IntSel200.png}
   \caption{Evolução da correlação entre dez traços ligados por efeitos
   pleiotrópicos controlados por uma função ontogenética linear binária
   variável, sofrendo seleção estabilizadora correlacionada
-  e seleção direcional intensa para mudança correlacionada dentros dos
+  e seleção direcional intensa para mudança correlacionada dentro dos
   módulos durante as 10000 gerações. 
   ($N_e = 2500$, $\mu/\mu_B=5$, $\Delta_S=0.2$, $m/p=2$)}
   \label{MatBDirecionalNe2500RMu5}
 \end{figure}
-\end{center}
+
 
 Estamos interessados também na força de seleção direcional necessária
 para gerar a estrutura modular nas matrizes de covariação. 
@@ -402,33 +415,34 @@ evoluções típicas de AVG-Ratio e modularidade $L$ para corridas com
 várias intensidades de seleção, mostrando o quão estáveis e o quão
 rápido os padrões modulares se estabelecem nessas condições.
 Vemos que mesmo com um tamanho populacional considerável ($Ne = 2500$)
-ainda observamos flutuções grandes. 
+ainda observamos flutuações grandes. 
 
-A medida que aumentamos a intensidade de seleção os modulos se tornam
+A medida que aumentamos a intensidade de seleção os módulos se tornam
 mais evidentes, mas acima de uma certa intensidade (delta $\simeq 0.06$)
 esse efeito se torna mais discreto. 
 Esse platô na resposta a seleção direcional pode ser explicado por como
 funciona a nossa seleção. 
 Quando a variância entre as aptidões na população for suficientemente
 alta, apenas os indivíduos com maior aptidão vão se reproduzir, e,
-dentro de limites\footnote{ Quando o pico se encotra suficientemente
+dentro de limites\footnote{ Quando o pico se encontra suficientemente
 longe da média da população, a variância nos valores de aptidão cai
 novamente, pois todos os indivíduos tem aptidão próxima de zero, e a
 chance de um indivíduo se reproduzir deixa de depender do fenótipo. 
 Isso é uma limitação do esquema de seleção estritamente gaussiano.}, as
 mudanças em $\Delta_S$ não alteram quais são esses indivíduos. 
 
-\begin{center}
+
 \begin{figure}[htbp]
+  \centering
   \includegraphics[width=150mm, height=180mm]{figuras/MatBDirecionalIntSel110}
    \caption{Matriz final média de 10 corridas com
    $\mu/\mu_B = 5$, $Ne = 1000$, $m/p=2$, sofrendo seleção estabilizadora correlacionada com 2
    módulos e seleção direcional com diferentes valores de $\Delta_S$.}
   \label{MatBIntSel110}
 \end{figure}
-\end{center}
 
-\begin{center}
+
+
    \begin{figure}[htbp]
       \centering
       \subfloat [$\Delta_S = 0.01$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats10.png}}\vspace{11pt}
@@ -451,19 +465,20 @@ mudanças em $\Delta_S$ não alteram quais são esses indivíduos.
          diferentes valores de $\Delta_S$.}
       \label{IntSelStats10100}
    \end{figure}
-\end{center}
 
-\begin{center}
+
+
 \begin{figure}[htbp]
+  \centering
   \includegraphics[width=150mm, height=180mm]{figuras/MatBDirecionalIntSel1120}
    \caption{Matriz final média de 10 corridas com
    $\mu/\mu_B = 5$, $Ne = 1000$, $m/p=2$, sofrendo seleção estabilizadora correlacionada com 2
    módulos e seleção direcional com diferentes valores de $\Delta_S$.}
   \label{MatBIntSel1120}
 \end{figure}
-\end{center}
 
-\begin{center}
+
+
    \begin{figure}[htbp]
       \centering
       \subfloat [$\Delta_S = 0.11$]{\includegraphics[width=70mm, height=30mm]{figuras/IntSelStats110.png}}\vspace{11pt}
@@ -486,15 +501,15 @@ mudanças em $\Delta_S$ não alteram quais são esses indivíduos.
          diferentes valores de $\Delta_S$.}
       \label{IntSelStats110200}
    \end{figure}
-\end{center}
+
 
 Outra questão relevante é o quão estáveis são os padrões de covariação
 modulares gerados pela seleção direcional e estabilizadora. 
 Para responder a essa pergunta nós sujeitamos populações de tamanhos
 diferentes a uma mesma pressão seletiva intensa durante 5000 gerações
-(periodo suficiente para o surgimento de módulos), seguidas de 5000
+(período suficiente para o surgimento de módulos), seguidas de 5000
 gerações de seleção estabilizadora correlacionada. 
-Apesar da diferença entre as correlações dentro e entre modulos
+Apesar da diferença entre as correlações dentro e entre módulos
 diminuir, ainda observamos uma distinção estável entre elas (figura
 \ref{posselecao} e \ref{posselecaoStats}). 
 O efeito do tamanho populacional é especialmente marcante nessas
@@ -502,7 +517,7 @@ condições, com populações grandes se mostrando mais eficientes na
 manutenção prolongada dos padrões estabelecidos pela seleção direcional
 (figuras \ref{posselecao} e \ref{posselecaoStats}). 
 
-\begin{center}
+
 \begin{figure}[htbp]
   \centering
   \subfloat [$Ne = 250$]{\includegraphics[width=70mm, height=50mm]{figuras/posselecao250.png}}\vspace{11pt}
@@ -515,14 +530,14 @@ manutenção prolongada dos padrões estabelecidos pela seleção direcional
   \subfloat [$Ne = 10000$]{\includegraphics[width=70mm, height=50mm]{figuras/posselecao10000.png}}\\
   \caption{Evolução da correlação entre dez traços ligados por efeitos
   pleiotrópicos controlados por uma matriz $B$ variável, sofrendo seleção estabilizadora correlacionada e seleção
-  direcional para mudança correlacionada dentros dos módulos
+  direcional para mudança correlacionada dentro dos módulos
   durante as 5000 primeiras gerações, seguidos de 5000 gerações de
   seleção estabilizadora correlacionada ($\Delta_S = 0.2$, $\mu/\mu_B=5$, $m/p=2$).}
   \label{posselecao}
 \end{figure}
-\end{center}
 
-\begin{center}
+
+
 \begin{figure}[htbp]
   \centering
   \subfloat [$Ne = 250$]{\includegraphics[width=70mm, height=50mm]{figuras/PosSelStatsNe250.png}}\vspace{11pt}
@@ -537,10 +552,11 @@ manutenção prolongada dos padrões estabelecidos pela seleção direcional
      apresentadas na figura \ref{posselecao} ($\Delta_S = 0.2$, $\mu/\mu_B=5$, $m/p=2$).}
   \label{posselecaoStats}
 \end{figure}
-\end{center}
 
-\begin{center}
+
+
 \begin{figure}[htbp]
+  \centering
   \subfloat [$Ne = 250$]{\includegraphics[width=70mm, height=50mm]{figuras/posselecaoSemEstab250.png}}\vspace{11pt}
   \subfloat [$Ne = 500$]{\includegraphics[width=70mm, height=50mm]{figuras/posselecaoSemEstab500.png}}\\
   \vspace{-18pt}
@@ -552,15 +568,15 @@ manutenção prolongada dos padrões estabelecidos pela seleção direcional
   \caption{Evolução da correlação entre dez traços ligados por efeitos
   pleiotrópicos controlados por uma matriz $B$ variável, sofrendo
   seleção estabilizadora correlacionada e seleção direcional para
-  mudança correlacionada dentros dos módulos durante as 5000
+  mudança correlacionada dentro dos módulos durante as 5000
   primeiras gerações, seguidos de 5000 gerações de seleção
   estabilizadora não correlacionada ($\Delta_S = 0.2$, $\mu/\mu_B=5$,
   $m/p=2$).}
   \label{posselecaoSemEstab}
 \end{figure}
-\end{center}
 
-\begin{center}
+
+
 \begin{figure}[htbp]
   \centering
   \subfloat [$Ne = 250$]{\includegraphics[width=70mm, height=50mm]{figuras/SemEstabPosSelStatsNe250.png}}\vspace{11pt}
@@ -575,7 +591,7 @@ manutenção prolongada dos padrões estabelecidos pela seleção direcional
      apresentadas na figura \ref{posselecao} ($\Delta_S = 0.2$, $\mu/\mu_B=5$, $m/p=2$).}
   \label{posselecaoSemEstabStats}
 \end{figure}
-\end{center}
+
 
 Ainda na questão da estabilidade dos padrões de covariação, o papel da
 seleção estabilizadora correlacionada pode ser avaliado sujeitando as
@@ -598,7 +614,7 @@ correlacionada também foi apontada como uma provável explicação para a
 estabilidade de padrões de covariação observados na natureza
 \citep{Cheverud1984, Marroig2001, Porto2008}. 
 Nossos resultados dão credibilidade a essa hipótese. 
-A origem dessa seleção estabilizadora pode ser atribuida a fatores
+A origem dessa seleção estabilizadora pode ser atribuída a fatores
 internos dos organismos, como restrições ontogenéticas responsáveis pela
 coesão entre as partes do indivíduo. 
 Como essas restrições estão sempre presentes, a seleção correlacionada
@@ -609,16 +625,44 @@ determinação do valor fenotípico de cada um dos $p$ traços.
 No nosso esquema de simulação, aumentar o valor da razão $m/p$ é análogo
 a aumentar a força de recombinação, pois o valor de $m$ define o número
 de unidades recombinantes segregando na população. 
-Podemos pensar em $m$ como o número de cromossomos no genôma do
+Podemos pensar em $m$ como o número de cromossomos no genoma do
 indivíduo, em vez de pensar nele como número de alelos individualmente. 
 Até agora a razão $m/p$ foi mantida em 2, um valor suficiente para
 promover respostas complexas de todos os traços mas ainda
 computacionalmente viável. 
+Razões maiores de $m/p$ teoricamente aumentam o espaço de variação
+possível para população, pois mais genes estão disponíveis para atuar
+sobre cada traço, separadamente ou não. 
 A figura \ref{MB} mostra como o aumento na razão $m/p$ afeta a evolução
 das correlações fenotípicas nas populações sujeitas a seleção direcional
 intensa e seleção estabilizadora correlacionada. 
+Vemos na figura \ref{MB} que o aumento do número de alelos torna o
+sistema mais lento em adquirir um caráter modular. 
+Isso pode ser associado com o aumento na recombinação, que age na
+direção oposta a das forças seletivas direcionais e estabilizadora
+correlacionada. 
+Isso nos levou a crer que tempos mais longos de seleção poderiam gerar o
+mesmo resultado que o obtido com valores baixos de $m/p$. 
+Na figura \ref{MBLR} vemos duas corridas longas, de 20000 gerações, com
+$m/p = 9$ e $10$, mostrando o tempo de estabilização mais longo e a
+modularidade mais discreta, com menor diferença nas correlações dentro
+de e entre módulos. 
+Isso novamente pode ser associado à força de recombinação aumentada. 
 
-\begin{center}
+Com isso exploramos algumas das combinações de parâmetros possíveis
+nesses modelos, além das suas interpretações e consequências na evolução
+do padrão de correlação nas populações simuladas. 
+Um passo futuro seria estimar os equivalentes desses parâmetros em
+populações naturais e simular populações ``equivalentes'' às de
+interesse. 
+Outro caminho possível é criar diagramas de fase para parâmetros
+desconhecidos ou de medição difícil a partir dos parâmetros mensuráveis, 
+limitando assim sua faixa plausível e auxiliando a interpretação da
+história evolutiva de determinado grupo. 
+No próximo capitulo vamos utilizar combinações plausíveis de parâmetros
+no nosso modelo para testar a viabilidade de trajetórias evolutivas que
+levem a modularidade variacional. 
+
 \begin{figure}[htbp]
    \centering
   \subfloat [$m/p = 2$]{\includegraphics[width=70mm, height=40mm]{figuras/MB20.png}}\vspace{11pt}
@@ -635,26 +679,10 @@ intensa e seleção estabilizadora correlacionada.
   \caption{Evolução da correlação entre dez traços ligados por efeitos
   pleiotrópicos controlados por uma função ontogenética linear binária
   variável sofrendo seleção estabilizadora correlacionada e seleção
-  direcional intensa para mudança correlacionada dentros dos módulos,
+  direcional intensa para mudança correlacionada dentro dos módulos,
   para diferentes valores do número de alelos. ($Ne=5000$, $\mu/\mu_B=5$, $\Delta_S=0.2$)}
   \label{MB}
 \end{figure}
-\end{center}
-
-Vemos na figura \ref{MB} que o aumento do número de alelos torna o
-sistema mais lento em adquirir um caráter modular. 
-Isso pode ser associado com o aumento na recombinação, que age na
-direção oposta a das forças seletivas direcionais e estabilizadora
-correlacionada. 
-Isso nos levou a crer que tempos mais longos de seleção poderiam gerar o
-mesmo resultado que o obtido com valores baixos de $m/p$. 
-Na figura \ref{MBLR} vemos duas corridas longas, de 20000 gerações, com
-$m/p = 9$ e $10$, mostrando o tempo de estabilização mais longo e a
-modularidade mais discreta, com menor diferença nas correlações dentro
-de e entre módulos. 
-Isso pode ser associado à força de recombinação aumentada. 
-
-\begin{center}
 \begin{figure}[htbp]
   \centering
   \subfloat [$m/p = 9$]{\includegraphics[width=150mm, height=80mm]{figuras/MBLR90.png}}\vspace{11pt}
@@ -663,8 +691,7 @@ Isso pode ser associado à força de recombinação aumentada.
   \caption{Evolução da correlação entre dez traços ligados por efeitos
   pleiotrópicos controlados por uma função ontogenética linear binária
   variável sofrendo seleção estabilizadora correlacionada e seleção
-  direcional intensa para mudança correlacionada dentros dos módulos,
+  direcional intensa para mudança correlacionada dentro dos módulos,
   para diferentes valores do número de alelos. ($Ne=5000$, $\mu/\mu_B=5$, $\Delta_S=0.2$)}
   \label{MBLR}
 \end{figure}
-\end{center}

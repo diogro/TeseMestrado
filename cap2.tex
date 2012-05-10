@@ -7,10 +7,10 @@
 
 O primeiro passo do projeto foi escolher o modelo a ser implementado.
 Foi necessário encontrar uma técnica computacional que permitisse
-simular explicitamente cada inviduo de uma população com alelos de efeitos
+simular explicitamente cada individuo de uma população com alelos de efeitos
 contínuos em traços morfológicos. 
 Esses traços seriam então apresentados à seleção natural.
-As populações são dipóides, hermafroditas e se reproduzem sexuadamente,
+As populações são diploides, hermafroditas e se reproduzem sexuadamente,
 com gerações discretas e tamanho populacional fixo.
 Existem algumas possibilidades de como implementar as mutações e
 a transição de efeitos alélicos para traços fenotípicos.
@@ -125,7 +125,7 @@ tomar cuidados adicionais.
 Isso se deve ao fato da matriz $M$ ser uma matriz de covariância, e
 portanto necessariamente positiva definida \citep{Anderson1984}.
 Existem várias condições equivalentes para garantir que uma matriz seja
-positiva definida, por exemplo ter todos os auto-valores estritamente
+positiva definida, por exemplo ter todos os autovalores estritamente
 positivos ou a existência da sua descomposição de Cholesky\footnote{A
    decomposição de Cholesky de uma matriz positiva definida simétrica
 $C$ é dada por $C=LL^*$, onde $L$ é uma matriz triangular e o asterisco
@@ -134,13 +134,13 @@ Na extensão para mais de dois traços, nós optamos por verificar se a
 matriz $M$ é positiva definida aplicando a decomposição de Cholesky:
 caso a decomposição existisse, ela pode ser usada para gerar os valores
 de $\delta x$ de forma eficiente; caso a decomposição não existisse um
-procedimendo de extensão \citep{Marroig2011b} era realizado,
-substituindo todos os auto-valores não positivos pelo último positivo.
+procedimento de extensão \citep{Marroig2011b} era realizado,
+substituindo todos os autovalores não positivos pelo último positivo.
 Esse procedimento garante uma matriz ainda próxima à matriz $M$
 original, mas positiva definida.
 A escolha desse procedimento é relativamente arbritária, mas
 considerações de eficiência computacional são importantes, pois a
-obteção de auto-valores é bastante custosa.
+obtenção de autovalores é bastante custosa.
 
 \subsection{Modelo com Matriz $B$}\label{cap2:mem:ModelB}
 
@@ -156,7 +156,7 @@ feita via uma função ontogenética $f$
 z = f(x), f:\mathbb{R}^m \rightarrow \mathbb{R}^{p}
 \end{equation}
 
-A função ontogenética resume todas as interações pleitrópicas e
+A função ontogenética resume todas as interações pleiotrópicas e
 epistáticas, e pode ser altamente não linear e complexa.
 Supondo que $f$ seja diferenciável, podemos aproximá-la por uma série de
 Taylor:
@@ -176,7 +176,7 @@ z = f(x) = D[f(0)]x = Bx + e
 Onde $B$ é definida como uma ``matriz ontogenética'', que descreve de
 forma simplificada como os efeitos aditivos são convertidos em um
 fenótipo, resumindo, de forma binaria e linear, todos os efeitos
-pleiotrópicos e espitáticos entre os alelos aditivos.
+pleiotrópicos e epistáticos entre os alelos aditivos.
 Como no modelo anterior, acrescentamos também um valor de ruido
 ambiental $e$, com distribuição multivariada normal e média zero.
 A princípio as entradas da matriz $B$ poderiam tomar qualquer valor
@@ -216,7 +216,7 @@ aplicada utilizando um ótimo variável na superfície gaussiana.
 
 \section{Parâmetros}
 
-Alguns parêmetros foram mantidos constantes em todas as simulações.
+Alguns parâmetros foram mantidos constantes em todas as simulações.
 Os valores da variância mutacional de todos os traços foi fixada em 0.5
 no modelo com matriz $M$ e 0.2 no modelo com matriz $B$.
 No caso do modelo com matriz $M$ o valor da variância das mutações no
@@ -234,11 +234,11 @@ plausível e capaz de responder a seleção direcional de forma eficiente.
 Nas simulações nós alteramos o tamanho populacional ($Ne$), o número de
 traços ($p$), o número de alelos ($m$), a taxa de mutação nas caselas da
 matriz $B$ ($\mu_B$), e o tipo de seleção (estabilizadora e direcional).
-Altermos também a intensidade da seleção direcional.
+Alteramos também a intensidade da seleção direcional.
 Para isso, modificamos o quanto o pico adaptativo era alterado para cada
 traço a cada geração, de $0.01$ até $0.2$.
 Esse deslocamento por traço é chamado de $\Delta_S$.
-A variância fenotípica das populações em equilibrio mutação-seleção
+A variância fenotípica das populações em equilíbrio mutação-seleção
 direcional era por volta de $1.6$.
 Então, nossa seleção mais intensa implicava um movimento de pico de
 cerca de $0.15$ desvios padrões por geração por traço ($\Delta_S=0.2$),
@@ -269,11 +269,11 @@ diferença no nível de correlação dentre e entre módulos.
 Apesar disso, essa medida exige conhecimento prévio da estrutura de
 modularidade presente na população. 
 Esse certamente não é o caso quando amostrando uma população natural.
-Para sanar esse problema, propomos também uma estatistica de
+Para sanar esse problema, propomos também uma estatística de
 modularidade inspirada em técnicas de detecção de comunidades em redes
 \citep{Newman2006,Newman2006a,Reichardt2006}.
 O princípio dessa técnica é alocar cada traço em um módulo de modo que
-algum parametro de modularidade seja máximo.
+algum parâmetro de modularidade seja máximo.
 Para isso, definimos a modularidade $L$ de uma matriz de correlação $A$
 como sendo:
 
@@ -294,7 +294,7 @@ A função $\delta(\cdot,\cdot)$ é a função delta de Kronecker, ou seja:
 \end{equation}
 
 Portanto apenas traços no mesmo módulo contribuem para o valor de $L$.
-Já os $k_i$ e $k_j$  representam o valor total de correlação atribuido a
+Já os $k_i$ e $k_j$  representam o valor total de correlação atribuído a
 cada traço, ou, mais claramente, a soma da correlação de cada traço com
 todos os outros:
 
@@ -303,11 +303,11 @@ todos os outros:
 \end{equation}
 
 E $m$ representa a soma de todos os $k$ ($m=\sum_i k_i$). 
-O termo $\frac{k_ik_j}{2m}$ funciona como um tipo de espectativa nula
+O termo $\frac{k_ik_j}{2m}$ funciona como um tipo de expectativa nula
 para a distribuição das correlações entre os traços $i$ e $j$ dado que
 cada em deles possui, na matriz $A$, um valor de correlação total
 dado por $k_i$ e $k_j$.
-Essa escolha para a especatativa nula aparece naturalmente quando
+Essa escolha para a expectativa nula aparece naturalmente quando
 impomos que ela deva ser simétrica entre os traços e que dependa
 unicamente de $k_i$ e $k_j$ \citep[Para detalhes veja][]{Newman2006a}.
 Portanto, traços no mesmo módulo que possuam correlação maior que a
@@ -322,11 +322,11 @@ do tipo Metropolis-Hasting \citep{Metropolis1953}.
 A partição que maximize $L$ é tomada como a estrutura de modularidade do
 sistema e o valor máximo de $L$ como um índice de modularidade,
 comparável ao AVG-Ratio. 
-Neste trabalho, pela estrutura de modularidade ser conhecida, o único próposito 
+Neste trabalho, pela estrutura de modularidade ser conhecida, o único propósito 
 de usar essa técnica de detecção de módulos é {\it quantificar} a 
 modularidade das matrizes sem utilizar o conhecimento prévio de sua
 estrutura.
-Em situções naturais, onde não conhecemos a estrutura de modularidade,
+Em situações naturais, onde não conhecemos a estrutura de modularidade,
 essa técnica poderia ser usada para inferir a estrutura de modularidade
 utilizando apenas da matriz de correlação.
 
@@ -336,7 +336,7 @@ Para facilitar a leitura do texto, apresentamos aqui um resumo dos
 parâmetros relevantes aos modelos.
 
 \begin{table}[htbp]
-    \caption[Tabela de abreviações]{Tabela com simbolos e abreviações
+    \caption[Tabela de abreviações]{Tabela com símbolos e abreviações
     usadas nas simulações}
     \label{tab:exemplo}
     \vspace{1em}

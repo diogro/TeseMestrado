@@ -108,7 +108,7 @@ Como todos os $r_\mu^{ij}$ são correlações, o valor deles deve ir de
 $-1$ a $1$.
 A função $\Phi$ faz esse papel, levando a soma de valores
 aditivos dos $\mu^{ij}_k$ de valores reais a valores entre $-1$ e $1$.
-Um exemplo de função $\Phi$, usado em \cite{Jones2007} é:
+Um exemplo de função $\Phi$ \citep[usado em][]{Jones2007} é:
 
 \begin{equation}
 \Phi (x) = \frac{2e^{2x}}{1+e^{2x}} - 1
@@ -127,7 +127,7 @@ portanto necessariamente positiva definida \citep{Anderson1984}.
 Existem várias condições equivalentes para garantir que uma matriz seja
 positiva definida, por exemplo ter todos os autovalores estritamente
 positivos ou a existência da sua descomposição de Cholesky\footnote{A
-   decomposição de Cholesky de uma matriz positiva definida simétrica
+decomposição de Cholesky de uma matriz positiva definida simétrica
 $C$ é dada por $C=LL^*$, onde $L$ é uma matriz triangular e o asterisco
 representa a transposição complexa conjugada.}.
 Na extensão para mais de dois traços, nós optamos por verificar se a
@@ -190,8 +190,8 @@ Nessas condições a equação \ref{matrizB} continua válida.
 A razão entre a dimensão do vetor de valores aditivos $m$ e o número de
 traços $p$ é relevante \citep{Wagner1984}, pois ela define a grosso modo
 a quantidade de recombinação presente no modelo.
-Quando maior for a razão $m/p$, mais
-recombinação teremos, pois os alelos são herdados de forma independente.
+Quando maior for a razão $m/p$, mais recombinação teremos, pois os
+alelos são herdados de forma independente.
 
 Mutações são consideravelmente mais simples que no caso da
 matriz $M$, porém são divididas em duas classes: as genéticas e as
@@ -206,7 +206,7 @@ Uma mutação na posição $ij$ altera o valor de $B_{ij}$ de $0$ para $1$
 ou vice-versa.
 Como esses dois tipos de mutação impõem dinâmicas temporais em escalas
 diferentes para os dois níveis de complexidade, nós testamos razões
-variadas para $\mu$ e $\mu_B$
+variadas para $\mu$ e $\mu_B$.
 
 A seleção nesse modelo toma a mesma forma que no caso anterior, expressa
 na equação \ref{selecao}.
@@ -228,8 +228,10 @@ na determinação de herdabilidade dos traços.
 A taxa de mutação nos alelos aditivos ($\mu$) foi mantida em 0.0005 em
 todas simulações.
 Todos esses parâmetros foram escolhidos de forma a manter a
-herdabilidade dos traços por volta de 0.6, um valor biologicamente
-plausível e capaz de responder a seleção direcional de forma eficiente.
+herdabilidade dos traços por volta de 0.6 (no regime de seleção
+estabilizadora), um valor biologicamente
+plausível e capaz de responder a seleção direcional de forma eficiente
+\citep{Cheverud1988}.
 
 Nas simulações nós alteramos o tamanho populacional ($Ne$), o número de
 traços ($p$), o número de alelos ($m$), a taxa de mutação nas caselas da
@@ -241,11 +243,12 @@ Esse deslocamento por traço é chamado de $\Delta_S$.
 A variância fenotípica das populações em equilíbrio mutação-seleção
 direcional era por volta de $1.6$.
 Então, nossa seleção mais intensa implicava um movimento de pico de
-cerca de $0.15$ desvios padrões por geração por traço ($\Delta_S=0.2$),
-resultando num movimento total de cerca de 150 desvios padrões por
-traço; enquanto a seleção mais fraca um movimento de $0.007$ desvios
-padrões por geração por traço ($\Delta_S=0.01$), resultando num
-movimento total de cerca de 7 desvios padrões.
+cerca de $0.125$ desvios padrões por geração por traço ($\Delta_S=0.2$),
+resultando num movimento total de cerca de 125 desvios padrões por traço
+após 10000 gerações de seleção direcional; enquanto a seleção mais
+fraca um movimento de $0.006$ desvios padrões por geração por traço
+($\Delta_S=0.01$), resultando num movimento total de cerca de 6 desvios
+padrões.
 
 \section{Estatísticas}
 
@@ -257,7 +260,7 @@ quantitativas são importantes quando o volume de dados se torna
 suficientemente grande. 
 Para isso, vamos explorar algumas estatísticas descritivas já utilizadas em
 estudos de biologia tradicionais e apresentar técnicas novas para a
-quantificação de modularidade baseadas nas matrizes de correlação.
+quantificação de modularidade baseadas nas matrizes de correlação. 
 
 Quando conhecemos de antemão a estrutura modular apresentada na matriz
 de correlação, podemos quantificar o nível de modularidade medindo
@@ -266,14 +269,17 @@ conhecida como razão das médias, ou AVG-Ratio do inglês {\it AVeraGe Ratio}.
 Certamente essa medida é informativa em quantificar o quão evidentes são
 os módulos variacionais expressos na população por quantificar a
 diferença no nível de correlação dentre e entre módulos. 
-Apesar disso, essa medida exige conhecimento prévio da estrutura de
+Podemos também observar a evolução das médias das correlações dentro
+de módulos (AVG$+$) e entre módulos (AVG$-$). 
+
+Contudo, essas medidas exigem conhecimento prévio da estrutura de
 modularidade presente na população. 
 Esse certamente não é o caso quando amostrando uma população natural.
 Para sanar esse problema, propomos também uma estatística de
 modularidade inspirada em técnicas de detecção de comunidades em redes
-\citep{Newman2006,Newman2006a,Reichardt2006}.
+\citep{Newman2006,Newman2006a,Reichardt2006}. 
 O princípio dessa técnica é alocar cada traço em um módulo de modo que
-algum parâmetro de modularidade seja máximo.
+algum parâmetro de modularidade seja máximo. 
 Para isso, definimos a modularidade $L$ de uma matriz de correlação $A$
 como sendo:
 
@@ -325,11 +331,12 @@ comparável ao AVG-Ratio.
 Neste trabalho, pela estrutura de modularidade ser conhecida, o único propósito 
 de usar essa técnica de detecção de módulos é {\it quantificar} a 
 modularidade das matrizes sem utilizar o conhecimento prévio de sua
-estrutura.
+estrutura. 
 Em situações naturais, onde não conhecemos a estrutura de modularidade,
 essa técnica poderia ser usada para inferir a estrutura de modularidade
-utilizando apenas da matriz de correlação.
+utilizando apenas da matriz de correlação. 
 
+\newpage
 \section{Resumo de Parâmetros}
 
 Para facilitar a leitura do texto, apresentamos aqui um resumo dos
@@ -343,16 +350,16 @@ parâmetros relevantes aos modelos.
     \centering
     \begin{tabular}{c c c}
         \toprule
-        Simbolo     & Interpretação & Modelo\\
+        Simbolo    & Interpretação & Modelo\\
         \midrule
-        $p$     & número de traços & $M$ e $B$\\
-        $m$     & número de alelos aditivos & $M$ e $B$\\
-        $Ne$    & tamanho populacional & $M$ e $B$   \\
-        $\omega$     & matriz de seleção estabilizadora & $M$ e $B$\\
-        $\mu$     & taxa de mutação por alelo aditivo por geração & $M$ e $B$\\
-        $\mu_B$     & taxa de mutação por casela da matriz $B$ & $B$\\
-        $\Delta_S$     & taxa de mudança do pico adaptativo & $M$ e $B$\\
-                       &   por geração de seleção direcional & \\
+        $p$        & número de traços & $M$ e $B$\\
+        $m$        & número de alelos aditivos & $M$ e $B$\\
+        $Ne$       & tamanho populacional & $M$ e $B$   \\
+        $\omega$   & matriz de seleção estabilizadora & $M$ e $B$\\
+        $\mu$      & taxa de mutação por alelo aditivo por geração & $M$ e $B$\\
+        $\mu_B$    & taxa de mutação por casela da matriz $B$ & $B$\\
+        $\Delta_S$ & taxa de mudança do pico adaptativo & $M$ e $B$\\
+                   & por geração de seleção direcional & \\
 
         \bottomrule
     \end{tabular}

@@ -10,18 +10,25 @@
 
 O estudo de traços quantitativos se baseia amplamente na teoria da
 genética quantitativa. 
-Essa teoria permite entender a evolução de caracteres contínuos de forma
+Essa teoria descreve a evolução de caracteres contínuos de forma
 bastante completa. 
-Para isso são utilizadas de medidas quantitativas de traços
+Para isso são utilizadas medidas quantitativas de traços
 morfológicos. 
+Qualquer caracteristica contínua dos indivíduos em uma população pode
+ter sua evolução tratada por esse formalismo. 
 A equação multivariada de resposta à seleção, $\Delta z = G \beta$,
 proposta por \cite{Lande1979} permite ligar a mudança na média de um
 conjunto de caracteres ($\Delta z$) à seleção imposta à população
 ($\beta$) e à sua matriz de covariação genética aditiva (G). 
+\cite{Lande1983} também mostraram que o vetor de seleção $\beta$
+pode ser interpretado, no caso de traços com distribuição gaussiana,
+como o gradiente do log da superficie de seleção média da população. 
+A evolução dos traços por seleção direcional então toma a forma de uma
+subida de gradiente da superficie de seleção alterado pela estrutura de
+covariação genética, representada pela matriz G.
 Além disso, esse mesmo raciocínio pode ser usado para investigar padrões
 microevolutivos de resposta ao longo de muitas gerações
 \citep{Lande1983, Marroig2004, Marroig2005}. 
- 
 
 Porém, nossa habilidade de inferir a resposta evolutiva a muitas
 gerações de seleção depende fundamentalmente da constância da matriz G
@@ -43,7 +50,6 @@ gaussianos, a dinâmica da média da população pode ser completamente
 descrita apenas pela média e pela matriz de covariação desses efeitos
 \citep{Barton1987}. 
 
-
 Notamos então que uma série de suposições não triviais devem ser feitas
 para que esse modelo gaussiano quadrático de Lande seja teoricamente
 plausível. 
@@ -60,9 +66,13 @@ Além disso podemos nos perguntar se mutações novas realmente tem efeitos
 pequenos em relação a variância original da população nas direções
 morfológicas afetadas, ou se novas mutações introduzem variabilidade
 maior que originalmente presente na população. 
-O modelo proposto por
-\cite{Turelli1984} utiliza então taxas de mutação baixas e efeitos
-mutacionais altos, mas ainda mantendo o espaço de alelos contínuo.
+O modelo proposto por \cite{Turelli1984} utiliza então taxas de mutação
+baixas e efeitos mutacionais altos, mas ainda mantendo o espaço de
+alelos contínuo. 
+Neste modelo a maior parte da variação fenotípica acaba sendo atribuida
+a alelos raros, de baixa frequência, mas com efeitos aditivos grandes, e
+não a varios alelos polimorficos de efeitos pequenos e distribuição
+gaussiana. 
 Nessas condições, a matriz G não seria constante ao longo do tempo e
 fatores de correção deveriam ser acrescidos à equação de resposta de
 Lande para descrições macro evolutivas. 
@@ -70,7 +80,6 @@ Esses fatores dependem do desvio por geração da matriz G em relação à
 matriz G média no período de seleção \citep{Jones2003}. 
 A estimativa desse ``efeito Turelli'' é difícil de ser realizada
 praticamente. 
- 
 
 Em \cite{Barton1987}, os autores, interessados no problema dá dinâmica
 das variâncias de forma geral, apresentam um formalismo relativamente
@@ -89,7 +98,6 @@ primeiros momentos (média e variância), supondo o segundo momento fixo e
 desprezando os momentos mais altos; ou incluir mudanças até uma certa
 ordem e obter os resultados de Turelli. 
 
-
 % Continuar Turelli Barton?
 
 Dada a complexidade do problema da dinâmica das variâncias em um caso
@@ -100,8 +108,7 @@ de forma retrospectiva, amostrando a diversidade dos seres vivos, seja
 em experimentos manipulativos feitos com colônias de animais em
 cativeiro ou, como é o caso do presente trabalho, por via de simulações
 computacionais. 
-Vamos agora revisar as principais abordagens computacionais e empíricas
-.
+Vamos agora revisar as principais abordagens computacionais e empíricas. 
 
 A sequência de artigos \cite{Jones2003, Jones2004, Jones2007} foi
 pioneira nos estudos computacionais de estabilidade da matriz G num
@@ -109,7 +116,7 @@ contexto multivariado moderno, abordando o tema da evolução de dois
 caracteres correlacionados em diferentes situações. 
 O estilo de simulação apresentado em \cite{Jones2003} e utilizado em
 todos os artigos subsequentes serviu de ponto de partida para nossas
-simulações e será descrito em detalhes nas próximas seções.
+simulações e será descrito em detalhes nas próximas seções. 
 
 O problema mais simples, abordado em \cite{Jones2003}, consiste no
 estudo de estabilidade da matriz G associada a dois caracteres
@@ -138,7 +145,7 @@ estabilidade da matriz G foi a existência de mutações correlacionadas.
 Quando $r_\mu$ e $r_\omega$ são similares, a matriz tende a ser bastante
 estável. 
 Além disso, tamanhos populacionais grandes também contribuem para a
-estabilidade da matriz.
+estabilidade da matriz. 
 Um resultado interessante é que existem tipos diferentes de estabilidade
 para matrizes de covariância. 
 Por exemplo: uma matriz pode manter seus autovalores estáveis, não
@@ -151,14 +158,13 @@ ser mais estáveis.
 Ou seja, correlação alta entre os dois traços leva à estabilidade da
 matriz G. 
 Isso pode ser interpretado como um primeiro indício para a importância
-da modularidade (veja abaixo), apesar de ser difícil definir
+da modularidade (definida a seguir), apesar de ser difícil definir
 modularidade de maneira convincente com apenas dois caracteres. 
 Em resumo, esse artigo mostra que é possível observarmos matrizes
 estáveis em condições plausivelmente naturais, e dá o primeiro passo
-para a quantificação dessas condições.
+para a quantificação dessas condições. 
 
-O próximo passo foi a inclusão de seleção direcional em
-\cite{Jones2004}. 
+O próximo passo foi a inclusão de seleção direcional em \cite{Jones2004}. 
 O estilo de simulação é basicamente idêntico ao artigo anterior, mas
 agora a posição do pico adaptativo gaussiano é variado, alterando assim
 a média da população e criando uma seleção direcional. 
@@ -292,13 +298,13 @@ biológicos.
 Além desse resultado, os autores mostram que nem o modelo gaussiano nem
 o de alelos raros são capazes de explicar totalmente os resultados,
 levando a uma visão intermediaria para a real distribuição dos efeitos
-alélicos nas populações.
+alélicos nas populações. 
 
 A interação entre restrições externas e internas pode ser fundamental
 para entendermos padrões naturais de covariação. 
 Vamos abordar agora evidências empíricas ao problema da estabilidade da
 matriz G e suas consequências evolutivas, tema de trabalho há mais de 10
-anos do Laboratório de Evolução de Mamíferos.
+anos do Laboratório de Evolução de Mamíferos. 
 
 Em \cite{Marroig2001}, os autores utilizam o clado Platyrrhini, de
 primatas neotropicais como modelo, obtendo estimativas e comparando de
@@ -318,7 +324,7 @@ autores abordam a influência desses padrões genéticos estáveis na
 evolução dos traços fenotípicos dentro dos primatas neotropicais. 
 Segundo eles, a influência de restrições genéticas é clara e deve ser
 levada em conta nas tentativas de entender os processos evolutivos que
-formaram os grupos atuais.
+formaram os grupos atuais. 
 
 Expandindo o padrão de estabilidade da matriz G, em \cite{Porto2008} e
 \cite{Marroig2009} comparações entre matrizes obtidas para todas as

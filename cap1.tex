@@ -1,4 +1,4 @@
-% Faz com que o ínicio do capítulo sempre seja uma página ímpar
+% Faz com que o inicio do capítulo sempre seja uma página ímpar
 \cleardoublepage
 % Inclui o cabeçalho definido no meta.tex
 \pagestyle{fancy}
@@ -6,45 +6,268 @@
 \pagenumbering{arabic}
 
 \chapter{Introdução}\label{intro}
-\section{Genética Quantitativa e Simulações Computacionais}\label{intro:historico}
 
-O estudo de traços quantitativos se baseia amplamente na teoria da
+\section{Modularidade}\label{intro:modularidade}
+
+Na imensa maioria dos organismos, conseguimos identificar partes relativamente discretas
+e separadas, frequentemente envolvidas no desempenho de alguma função.
+Em organismos unicelulares podemos distinguir organelas desempenhando
+funções específicas, bem como regiões internas ou na membrana responsáveis por
+processos distintos.
+Já nos multicelulares, tipos celulares são organizados em tecidos espacialmente
+separados, formando órgãos de funções distintas, que por sua vez são
+organizados em sistemas responsáveis por funções distintas.
+Modularidade se refere a esse padrão de organização dos seres vivos, onde
+algumas partes são mais relacionadas entre si do que com outras partes
+do mesmo organismo.
+Podemos descrever, e entender, a organização entre partes
+constituintes dos organismos através das relações entre elas, sendo cada
+tipo de relação adequada a um nível de complexidade ou organização.
+As partes do organismo as quais nos referimos podem ser as bases de uma
+molécula de RNA \citep{Ancel2000}, genes \citep{Costanzo2010}, proteínas \citep{Han2004},
+caracteres morfológicos como peso, altura ou marcos anatômicos
+\citep{Klingenberg2008, Porto2009, Marroig2009}.
+Essas relações podem ser medidas de diversas formas, como interação física
+entre proteínas, padrões de expressão conjunta entre genes, ou, como é o caso
+no presente trabalho, correlação entre caracteres quantitativos. 
+Esse grupo de características muito relacionadas entre si constituem um
+módulo, como esquematizado na figura \ref{modulos}. 
+Módulos, então, são caracterizados por uma alta conectividade interna e
+relativa independência de outros módulos.
+
+A formação desses módulos reflete uma complexa interação entre genoma,
+desenvolvimento e ambiente, e tem consequências diversas para o
+funcionamento e evolução dos seres vivos.
+Talvez o nível funcional seja o ponto de partida mais simples para
+entender a origem da organização modular.
+Interação com o ambiente e a necessidade de realizar determinada função
+provoca respostas evolutivas nas populações, privilegiando o surgimento
+de estruturas e sistemas adaptados para realizar essas funções.
+Para que essas estruturas possam se adequar às diferentes pressões
+evolutivas que cada parte do organismo está sujeita, uma relativa
+independência entre elas se estabelece.
+Essa independência se estabelece em vários níveis.
+Através de experimentos controlados de cruzamento e uso de marcadores
+genéticos, é possível mapear regiões no genoma envolvidas com
+determinação de características macroscópicas nos organismos.
+Com essas metodologias foi verificado que loci tendem a influenciar
+regiões discretas, sendo poucos os genes com efeitos entre regiões
+funcionais diferentes \citep{Cheverud1997}.
+Genes que influenciam mais de uma característica de um indivíduo são
+denominados pleiotrópicos.
+Ou seja, seleção privilegia pleiotropia restrita a regiões funcionais
+distintas \citep{Cheverud1984}.
+Além disso, as estruturas e processos ontogenéticos responsáveis pela
+formação dos indivíduos apresentam uma independência relativa, sendo
+possível alterar parte do processo sem causar alterações ou danos
+generalizados ao organismo.
+O outro lado da moeda são os processos de integração, resultantes da
+necessidade do organismo de manter a coerência interna dos seus módulos
+e do indivíduo como um todo. 
+Integração leva a aumento de relações e coesão entre as características
+do organismo.
+Evolutivamente, integração e modularidade permitem que grupos de
+características funcionalmente ou ontogeneticamente ligadas se
+modifiquem de forma harmoniosa; e que características em módulos
+diferentes possam se alterar de forma independente.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=100mm]{figuras/modulos.png}
+  \caption{Representação esquemática da organização modular dos seres
+  vivos. As setes representam qualquer tipo de relação entre as partes
+  de um indivíduo. Adaptado de \cite{Klingenberg2008}}
+  \label{modulos}
+\end{figure}
+
+Em caracteres quantitativos, descritos em detalhe na seção
+\ref{intro:genquant}, a expressão de todos os processos genéticos,
+ontogenéticos e ambientais que formam a organização modular do organismo se
+dá na forma de covariação (ou correlação) entre os caracteres.
+Ou seja, a tensão entre os processos de modularidade e integração em todos os
+níveis de organização do indivíduo podem ser percebidos na estrutura de
+covariação final da população \citep{Klingenberg2008}.
+Módulos caracterizados por alta correlação entre caracteres dentro do
+módulo e baixa correlação entre caracteres de módulos diferentes são
+chamados de módulos variacionais \citep{Wagner2007}.
+Estes são frequentemente identificados como relacionados a funções
+específicas, como mastigação, inserção muscular ou proteção
+\citep{Cheverud1997}. 
+Novamente, seleção privilegia interações pleiotrópicas e ontogenéticas restritas
+a características ligadas a uma função comum, que resulta em
+covariação entre essas características na população.
+
+
+\section{Genética Quantitativa e Modularidade}\label{intro:genquant}
+
+O estudo de caracteres quantitativos se baseia amplamente na teoria da
 genética quantitativa. 
-Essa teoria descreve a evolução de caracteres contínuos de forma
-bastante completa. 
-Para isso são utilizadas medidas quantitativas de traços
-morfológicos. 
-Qualquer característica contínua dos indivíduos em uma população pode
-ter sua evolução tratada por esse formalismo. 
-A equação multivariada de resposta à seleção, $\Delta z = G \beta$,
-proposta por \cite{Lande1979} permite ligar a mudança na média de um
-conjunto de caracteres ($\Delta z$) à seleção imposta à população
-($\beta$) e à sua matriz de covariação genética aditiva (G). 
-\cite{Lande1983} também mostraram que o vetor de seleção $\beta$
-pode ser interpretado, no caso de traços com distribuição gaussiana,
-como o gradiente do log da superfície de seleção média da população. 
-A evolução dos traços por seleção direcional então toma a forma de uma
-subida de gradiente da superfície de seleção alterado pela estrutura de
+A genética quantitativa estuda a evolução de características contínuas
+nos indivíduos de uma população, como peso, altura ou taxas de
+crescimento \citep{Falconer1996}.
+A partir desse formalismo, originário da criação humana de animais e plantas, 
+podemos prever como a média e distribuição de
+características fenotípicas varia em uma população de uma geração para
+outra.
+
+Caráteres contínuos são determinados geneticamente por muitos loci,
+sendo portanto denominados caráteres multi gênicos.
+A influência exata de cada um desses loci no fenótipo do individuo é
+desconhecida, porém a combinação de todos esses efeitos e dos efeitos
+ontogenéticos e ambientais resultam no valor macroscópico observado.
+Em \cite{Crow1964} e \cite{Kimura1965} os autores descrevem um modelo
+para os efeitos alélicos agindo sobre caracteres contínuos.
+Neste modelo, chamado modelo do continuo de alelos, cada loci em
+principio pode ter qualquer efeito sobre o tamanho de um caráter, e
+qualquer um desses efeitos pode ser atingido via mutação.
+A enorme variabilidade possível em sequencias genéticas e o número de
+loci controlando cada caráter garante que essa suposição seja verossímil.
+Nesse contexto o valor fenotípico de um caráter $p$ é dado pela soma dos
+efeitos genéticos ($g$) e ambientais ($e$) atuando sobre ele:
+
+\begin{equation}
+    p = g + e
+\end{equation}
+
+A variação total de uma dada característica é resumida na sua variância
+fenotípica, denominada $V_P$.
+Esse valor de variância total é fruto da variação genética ($V_G$)
+presente na população e da variação devido ao ambiente ao qual a população foi
+sujeitada ($V_E$), além da interação entre elas. Como as variâncias são
+aditivas, podemos escrever:
+
+\begin{equation}
+    V_P = V_G + V_E + V_{G \cdot E}
+\end{equation}
+
+Em organismos com sistemas de desenvolvimento estáveis, como é o caso
+dos mamíferos, podemos ignorar o termo de interação em genótipo e
+ambiente ($V_{G \cdot E} = 0$). Podemos continuar particionando as
+variâncias. 
+A variância genética é resultado de toda a variação devido a alelos sem
+dominância (aditivos) e alelos com dominância.
+Ou seja:
+
+\begin{equation}
+    V_G = V_A + V_D 
+\end{equation}
+
+O termo aditivo, $V_A$, representa a porção da variância genética
+responsável pela herança por parentesco.
+Isso se reflete na equação de resposta à seleção univariada.
+A pressão seletiva sobre alguma característica fenotípica pode ser descrita
+pela diferença na média da população parental antes ($\overline p$) e depois
+($\overline p^*$) do evento de seleção.
+Essa quantidade é denominada diferencial de seleção e é representada por
+$S$. 
+Esse tipo de seleção, que afeta média de um caráter na população, é
+chamado de seleção direcional.
+A resposta observada na média na geração seguinte ($\Delta z$) é dada
+por:
+
+\begin{equation}
+    \Delta z = \frac{V_A}{V_P} (\overline p^* - \overline p) = h^2S
+\end{equation}
+
+Ou seja, a parcela da variância fenotípica devido à variação genética
+aditiva define o quão eficiente a população será na sua resposta à
+seleção. Essa parcela é denominada herdabilidade, representada por
+$h^2$.
+Mas essa equação ignora o efeito de seleção indireta em outras
+características do indivíduo. Para levar em conta esses efeitos, devemos
+lançar mão de um formalismo multivariado. 
+
+A equação multivariada de resposta à seleção,
+proposta por \cite{Lande1979}, permite ligar a mudança na média de um
+conjunto de caracteres ($\Delta z$) ao diferencial de seleção imposto à população
+($S$) e à suas matrizes de covariação genética aditiva e fenotípica (G e P). 
+
+\begin{equation}
+    \Delta z = GP^{-1}S
+\end{equation}
+ 
+$\Delta z$ e $S$ agora são vetores de mesma dimensão que o número
+de características consideradas na analise, assim como as matrizes G e
+P, que são os análogos multivariados das quantidades $V_A$ e $V_P$.
+O caso multivariado apresenta características qualitativamente
+diferentes do univariado.
+Como os caracteres são ligados por efeitos genéticos correlacionados,
+representados pela matriz G, a seleção direcional não é capaz de atuar de
+forma isolada em cada caráter.
+Seleção direcional, ainda que restrita a um caráter, provoca respostas
+evolutivas em todos os caracteres que covariam com o caráter sobre
+seleção.
+
+Utilizando o conceito de superfície de seleção, proposto por
+\cite{Wright1932}, podemos interpretar o termo de seleção $P^{-1}S$ de
+forma geométrica. 
+A superfície de seleção associa cada valor fenotípico para todos os
+caracteres a um valor de aptidão ou fitness.
+Caso essa superfície seja gaussiana, \cite{Lande1983} mostraram que 
+$P^{-1}S$ é equivalente ao gradiente da média da superfície de seleção
+na população. Por esse motivo, a quantidade  $P^{-1}S$ é chamada
+de gradiente de seleção e representada pelo vetor $\beta$. 
+Nas próximas seções vamos nos referir também a seleção estabilizadora.
+Esse tipo de seleção age sobre a distribuição de um caráter, diminuindo
+sua variabilidade, mas não sobre a média do caráter.
+Com respeito à superfície de seleção, a seleção estabilizadora é
+resultado da curvartura da supefície, ou da sua Hessiana
+\citep{Lande1983}.
+No caso de seleção direcional, podemos escrever a equação de resposta a seleção como:
+
+\begin{equation}
+    \Delta z = GP^{-1}S = G\beta
+\end{equation}
+
+A evolução dos caracteres por seleção direcional toma a forma de uma
+subida de gradiente da superfície de seleção, alterado pela estrutura de
 covariação genética, representada pela matriz G.
+
+\section{Evolução da matriz G e a resposta à seleção}\label{intro:matG}
+
+Na seção \ref{intro:modularidade}, nós descrevemos como os processos
+seletivos interagem com a ontogenia e estrutura genética das populações
+gerando modularidade.
+Dissemos também que a modularidade presente nos processos internos dos
+organismos se manifesta na população na sua estrutura da covariação.
+Essa estrutura de covariação é representada pela matriz G.
+Ela descreve como a variação aditiva, herdável, da população está particionada entre os
+seus caracteres, e como estes se relacionam entre si.
+Caracteres ligados por efeitos pleiotrópicos e ontogenéticos irão
+apresentar covariação alta, enquanto caracteres independentes, não
+relacionados, irão apresentar covariação baixa.
+Como a população responde à seleção direcional, portanto, depende da sua estrutura
+de modularidade e de como os caracteres estão relacionados entre si.
+
+A equação de \cite{Lande1979} também pode ser invertida e usada de forma
+retrospectiva.
+Ou seja, partindo da matriz G e da diferença observada entre as médias
+antes de depois do evento de seleção, podemos inferir qual foi o
+gradiente de seleção que gerou essa resposta.
+Mais claramente:
+
+\begin{equation}
+    \beta = G^{-1}\Delta z
+\end{equation}
+
 Além disso, esse mesmo raciocínio pode ser usado para investigar padrões
 microevolutivos de resposta ao longo de muitas gerações
-\citep{Lande1983, Marroig2004, Marroig2005}. 
+\citep[veja também a equação \ref{betatotal}]{Lande1983, Marroig2004, Marroig2005}. 
 
 Porém, nossa habilidade de inferir a resposta evolutiva a muitas
 gerações de seleção depende fundamentalmente da constância da matriz G
 ao longo de muitas gerações, e a teoria de Lande não explora
 detalhadamente a dinâmica da própria matriz G, assumindo implicitamente
-nas equações sua constância ao supor que a distribuição das
-características na população é sempre gaussiana. 
+nas equações sua constância (ao menos em escalas de tempo pequenas) ao
+supor que a distribuição das características na população é sempre
+gaussiana e portanto não afetada pela seleção direcional
+\citep{Barton1987}. 
 Essa suposição simplificadora de Lande se baseia em um resultado
-derivado do modelo apresentado em \cite{Crow1964}, chamado de modelo do
-contínuo de alelos. 
-Neste modelo a distribuição de efeitos alélicos sobre um determinado
-caráter é contínuo, e em \cite{Kimura1965} foi demonstrada que a
-distribuição de equilíbrio dos efeito alélicos em uma população sofrendo
-mutação, deriva e seleção estabilizadora é gaussiana, com a suposição de
-que os efeitos mutacionais são pequenos frente à variação existente na
-população. 
+derivado do modelo do continuo de alelos, demonstrado por
+\cite{Kimura1965}: sobre seleção estabilizadora, a
+distribuição de equilíbrio dos efeitos alélicos sobre um determinado
+caráter é gaussiana, supondo que os efeitos mutacionais sejam pequenos
+frente à variação existente na população. 
 Ou seja, assumindo que os efeitos alélicos sejam efetivamente
 gaussianos, a dinâmica da média da população pode ser completamente
 descrita apenas pela média e pela matriz de covariação desses efeitos
@@ -54,22 +277,22 @@ Notamos então que uma série de suposições não triviais devem ser feitas
 para que esse modelo gaussiano quadrático de Lande seja teoricamente
 plausível. 
 Esses problemas foram apresentados ao longo da década de 80 por uma
-série de artigos, principalmente e pioneiramente por \citep{Turelli1984,
-Turelli1985, Turelli1986, Barton1987}. 
+série de artigos, principalmente e pioneiramente por \cite{Turelli1984,
+Turelli1985, Turelli1986, Barton1987, Barton1989}. 
 Talvez a questão mais importante seja a suposição de que os alelos
-tenham distribuição contínua proposta por \cite{Crow1964}. 
-Para que isso seja realista a taxa de mutação por locus deve ser
+tenham distribuição gaussiana proposta por \cite{Kimura1965}. 
+Para que isso seja realista, a taxa de mutação por locus deve ser
 suficientemente alta para manter a distribuição de alelos por locus
 gaussiana frente à deriva e seleção estabilizadora, que removem
 variabilidade \citep{Falconer1996}. 
-Além disso podemos nos perguntar se mutações novas realmente tem efeitos
+Além disso, podemos nos perguntar se mutações novas realmente tem efeitos
 pequenos em relação a variância original da população nas direções
 morfológicas afetadas, ou se novas mutações introduzem variabilidade
 maior que a originalmente presente na população. 
-O modelo proposto por \cite{Turelli1984} utiliza então taxas de mutação
+O modelo proposto por \cite{Turelli1984} utiliza taxas de mutação
 baixas e efeitos mutacionais altos, mas ainda mantendo o espaço de
 alelos contínuo. 
-Neste modelo a maior parte da variação fenotípica acaba sendo atribuída
+Neste modelo, a maior parte da variação fenotípica acaba sendo atribuída
 a alelos raros, de baixa frequência, mas com efeitos aditivos grandes, e
 não a vários alelos polimórficos de efeitos pequenos e distribuição
 gaussiana. 
@@ -77,14 +300,14 @@ Nessas condições, a matriz G não seria constante ao longo do tempo e
 fatores de correção deveriam ser acrescidos à equação de resposta de
 Lande para descrições macro evolutivas. 
 Esses fatores dependem do desvio por geração da matriz G em relação à
-matriz G média no período de seleção \citep{Jones2003}. 
+matriz G média no período de seleção \citep{Jones2004}. 
 A estimativa desse ``efeito Turelli'' é difícil de ser realizada
 praticamente. 
 
-Em \cite{Barton1987}, os autores, interessados no problema dá dinâmica
+Em \cite{Barton1987}, os autores, interessados no problema da dinâmica
 das variâncias de forma geral, apresentam um formalismo relativamente
 completo para lidar com o problema da evolução de todos os momentos da
-distribuição fenotípica de um traço quantitativo, abordando tanto a
+distribuição fenotípica de um caráter quantitativo, abordando tanto a
 aproximação gaussiana quanto a aproximação de alelos raros, proposta por
 \cite{Turelli1984}. 
 O procedimento seguido pelos autores é escrever a dinâmica de mudança de
@@ -98,7 +321,7 @@ primeiros momentos (média e variância), supondo o segundo momento fixo e
 desprezando os momentos mais altos; ou incluir mudanças até uma certa
 ordem e obter os resultados de Turelli. 
 
-% Continuar Turelli Barton?
+% TODO Continuar Turelli Barton?
 
 Dada a complexidade do problema da dinâmica das variâncias em um caso
 multivariado, o estudo da estabilidade da matriz G e suas consequências
@@ -108,7 +331,7 @@ de forma retrospectiva, amostrando a diversidade dos seres vivos, seja
 em experimentos manipulativos feitos com colônias de animais em
 cativeiro ou, como é o caso do presente trabalho, por via de simulações
 computacionais. 
-Vamos agora revisar as principais abordagens computacionais e empíricas. 
+Vamos agora revisar as principais abordagens computacionais. 
 
 A sequência de artigos \cite{Jones2003, Jones2004, Jones2007} foi
 pioneira nos estudos computacionais de estabilidade da matriz G num
@@ -127,7 +350,7 @@ simulações são o padrão de mutação pleiotrópico e a superfície de
 seleção. 
 Ambos são descritos por matrizes de covariância. 
 Os valores na diagonal dessas matrizes representam a intensidade das
-mutações e a intensidade da seleção estabilizadora em cada traço
+mutações e a intensidade da seleção estabilizadora em cada caráter
 separadamente. 
 Como o problema é bidimensional, essas matrizes tem apenas um valor fora
 da diagonal. 
@@ -135,11 +358,11 @@ Esse valor é apresentado como uma correlação de mutação no caso da
 matriz mutacional ($r_\mu$) e uma correlação de seleção na matriz que
 descreve a superfície de aptidão ou {\it fitness} ($r_\omega$). 
 O valor de $r_\mu$ define o quão correlacionados serão os valores das
-mutações que afetam ambos os traços. 
+mutações que afetam ambos os caracteres. 
 Quanto mais alto, mais correlacionados eles serão, com sua magnitude
 dada pelos valores diagonais da matriz de mutação. 
 Já o valor de $r_\omega$ define o quão forte é a seleção estabilizadora
-no sentido de manter os dois traços correlacionados. 
+no sentido de manter os dois caracteres correlacionados. 
 Nas condições das simulações, o fator mais importante para a
 estabilidade da matriz G foi a existência de mutações correlacionadas. 
 Quando $r_\mu$ e $r_\omega$ são similares, a matriz tende a ser bastante
@@ -155,7 +378,7 @@ morfoespaço a variabilidade populacional está disponível para responder
 a seleção. 
 Os autores ressaltam que matrizes com um autovalor dominante tendem a
 ser mais estáveis. 
-Ou seja, correlação alta entre os dois traços leva à estabilidade da
+Ou seja, correlação alta entre os dois caracteres leva à estabilidade da
 matriz G. 
 Isso pode ser interpretado como um primeiro indício para a importância
 da modularidade (veja a seguir), apesar de ser difícil definir
@@ -175,7 +398,7 @@ Turelli devido a flutuações na matriz G.
 Para entender o efeito Turelli, vamos explorar como a extensão da
 equação de Lande deve ser feita para abarcar a mudança evolutiva ao
 longo de várias gerações. 
-Começamos com a equação de resposta à seleção nas médias dos traços
+Começamos com a equação de resposta à seleção nas médias dos caracteres
 ($\overline {z}$) para uma única geração de uma população sujeita ao
 gradiente de seleção $\beta_t$:
 
@@ -190,11 +413,12 @@ longo de várias gerações de seleção \citep{Lande1979}, como:
 
 \begin{equation}
 \beta_{T}\equiv \sum _{t=0}^{T-1} \beta_t =  \overline {G}^{-1}\Delta \overline {z}_T 
+\label{betatotal}
 \end{equation}
 
 ou seja, a soma dos gradientes individuais, onde $\overline {G}$
 representa a matriz G média e $\Delta \overline {z}_T$ a mudança global
-na média dos traços. 
+na média dos caracteres. 
 \cite{Turelli1988} mostrou que essa equação se torna incorreta caso a
 flutuação da matriz G em torno da média seja grande entre uma geração e
 outra. 
@@ -211,14 +435,14 @@ Se o termo de Turelli (  $\sum_{t=0}^{T-1} (G_t - \overline {G})
 para manter esse termo pequeno o bastante para possibilitar a
 estimativa de gradientes de seleção realistas. 
 Para isso, foram realizadas simulações com 3 tipos de movimentos do pico
-adaptativo: ao longo da direção de aumento de um traço, mantendo o outro
-estável; aumentando simultaneamente os dois traços, na direção usualmente
+adaptativo: ao longo da direção de aumento de um caráter, mantendo o outro
+estável; aumentando simultaneamente os dois caracteres, na direção usualmente
 descrita como direção de tamanho, por representar aumento simultâneo de
-todas os traços do indivíduo \citep{Marroig2005}; e na direção de
-aumento de um traço e diminuição do outro. 
+todas os caracteres do indivíduo \citep{Marroig2005}; e na direção de
+aumento de um caráter e diminuição do outro. 
 Estas situações são representadas pelos símbolos $\rightarrow$,
 $\nearrow$ e $\searrow$, respectivamente, fazendo uma alusão à
-representação bidimensional cartesiana dos traços. 
+representação bidimensional cartesiana dos caracteres. 
 Elas são interessantes por representarem tipos de seleção que interagem
 de forma diferente com a presença da correlação mutacional. 
 Quando $r_\mu$ for positivo, a seleção $\nearrow$ está alinhada com o
@@ -258,14 +482,14 @@ O mais recente artigo nessa sequência \citep{Jones2007} trata da
 evolução da própria matriz mutacional e das consequências das mudanças
 nessa matriz para o confronto entre as visões de Lande (gaussiana) e de
 Turelli (alelos raros) na questão das distribuições dos efeito alélicos
-atuando em traços quantitativos. 
+atuando em caracteres quantitativos. 
 Para tal foi definido um terceiro caráter que controla o valor de
 $r_\mu$ e está sujeito a mudanças via mutação, de forma análoga aos
-outros traços (veja seção \ref{cap2:mem:ModelM} para mais detalhes). 
-Isso permitiu aos autores estudar como o padrão pleiotrópico/epistático,
-representado na matriz mutacional, pode variar e como isso afeta o
-fenótipo e o genótipo de uma população sujeita a seleção estabilizadora
-gaussiana, mutação e deriva. 
+outros caracteres (veja seção \ref{cap2:mem:ModelM} para mais detalhes). 
+Isso permitiu aos autores estudar como o padrão de pleiotropia e
+epistasia, representado na matriz mutacional, pode variar e como isso
+afeta o fenótipo e o genótipo de uma população sujeita a seleção
+estabilizadora gaussiana, mutação e deriva. 
 Essa é a abordagem mais interessante para nossos objetivos neste
 trabalho, que visa entender em quais condições sistemas modulares podem
 evoluir. 
@@ -279,7 +503,7 @@ seleção estabilizadora gaussiana, descrita por um valor de correlação
 $r_\omega$, capaz de moldar o valor de $r_\mu$? 
 Ou seja, será que ocorre o alinhamento da matriz mutacional (e portanto,
 da matriz G)  com a matriz da superfície de seleção? 
-A seleção atua somente sobre traços fenotípicos, logo sua influência
+A seleção atua somente sobre caracteres fenotípicos, logo sua influência
 sobre a matriz mutacional é indireta. 
 Será que essa força de seleção indireta é suficiente para superar
 flutuações aleatórias na matriz mutacional e proporcionar seu
@@ -300,8 +524,14 @@ o de alelos raros são capazes de explicar totalmente os resultados,
 levando a uma visão intermediaria para a real distribuição dos efeitos
 alélicos nas populações. 
 
+\section{Consequências Evolutivas}\label{intro:consequencias}
+
 A interação entre restrições externas e internas pode ser fundamental
 para entendermos padrões naturais de covariação. 
+É devido a essa combinação das restrições internas, derivadas do
+desenvolvimento, e de restrições funcionais, seletivas, que o padrão de
+integração e modularidade se estabelesse e se manisfesta na estrutura de
+covariação das populações.
 Vamos abordar agora evidências empíricas ao problema da estabilidade da
 matriz G e suas consequências evolutivas, tema de trabalho há mais de 10
 anos do Laboratório de Evolução de Mamíferos. 
@@ -309,7 +539,7 @@ anos do Laboratório de Evolução de Mamíferos.
 Em \cite{Marroig2001}, os autores utilizam o clado Platyrrhini, de
 primatas neotropicais como modelo, obtendo estimativas e comparando de
 forma filogeneticamente estruturada os 16 gêneros, quanto às suas
-matrizes de covariação fenotípica para 39 traços cranianos. 
+matrizes de covariação fenotípica para 39 caracteres cranianos. 
 Essa comparação revelou similaridades altas entre todos os gêneros. 
 Além disso, os níveis de similaridade presentes eram pouco
 correlacionadas com a filogenia e sim com fatores ambientais, como a
@@ -321,45 +551,23 @@ milhões de anos de divergência e com variação morfológica notável,
 aponta para uma estabilidade marcante da matriz G. 
 Além da comparação de padrões, em \cite{Marroig2005, Marroig2010} os
 autores abordam a influência desses padrões genéticos estáveis na
-evolução dos traços fenotípicos dentro dos primatas neotropicais. 
+evolução dos caracteres fenotípicos dentro dos primatas neotropicais. 
 Segundo eles, a influência de restrições genéticas é clara e deve ser
 levada em conta nas tentativas de entender os processos evolutivos que
 formaram os grupos atuais. 
 
-Expandindo o padrão de estabilidade da matriz G, em \cite{Porto2008} e
+Expandindo o padrão de estabilidade da matriz G, em \cite{Porto2009} e
 \cite{Marroig2009} comparações entre matrizes obtidas para todas as
-ordens de mamíferos confirmam novamente o padrão de estabilidade matriz
+ordens de mamíferos confirmam novamente o padrão de estabilidade da matriz
 G, além de evidenciar a importância da modularidade para compreensão das
 respostas evolutivas possíveis e observadas. 
-
-Modularidade se refere ao padrão de organização dos seres vivos, onde
-algumas partes são mais relacionadas entre si do que com outras partes
-do mesmo organismo. 
-Essas relações podem ser medidas de diversas formas, como interação física
-entre proteínas, padrões de expressão entre genes, ou, como é o caso
-no presente trabalho, correlação entre traços quantitativos. 
-Esse grupo de características muito relacionadas entre si constituem um
-módulo. 
-Os módulos caracterizados por alta correlação entre traços dentro do
-módulo e baixa correlação entre traços de módulos diferentes são
-chamados de módulos variacionais. 
-Estes são frequentemente identificados como relacionados a funções
-específicas, como mastigação, inserção muscular ou proteção
-\citep{Cheverud1997}. 
-A associação entre função e modularidade, em vários níveis
-organizacionais \citep{Costanzo2010}, novamente sugerem uma origem
-seletiva para a organização modular. 
-Seleção privilegiaria interações pleiotrópicas e ontogenéticas restritas
-a características ligadas a uma função comum, que resultaria em
-covariação entre essas características na população.
-Vamos abordar essa hipótese nas próximas seções. 
 
 A relação entre a organização modular e a evolução pode ser descrita por
 algumas estatísticas associadas ao padrão de covariação das populações
 \citep{Hansen2008}. 
 Uma dessas estatísticas é a flexibilidade evolutiva, definida como a
 correlação média entre a resposta observada numa população e o gradiente
-de seleção que gerou essa resposta. 
+de seleção que gerou essa resposta \citep{Marroig2009}. 
 Quanto mais alta a flexibilidade, mais capaz a população é de responder
 na direção morfológica privilegiada pela seleção natural. 
 A evolvabilidade, complementar à flexibilidade, mede o quão grande foi a
@@ -375,16 +583,18 @@ alterações deletérias a alguma outra parte não envolvida no processo de
 seleção em questão. 
 Apesar disso, um balanço entre modularidade e integração deve se
 estabelecer no organismo para que este forme um todo coeso. 
-Um indivíduo constituído de traços completamente independentes poderia
+Um indivíduo constituído de caracteres completamente independentes poderia
 em teoria ter evolvabilidade e flexibilidade máximas, mas a ausência de
 interrelação entre suas partes torna tal organismo impossível. 
+
+\section{Evolução da Modularidade}\label{intro:evolucao}
 
 Além de interferir em como os organismos respondem à seleção natural, a
 modularidade também é fruto da seleção \citep{Wagner1996, Wagner2007}. 
 Como o padrão modular é praticamente ubíquo em sistemas biológicos, o
 problema de como ele surgiu é difícil de ser abordado de forma
 experimental. 
-Algumas evidências para condições para emergência da modularidade são
+Algumas evidências de condições para emergência da modularidade são
 encontradas em experimentos com sistemas muito simples, como cadeias de
 RNA \citep{Ancel2000} ou redes metabólicas simplificadas
 \citep{Espinosa-Soto2010}. 
@@ -394,29 +604,29 @@ de modularidade no nível estudado.
 Em sistemas quantitativos, \cite{Pavlicev2010} mostraram que em um
 sistema contando com variação epistática no padrão de correlação de dois
 caracteres, a seleção direcional é capaz de promover a fixação do alelo
-responsável pela manutenção de alta correlação entre os traços sobre
+responsável pela manutenção de alta correlação entre os caracteres sobre
 seleção direcional simultânea  (seleção do tipo $\nearrow$ em
 \cite{Jones2004}). 
 Esse artigo, porém, faz uso direto da equação de seleção de
 \cite{Lande1979} e não simula explicitamente os alelos responsáveis pelo
 fenótipo sobre seleção direcional, se restringindo aos alelos
-responsáveis pela correlação entre os traços na matriz G. 
-A existência desses alelos responsáveis pela covariação entre traços foi
+responsáveis pela correlação entre os caracteres na matriz G. 
+A existência desses alelos responsáveis pela covariação entre caracteres foi
 comprovada experimentalmente, e estes foram chamados de loci
 quantitativos de relação, ou rQTLs \citep{Pavlicev2008a}. 
 De qualquer forma, essa é mais uma evidência do poder da seleção
-direcional de criar associação entre traços e portanto promover a
+direcional de criar associação entre caracteres e portanto promover a
 modularidade em condições naturais. 
 
 Nosso objetivo neste trabalho foi estabelecer uma técnica de modelagem
-que permita simular a evolução de traços quantitativos controlados
+que permita simular a evolução de caracteres quantitativos controlados
 por efeitos aditivos expressos em populações sujeitas a seleção natural. 
 Com isso esperamos adquirir um melhor entendimento dos padrões de
 diversificação e integração morfológica observados em populações
-naturais, além de testar a viabilidade de possíveis trajetórias
-evolutivas que moldaram essas populações. 
+naturais, além de testar a viabilidade de possíveis cenários
+evolutivos que moldaram essas populações. 
 No capítulo \ref{cap2} vamos apresentar dois modelos possíveis para a
-simulação de traços quantitativos. 
+simulação de caracteres quantitativos. 
 No capítulo \ref{cap3} vamos estudar o comportamento de populações
 simuladas pelos dois modelos e avaliar sua capacidade de reproduzir
 padrões modulares encontrados na natureza sobre diferentes condições de

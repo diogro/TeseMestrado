@@ -8,12 +8,12 @@
 O primeiro passo do projeto foi escolher o modelo a ser implementado.
 Foi necessário encontrar uma técnica computacional que permitisse
 simular explicitamente cada individuo de uma população com alelos de efeitos
-contínuos em traços morfológicos. 
-Esses traços seriam então apresentados à seleção natural.
+contínuos em caracteres morfológicos. 
+Esses caracteres seriam então apresentados à seleção natural.
 As populações são diploides, hermafroditas e se reproduzem sexuadamente,
 com gerações discretas e tamanho populacional fixo.
 Existem algumas possibilidades de como implementar as mutações e
-a transição de efeitos alélicos para traços fenotípicos.
+a transição de efeitos alélicos para caracteres fenotípicos.
 
 \section{Modelos}\label{cap2:mem}
 
@@ -21,20 +21,20 @@ a transição de efeitos alélicos para traços fenotípicos.
 
 O modelo usado em \cite{Jones2003, Jones2004, Jones2007} se baseia em um
 conjunto de alelos pleiotrópicos.
-Nesse sistema, todos os alelos afetam todos os traços.
-Num sistema com $p$ traços, podemos pensar em cada um
+Nesse sistema, todos os alelos afetam todos os caracteres.
+Num sistema com $p$ caracteres, podemos pensar em cada um
 dos $m$ alelos como sendo um vetor em $\mathbb{R}^p$.
 O conjunto de todos os alelos $x^i$ seria escrito como:
 \begin{equation}
 x^i = ( x^i_1, x^i_2,\ldots, x^i_p), i \in \{1,\ldots, m\}, x^i \in \mathbb{R}^p
 \end{equation}
 onde cada um dos $x^i_j$ com $j \in \{1,\ldots, p\}$ é um número real
-representando o efeito aditivo do alelo $i$ no traço $j$
+representando o efeito aditivo do alelo $i$ no caráter $j$
 Cada um dos
-$p$ traços é formado pela soma dos efeitos alélicos de cada um dos
-$m$ alelos agindo sobre esse traço, além de um efeito ambiental $e$, com
+$p$ caracteres é formado pela soma dos efeitos alélicos de cada um dos
+$m$ alelos agindo sobre esse caráter, além de um efeito ambiental $e$, com
 distribuição normal e média zero.
-Um traço $z_j$ é dado
+Um caráter $z_j$ é dado
 por:
 \begin{equation}
 z_j = \sum_{i=1}^m x^i_j + e, z_j \in \mathbb{R}, e \sim N(0, 1)
@@ -60,10 +60,10 @@ A seleção estabilizadora é controlada pela matriz $\omega$, e
 pode ser de dois tipos: correlacionada e não correlacionada.
 A seleção estabilizadora mais simples, não correlacionada, é codificada
 em uma matriz $\omega$ diagonal e não influencia a correlação entre os
-traços, apenas sua média e variância.
+caracteres, apenas sua média e variância.
 Já a seleção estabilizadora correlacionada é dada por uma matriz
 $\omega$ com valores não nulos fora da diagonal e afeta a correlação
-entre os traços. 
+entre os caracteres. 
 
 As mutações nesse modelo são gaussianas e afetam um alelo por vez.
 A frequência com que acontecem mutações é dada por uma probabilidade de
@@ -84,7 +84,7 @@ zero e matriz de covariância $M$, chamada matriz mutacional:
 
 A matriz $M$ resume todo o conjunto de interações pleiotrópicas em cada
 individuo, definindo como os efeitos de cada alelo se correlacionam no
-que diz respeito aos diferentes traços fenotípicos.
+que diz respeito aos diferentes caracteres fenotípicos.
 A diagonal da matriz $M$, ou seja, as variâncias mutacionais, que
 definem a escala dos efeitos mutacionais, é definida {\it a priori}.
 Já os valores fora da diagonal, as covariâncias mutacionais, podem ser
@@ -93,10 +93,10 @@ por um segundo conjunto de genes com seus próprios efeitos alélicos
 aditivos \citep{Jones2007}.
 Uma matriz mutacional variável permite explorar como mudanças nos
 efeitos pleiotrópicos se comportam em diferentes condições.
-A matriz mutacional é controlada por um conjunto de alelos mutacionais
+A matriz mutacional variável é controlada por um conjunto de alelos mutacionais
 $\mu^{ij}_k$ (com $k \in \{1,\ldots,m_\mu\}$), que codificam valores de
 correlações mutacionais $r_\mu^{ij}$, que por sua vez são usados para gerar
-os valores das covariâncias entre os traços $i$ e $j$ na matriz $M$:
+os valores das covariâncias entre os caracteres $i$ e $j$ na matriz $M$:
 \begin{equation}
 M_{ij} = r_\mu^{ij} \sqrt {M_{ii}M_{jj}}
 \end{equation}
@@ -118,7 +118,7 @@ Um exemplo de função $\Phi$ \citep[usado em][]{Jones2007} é:
 Essa função garante que os valores de $r_\mu^{ij}$ permaneçam em
 intervalos possíveis para valores de correlação.
 
-Quando temos apenas dois traços, a correção dada pela função $\Phi$ é
+Quando temos apenas dois caracteres, a correção dada pela função $\Phi$ é
 suficiente para garantir que a matriz $M$ seja bem definida.
 Porém, quando vamos tratar de sistemas com mais caracteres precisamos
 tomar cuidados adicionais.
@@ -128,13 +128,13 @@ Existem várias condições equivalentes para garantir que uma matriz seja
 positiva definida, por exemplo ter todos os autovalores estritamente
 positivos ou a existência da sua descomposição de Cholesky\footnote{A
 decomposição de Cholesky de uma matriz positiva definida simétrica
-$C$ é dada por $C=LL^*$, onde $L$ é uma matriz triangular e o asterisco
+$C$ é dada por $C=LL^*$, onde $L$ é uma matriz triangular inferior e o asterisco
 representa a transposição complexa conjugada.}.
-Na extensão para mais de dois traços, nós optamos por verificar se a
+Na extensão para mais de dois caracteres, nós optamos por verificar se a
 matriz $M$ é positiva definida aplicando a decomposição de Cholesky:
-caso a decomposição existisse, ela pode ser usada para gerar os valores
-de $\delta x$ de forma eficiente; caso a decomposição não existisse um
-procedimento de extensão \citep{Marroig2011b} era realizado,
+caso a decomposição exista, ela pode ser usada para gerar os valores
+de $\delta x$ de forma eficiente; caso a decomposição não exista, um
+procedimento de extensão \citep{Marroig2011b} é realizado,
 substituindo todos os autovalores não positivos pelo último positivo.
 Esse procedimento garante uma matriz ainda próxima à matriz $M$
 original, mas positiva definida.
@@ -145,7 +145,7 @@ obtenção de autovalores é bastante custosa.
 \subsection{Modelo com Matriz $B$}\label{cap2:mem:ModelB}
 
 Além de testar o uso do modelo utilizando a matriz $M$ para mais de dois
-traços, nós optamos por criar também um modelo próprio, inspirado pela
+caracteres, nós optamos por criar também um modelo próprio, inspirado pela
 descrição feita em \cite{Wagner1984}.
 O modelo descrido por Wagner também faz uso do valor dos efeitos
 alélicos $x \in \mathbb{R}^m$.
@@ -183,12 +183,12 @@ A princípio as entradas da matriz $B$ poderiam tomar qualquer valor
 real, porém como simplificação nós optamos por simular a matriz $B$ como
 sendo apenas uma matriz de influência, ou seja, no nosso modelo ela
 codifica se um determinado gene tem seu valor aditivo adicionado a um
-traço ou não.
-Resumidamente, caso $B_{ij} = 1$ o traço $z_j$ tem seu valor
+caráter ou não.
+Resumidamente, caso $B_{ij} = 1$ o caráter $z_j$ tem seu valor
 incrementado por $x_i$, caso contrário ($B_{ij} = 0$) não.
 Nessas condições a equação \ref{matrizB} continua válida.
 A razão entre a dimensão do vetor de valores aditivos $m$ e o número de
-traços $p$ é relevante \citep{Wagner1984}, pois ela define a grosso modo
+caracteres $p$ é relevante \citep{Wagner1984}, pois ela define a grosso modo
 a quantidade de recombinação presente no modelo.
 Quando maior for a razão $m/p$, mais recombinação teremos, pois os
 alelos são herdados de forma independente.
@@ -217,42 +217,42 @@ aplicada utilizando um ótimo variável na superfície gaussiana.
 \section{Parâmetros}
 
 Alguns parâmetros foram mantidos constantes em todas as simulações.
-Os valores da variância mutacional de todos os traços foi fixada em 0.5
+Os valores da variância mutacional de todos os caracteres foi fixada em 0.5
 no modelo com matriz $M$ e 0.2 no modelo com matriz $B$.
 No caso do modelo com matriz $M$ o valor da variância das mutações nos
 alelos mutacionais foi de 0.05.
 A variância dos efeitos ambientais foi fixada em 0.4 nas simulações com
 matriz $M$ e 0.8 nas simulações com matriz $B$.
 O valor da variância ambiental define a escala do modelo e é importante
-na determinação de herdabilidade dos traços.
+na determinação de herdabilidade dos caracteres.
 A taxa de mutação nos alelos aditivos ($\mu$) foi mantida em 0.0005 em
 todas simulações.
 Todos esses parâmetros foram escolhidos de forma a manter a
-herdabilidade dos traços por volta de 0.6 (no regime de seleção
+herdabilidade dos caracteres por volta de 0.6 (no regime de seleção
 estabilizadora), um valor biologicamente
 plausível e capaz de responder a seleção direcional de forma eficiente
 \citep{Cheverud1988}.
 
 Nas simulações nós alteramos o tamanho populacional ($Ne$), o número de
-traços ($p$), o número de alelos ($m$), a taxa de mutação nas caselas da
+caracteres ($p$), o número de alelos ($m$), a taxa de mutação nas caselas da
 matriz $B$ ($\mu_B$), e o tipo de seleção (estabilizadora e direcional).
 Alteramos também a intensidade da seleção direcional.
 Para isso, modificamos o quanto o pico adaptativo era alterado para cada
-traço a cada geração, de $0.01$ até $0.2$.
-Esse deslocamento por traço é chamado de $\Delta_S$.
+caráter a cada geração, de $0.01$ até $0.2$.
+Esse deslocamento por caráter é chamado de $\Delta_S$.
 A variância fenotípica das populações em equilíbrio mutação-seleção
 direcional era por volta de $1.6$.
 Então, nossa seleção mais intensa implicava um movimento de pico de
-cerca de $0.125$ desvios padrões por geração por traço ($\Delta_S=0.2$),
-resultando num movimento total de cerca de 125 desvios padrões por traço
+cerca de $0.125$ desvios padrões por geração por caráter ($\Delta_S=0.2$),
+resultando num movimento total de cerca de 125 desvios padrões por caráter
 após 10.000 gerações de seleção direcional; enquanto a seleção mais
-fraca é dada por movimento de $0.006$ desvios padrões por geração por traço
+fraca é dada por movimento de $0.006$ desvios padrões por geração por caráter
 ($\Delta_S=0.01$), resultando num movimento total de cerca de 6 desvios
 padrões.
 
 \section{Estatísticas}
 
-Quantificar a evolução das relações entre os traços quantificadas na
+Quantificar a evolução das relações entre os caracteres quantificadas na
 matriz de covariância é fundamental para a interpretação dos resultados
 das simulações. 
 Podemos simplesmente inspecionar visualmente as matrizes, mas medidas
@@ -278,7 +278,7 @@ Esse certamente não é o caso quando amostrando uma população natural.
 Para sanar esse problema, propomos também uma estatística de
 modularidade inspirada em técnicas de detecção de comunidades em redes
 \citep{Newman2006,Newman2006a,Reichardt2006}. 
-O princípio dessa técnica é alocar cada traço em um módulo de modo que
+O princípio dessa técnica é alocar cada caráter em um módulo de modo que
 algum parâmetro de modularidade seja máximo. 
 Para isso, definimos a modularidade $L$ de uma matriz de correlação $A$
 como sendo:
@@ -287,8 +287,8 @@ como sendo:
    L = \sum_{i \neq j} \left[ A_{ij} - \frac{k_ik_j}{2m} \right] \delta(g_i, g_j)
 \end{equation}
 
-Os termos $g_i$ e $g_j$ representam a partição dos traços, ou seja, em
-qual grupo os traços $i$ e $j$ se encontram. 
+Os termos $g_i$ e $g_j$ representam a partição dos caracteres, ou seja, em
+qual grupo os caracteres $i$ e $j$ se encontram. 
 A função $\delta(\cdot,\cdot)$ é a função delta de Kronecker, ou seja:
 
 \begin{equation}
@@ -299,9 +299,9 @@ A função $\delta(\cdot,\cdot)$ é a função delta de Kronecker, ou seja:
       \end{array} \right.
 \end{equation}
 
-Portanto apenas traços no mesmo módulo contribuem para o valor de $L$.
+Portanto apenas caracteres no mesmo módulo contribuem para o valor de $L$.
 Já os $k_i$ e $k_j$  representam o valor total de correlação atribuído a
-cada traço, ou, mais claramente, a soma da correlação de cada traço com
+cada caráter, ou, mais claramente, a soma da correlação de cada caráter com
 todos os outros:
 
 \begin{equation}
@@ -310,19 +310,19 @@ todos os outros:
 
 E $m$ representa a soma de todos os $k$ ($m=\sum_i k_i$). 
 O termo $\frac{k_ik_j}{2m}$ funciona como um tipo de expectativa nula
-para a distribuição das correlações entre os traços $i$ e $j$ dado que
+para a distribuição das correlações entre os caracteres $i$ e $j$ dado que
 cada em deles possui, na matriz $A$, um valor de correlação total
 dado por $k_i$ e $k_j$.
 Essa escolha para a expectativa nula aparece naturalmente quando
-impomos que ela deva ser simétrica entre os traços e que dependa
+impomos que ela deva ser simétrica entre os caracteres e que dependa
 unicamente de $k_i$ e $k_j$ \citep[Para detalhes veja][]{Newman2006a}.
-Portanto, traços no mesmo módulo que possuam correlação maior que a
+Portanto, caracteres no mesmo módulo que possuam correlação maior que a
 esperada ao acaso contribuem para aumentar a modularidade $L$, enquanto
-traços no mesmo módulo com correlação abaixo da esperada ao acaso
+caracteres no mesmo módulo com correlação abaixo da esperada ao acaso
 contribuem para diminuir $L$.
 
 Definida a função $L$ de modularidade, temos que encontrar a partição
-dos traços (os valores de $g_i$) que maximizem a função $L$. 
+dos caracteres (os valores de $g_i$) que maximizem a função $L$. 
 Isso é feito com a técnica de Monte Carlo utilizando um algoritmo
 do tipo Metropolis-Hasting \citep{Metropolis1953}.
 A partição que maximize $L$ é tomada como a estrutura de modularidade do
@@ -352,7 +352,7 @@ parâmetros relevantes aos modelos.
         \toprule
         Simbolo    & Interpretação & Modelo\\
         \midrule
-        $p$        & número de traços & $M$ e $B$\\
+        $p$        & número de caracteres & $M$ e $B$\\
         $m$        & número de alelos aditivos & $M$ e $B$\\
         $Ne$       & tamanho populacional & $M$ e $B$   \\
         $\omega$   & matriz de seleção estabilizadora & $M$ e $B$\\

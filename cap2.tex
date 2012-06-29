@@ -13,7 +13,8 @@ Esses caracteres seriam então apresentados à seleção natural.
 As populações são diploides, hermafroditas e se reproduzem sexuadamente,
 com gerações discretas e tamanho populacional fixo.
 Existem algumas possibilidades de como implementar as mutações e
-a transição de efeitos alélicos para caracteres fenotípicos.
+a transição de efeitos alélicos para caracteres fenotípicos, que serão
+apresentadas a seguir.
 
 \section{Modelos}\label{cap2:mem}
 
@@ -108,6 +109,7 @@ Como todos os $r_\mu^{ij}$ são correlações, o valor deles deve ir de
 $-1$ a $1$.
 A função $\Phi$ faz esse papel, levando a soma de valores
 aditivos dos $\mu^{ij}_k$ de valores reais a valores entre $-1$ e $1$.
+A escolha da função $\Phi$ é arbitrária.
 Um exemplo de função $\Phi$ \citep[usado em][]{Jones2007} é:
 
 \begin{equation}
@@ -138,7 +140,7 @@ procedimento de extensão \citep{Marroig2011b} é realizado,
 substituindo todos os autovalores não positivos pelo último positivo.
 Esse procedimento garante uma matriz ainda próxima à matriz $M$
 original, mas positiva definida.
-A escolha desse procedimento é relativamente arbritária, mas
+A escolha desse procedimento é relativamente arbitrária, mas
 considerações de eficiência computacional são importantes, pois a
 obtenção de autovalores é bastante custosa.
 
@@ -175,8 +177,10 @@ z = f(x) = D[f(0)]x = Bx + e
 
 Onde $B$ é definida como uma ``matriz ontogenética'', que descreve de
 forma simplificada como os efeitos aditivos são convertidos em um
-fenótipo, resumindo, de forma binaria e linear, todos os efeitos
-pleiotrópicos e epistáticos entre os alelos aditivos.
+fenótipo, resumindo, de forma linear, todos os efeitos pleiotrópicos e
+epistáticos entre os alelos.
+Isso é equivalente a supor que todos os alelos são totalmente aditivos
+\citep{Wagner1989}.
 Como no modelo anterior, acrescentamos também um valor de ruido
 ambiental $e$, com distribuição multivariada normal e média zero.
 A princípio as entradas da matriz $B$ poderiam tomar qualquer valor
@@ -184,8 +188,10 @@ real, porém como simplificação nós optamos por simular a matriz $B$ como
 sendo apenas uma matriz de influência, ou seja, no nosso modelo ela
 codifica se um determinado gene tem seu valor aditivo adicionado a um
 caráter ou não.
-Resumidamente, caso $B_{ij} = 1$ o caráter $z_j$ tem seu valor
-incrementado por $x_i$, caso contrário ($B_{ij} = 0$) não.
+As entradas da matriz $B$ no nosso modelo podem tomar os valores $0$ ou
+$1$.
+Caso $B_{ij} = 1$ o caráter $z_j$ tem seu valor incrementado por $x_i$
+(que pode ser positivo ou negativo), caso contrário ($B_{ij} = 0$) não.
 Nessas condições a equação \ref{matrizB} continua válida.
 A razão entre a dimensão do vetor de valores aditivos $m$ e o número de
 caracteres $p$ é relevante \citep{Wagner1984}, pois ela define a grosso modo
@@ -219,19 +225,20 @@ aplicada utilizando um ótimo variável na superfície gaussiana.
 Alguns parâmetros foram mantidos constantes em todas as simulações.  Os
 valores da variância mutacional de todos os caracteres foi fixada em
 $0.5$ no modelo com matriz $M$ e $0.2$ no modelo com matriz $B$.
-No caso do modelo com matriz $M$ o valor da variância das mutações nos
+No caso do modelo com matriz $M$, o valor da variância das mutações nos
 alelos mutacionais foi de $0.05$.
 A variância dos efeitos ambientais foi fixada em $0.4$ nas simulações com
 matriz $M$ e $0.8$ nas simulações com matriz $B$.
-O valor da variância ambiental define a escala do modelo e é importante
+O valor da variância ambiental define a escala dos caracteres e é importante
 na determinação de herdabilidade dos caracteres.
 A taxa de mutação nos alelos aditivos ($\mu$) foi mantida em $0.0005$ em
 todas simulações.
 Todos esses parâmetros foram escolhidos de forma a manter a
 herdabilidade dos caracteres por volta de $0.6$ (no regime de seleção
-estabilizadora), um valor biologicamente
-plausível e capaz de responder a seleção direcional de forma eficiente
-\citep{Cheverud1988}.
+estabilizadora), um valor biologicamente plausível e capaz de responder
+a seleção direcional de forma eficiente \citep{Cheverud1988}.
+Escolhas iniciais foram baseadas nos valores utilizados em
+\cite{Jones2003, Jones2004, Jones2007}.
 
 Nas simulações nós alteramos o tamanho populacional ($Ne$), o número de
 caracteres ($p$), o número de alelos ($m$), a taxa de mutação nas caselas da
@@ -250,7 +257,7 @@ fraca é dada por movimento de $0.006$ desvios padrões por geração por carát
 ($\Delta_S=0.01$), resultando num movimento total de cerca de 6 desvios
 padrões.
 
-\section{Estatísticas}
+\section{Estatísticas de Modularidade e Integração}
 
 Quantificar a evolução das relações entre os caracteres quantificadas na
 matriz de covariância é fundamental para a interpretação dos resultados
@@ -268,13 +275,16 @@ apenas a médias das correlações dentro de e entre módulos, quantidade
 conhecida como razão das médias, ou AVG-Ratio do inglês {\it AVeraGe Ratio}.
 Certamente essa medida é informativa em quantificar o quão evidentes são
 os módulos variacionais expressos na população por quantificar a
-diferença no nível de correlação dentre e entre módulos.
+diferença no nível de correlação dentro de e entre módulos.
 Podemos também observar a evolução das médias das correlações dentro
 de módulos (AVG$+$) e entre módulos (AVG$-$).
 
 Contudo, essas medidas exigem conhecimento prévio da estrutura de
 modularidade presente na população.
-Esse certamente não é o caso quando amostrando uma população natural.
+Esse certamente não é o caso quando amostrando uma população natural,
+embora hipóteses a priori possam ser utilizadas quando temos conhecimento
+sobre a função ou desenvolvimento dos caracteres em um grupo de
+organismos \citep{Cheverud1985a, Marroig2001}.
 Para sanar esse problema, propomos também uma estatística de
 modularidade inspirada em técnicas de detecção de comunidades em redes
 \citep{Newman2006,Newman2006a,Reichardt2006}.
@@ -334,9 +344,8 @@ modularidade das matrizes sem utilizar o conhecimento prévio de sua
 estrutura.
 Em situações naturais, onde não conhecemos a estrutura de modularidade,
 essa técnica poderia ser usada para inferir a estrutura de modularidade
-utilizando apenas da matriz de correlação.
+utilizando apenas a matriz de correlação.
 
-\newpage
 \section{Resumo de Parâmetros}
 
 Para facilitar a leitura do texto, apresentamos aqui um resumo dos

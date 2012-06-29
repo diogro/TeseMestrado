@@ -8,7 +8,7 @@
 O primeiro passo do projeto foi escolher o modelo a ser implementado.
 Foi necessário encontrar uma técnica computacional que permitisse
 simular explicitamente cada individuo de uma população com alelos de efeitos
-contínuos em caracteres morfológicos. 
+contínuos em caracteres morfológicos.
 Esses caracteres seriam então apresentados à seleção natural.
 As populações são diploides, hermafroditas e se reproduzem sexuadamente,
 com gerações discretas e tamanho populacional fixo.
@@ -63,7 +63,7 @@ em uma matriz $\omega$ diagonal e não influencia a correlação entre os
 caracteres, apenas sua média e variância.
 Já a seleção estabilizadora correlacionada é dada por uma matriz
 $\omega$ com valores não nulos fora da diagonal e afeta a correlação
-entre os caracteres. 
+entre os caracteres.
 
 As mutações nesse modelo são gaussianas e afetam um alelo por vez.
 A frequência com que acontecem mutações é dada por uma probabilidade de
@@ -216,19 +216,19 @@ aplicada utilizando um ótimo variável na superfície gaussiana.
 
 \section{Parâmetros}
 
-Alguns parâmetros foram mantidos constantes em todas as simulações.
-Os valores da variância mutacional de todos os caracteres foi fixada em 0.5
-no modelo com matriz $M$ e 0.2 no modelo com matriz $B$.
+Alguns parâmetros foram mantidos constantes em todas as simulações.  Os
+valores da variância mutacional de todos os caracteres foi fixada em
+$0.5$ no modelo com matriz $M$ e $0.2$ no modelo com matriz $B$.
 No caso do modelo com matriz $M$ o valor da variância das mutações nos
-alelos mutacionais foi de 0.05.
-A variância dos efeitos ambientais foi fixada em 0.4 nas simulações com
-matriz $M$ e 0.8 nas simulações com matriz $B$.
+alelos mutacionais foi de $0.05$.
+A variância dos efeitos ambientais foi fixada em $0.4$ nas simulações com
+matriz $M$ e $0.8$ nas simulações com matriz $B$.
 O valor da variância ambiental define a escala do modelo e é importante
 na determinação de herdabilidade dos caracteres.
-A taxa de mutação nos alelos aditivos ($\mu$) foi mantida em 0.0005 em
+A taxa de mutação nos alelos aditivos ($\mu$) foi mantida em $0.0005$ em
 todas simulações.
 Todos esses parâmetros foram escolhidos de forma a manter a
-herdabilidade dos caracteres por volta de 0.6 (no regime de seleção
+herdabilidade dos caracteres por volta de $0.6$ (no regime de seleção
 estabilizadora), um valor biologicamente
 plausível e capaz de responder a seleção direcional de forma eficiente
 \citep{Cheverud1988}.
@@ -245,7 +245,7 @@ direcional era por volta de $1.6$.
 Então, nossa seleção mais intensa implicava um movimento de pico de
 cerca de $0.125$ desvios padrões por geração por caráter ($\Delta_S=0.2$),
 resultando num movimento total de cerca de 125 desvios padrões por caráter
-após 10.000 gerações de seleção direcional; enquanto a seleção mais
+após $10.000$ gerações de seleção direcional; enquanto a seleção mais
 fraca é dada por movimento de $0.006$ desvios padrões por geração por caráter
 ($\Delta_S=0.01$), resultando num movimento total de cerca de 6 desvios
 padrões.
@@ -254,32 +254,32 @@ padrões.
 
 Quantificar a evolução das relações entre os caracteres quantificadas na
 matriz de covariância é fundamental para a interpretação dos resultados
-das simulações. 
+das simulações.
 Podemos simplesmente inspecionar visualmente as matrizes, mas medidas
 quantitativas são importantes quando o volume de dados se torna
-suficientemente grande. 
+suficientemente grande.
 Para isso, vamos explorar algumas estatísticas descritivas já utilizadas em
 estudos de biologia tradicionais e apresentar técnicas novas para a
-quantificação de modularidade baseadas nas matrizes de correlação. 
+quantificação de modularidade baseadas nas matrizes de correlação.
 
 Quando conhecemos de antemão a estrutura modular apresentada na matriz
 de correlação, podemos quantificar o nível de modularidade medindo
 apenas a médias das correlações dentro de e entre módulos, quantidade
-conhecida como razão das médias, ou AVG-Ratio do inglês {\it AVeraGe Ratio}. 
+conhecida como razão das médias, ou AVG-Ratio do inglês {\it AVeraGe Ratio}.
 Certamente essa medida é informativa em quantificar o quão evidentes são
 os módulos variacionais expressos na população por quantificar a
-diferença no nível de correlação dentre e entre módulos. 
+diferença no nível de correlação dentre e entre módulos.
 Podemos também observar a evolução das médias das correlações dentro
-de módulos (AVG$+$) e entre módulos (AVG$-$). 
+de módulos (AVG$+$) e entre módulos (AVG$-$).
 
 Contudo, essas medidas exigem conhecimento prévio da estrutura de
-modularidade presente na população. 
+modularidade presente na população.
 Esse certamente não é o caso quando amostrando uma população natural.
 Para sanar esse problema, propomos também uma estatística de
 modularidade inspirada em técnicas de detecção de comunidades em redes
-\citep{Newman2006,Newman2006a,Reichardt2006}. 
+\citep{Newman2006,Newman2006a,Reichardt2006}.
 O princípio dessa técnica é alocar cada caráter em um módulo de modo que
-algum parâmetro de modularidade seja máximo. 
+algum parâmetro de modularidade seja máximo.
 Para isso, definimos a modularidade $L$ de uma matriz de correlação $A$
 como sendo:
 
@@ -288,7 +288,7 @@ como sendo:
 \end{equation}
 
 Os termos $g_i$ e $g_j$ representam a partição dos caracteres, ou seja, em
-qual grupo os caracteres $i$ e $j$ se encontram. 
+qual grupo os caracteres $i$ e $j$ se encontram.
 A função $\delta(\cdot,\cdot)$ é a função delta de Kronecker, ou seja:
 
 \begin{equation}
@@ -308,7 +308,7 @@ todos os outros:
    k_i = \sum_{j \neq i} A_{ij}
 \end{equation}
 
-E $m$ representa a soma de todos os $k$ ($m=\sum_i k_i$). 
+E $m$ representa a soma de todos os $k$ ($m=\sum_i k_i$).
 O termo $\frac{k_ik_j}{2m}$ funciona como um tipo de expectativa nula
 para a distribuição das correlações entre os caracteres $i$ e $j$ dado que
 cada em deles possui, na matriz $A$, um valor de correlação total
@@ -322,19 +322,19 @@ caracteres no mesmo módulo com correlação abaixo da esperada ao acaso
 contribuem para diminuir $L$.
 
 Definida a função $L$ de modularidade, temos que encontrar a partição
-dos caracteres (os valores de $g_i$) que maximizem a função $L$. 
+dos caracteres (os valores de $g_i$) que maximizem a função $L$.
 Isso é feito com a técnica de Monte Carlo utilizando um algoritmo
 do tipo Metropolis-Hasting \citep{Metropolis1953}.
 A partição que maximize $L$ é tomada como a estrutura de modularidade do
 sistema e o valor máximo de $L$ como um índice de modularidade,
-comparável ao AVG-Ratio. 
+comparável ao AVG-Ratio.
 Neste trabalho, pela estrutura de modularidade ser conhecida, o único propósito 
 de usar essa técnica de detecção de módulos é {\it quantificar} a 
 modularidade das matrizes sem utilizar o conhecimento prévio de sua
-estrutura. 
+estrutura.
 Em situações naturais, onde não conhecemos a estrutura de modularidade,
 essa técnica poderia ser usada para inferir a estrutura de modularidade
-utilizando apenas da matriz de correlação. 
+utilizando apenas da matriz de correlação.
 
 \newpage
 \section{Resumo de Parâmetros}

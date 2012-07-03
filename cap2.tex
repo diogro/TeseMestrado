@@ -77,7 +77,7 @@ x'^i = x^i + \delta x = ( x^i_1 + \delta x_1, x^i_2 + \delta x_2,\ldots, x^i_p +
 \end{equation}
 
 O valor de $\delta x$ é tomado de uma distribuição gaussiana com média
-zero e matriz de covariância $M$, chamada matriz mutacional:
+zero e matriz de covariância $M$ ($N(0, M)$), chamada matriz mutacional:
 
 \begin{equation}
 \delta x \sim N(0, M) = exp \left[-\frac{1}{2} (\delta x^T M^{-1} \delta x)\right] , \delta x \in \mathbb{R}^p
@@ -196,8 +196,14 @@ Nessas condições a equação \ref{matrizB} continua válida.
 A razão entre a dimensão do vetor de valores aditivos $m$ e o número de
 caracteres $p$ é relevante \citep{Wagner1984}, pois ela define a grosso modo
 a quantidade de recombinação presente no modelo.
-Quando maior for a razão $m/p$, mais recombinação teremos, pois os
-alelos são herdados de forma independente.
+Quando maior for a razão $m/p$, mais recombinação teremos, pois cada
+um dos $m$ alelos é herdado de forma independente.
+Quando mais alelos tivermos no modelo, mais unidades recombinantes
+independentes afetando potencialmente todos os caracteres estarão segregando
+na população.
+Nesse sentido, os alelos podem também ser interpretados como conjuntos de
+muitos genes, formando cromossomos, que afetam vários caracteres e são
+herdados independentemente.
 
 Mutações são consideravelmente mais simples que no caso da
 matriz $M$, porém são divididas em duas classes: as genéticas e as

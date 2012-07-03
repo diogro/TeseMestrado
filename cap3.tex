@@ -226,15 +226,22 @@ A seleção indireta, então, se torna muito fraca para promover o
 alinhamento entre as matrizes, e a mutação não explora de forma adequada
 (ergódica) o espaço da matriz mutacional, levando a uma situação de não alinhamento
 mesmo com uma pressão seletiva considerável. 
+Em outras palavras, a herdabilidade da própria matriz $M$, definida
+dessa forma, através de alelos mutacionais aditivos, diminui com o
+aumento da dimensionalidade do sistema e impossibilita que seleção atue
+de forma eficiente na sua estrutura.
 Claramente isso não é observado em sistemas naturais, onde populações
 apresentam padrões modulares frequentemente associados a restrições
 funcionais \citep{Porto2009}. 
+Talvez outros esquemas de simulação para matrizes de mutação herdáveis
+venham a sanar essa limitação.
 
 \section{Resultados e Discussão $\cdot$ Matriz $B$}
 
 Todas as simulações dessa seção começam com o mesmo estado inicial, com
 a matriz $B$ totalmente formada por $1$, ou seja, integração total, e
-todos os valores aditivos $0$, ou seja, todos os caracteres nulos. 
+todos os valores aditivos $0$, ou seja, todos os caracteres determinados
+apenas por efeitos ambientais e com sua porção aditiva igual a zero. 
 As primeiras gerações são dependentes desses estado inicial e não trazem
 informação. 
 Após cerca de $2.000$ gerações o sistema se encontra em equilíbrio
@@ -254,7 +261,9 @@ nos alelos aditivos ($\mu$) e a taxa de mutação nas caselas da matriz
 $B$ ($\mu_B$). 
 Essa razão $\mu/\mu_B$ define como será a dinâmica temporal de mudança
 entre dois níveis: o dos efeitos aditivos e o da atribuição desses
-efeitos aos caracteres quantitativos, que chamamos aqui de efeito {\it ontogenético}. 
+efeitos aos caracteres quantitativos, que chamamos aqui de efeito {\it
+ontogenético}, incluindo também todos os efeitos pleiotrópicos e
+epistáticos dos loci sobre o fenótipo. 
 Conforme vemos nas figuras \ref{MatBEstab} e \ref{EstabRMuStats}, apesar de mudanças na
 magnitude das correlações com o aumento da razão $\mu/\mu_B$, não
 observamos o surgimento de módulos variacionais apenas com seleção
@@ -309,27 +318,32 @@ eficiente às pressões seletivas impostas e gerar uma matriz G com a
 estrutura modular privilegiada pela seleção estabilizadora e direcional. 
 Lembramos que na ausência de seleção direcional esse efeito não é
 observado, mesmo com as mesmas razões $\mu/\mu_B$. 
+%TODO interpretacao de m/mu_b
 Na figura \ref{DirecionalRMuStats} vemos que razões baixas de $\mu/\mu_B$ levam
 a sistemas bastante instáveis, apesar de modulares. 
 Novamente isso pode ser interpretado como uma consequência de taxas de
 mudança em cada nível da simulação incompatíveis com populações
-estáveis. 
+estáveis, pois as mudanças ``regulatórias'' da matriz $B$ não podem se dar na mesma
+escala temporal das mudanças aditivas, ou o sistema não tem tempo de
+responder a seleção de forma estável. 
 Para $\mu/\mu_B=1$, ou seja, com a taxa de mutação igual nos níveis
 aditivo e ontogenético, o valor de modularidade $L$ flutua violentamente entre
 as gerações, sugerindo uma modularidade muito instável. 
-As mudanças ``regulatórias'' da matriz $B$ não podem se dar na mesma
-escala temporal das mudanças aditivas, ou o sistema não tem tempo de
-responder a seleção de forma estável. 
+Além disso, para valores de baixos de $\mu/\mu_B$ as correlações entre
+os caracteres são extremamente baixas, em torno de $0$ entre módulos e
+por volta de $0.2$ dentro de módulos.
 A partir de $\mu/\mu_B=4$ o sistema se torna muito mais estável e
 progressivamente menos modular. 
 Nós optamos por utilizar o valor $\mu/\mu_B=5$ nas simulações
 subsequentes. 
 Essa opção se deu por uma série de fatores: nesse valor o sistema ainda
-apresenta um aumento de modularidade ao longo das gerações; os valores
-de modularidade $L$ e AVG-Ratio são bastante concordantes, sugerindo que
-os módulos favorecidos pela seleção estão efetivamente sendo expressos
-na população; e, por último, o sistema possui uma estabilidade razoável
-sem se tornar incapaz de responder a seleção. 
+apresenta um aumento de modularidade ao longo das gerações; as
+correlações aumentam para cerca de $0.2$ entre módulos e $0.4$ dentro de
+módulos; os valores de modularidade $L$ e AVG-Ratio são bastante
+concordantes, sugerindo que os módulos favorecidos pela seleção estão
+efetivamente sendo expressos na população; e, por último, o sistema
+possui uma estabilidade razoável sem se tornar incapaz de responder a
+seleção direcional. 
 
 
 \begin{figure}[htbp]
@@ -651,9 +665,6 @@ Isso novamente pode ser associado à força de recombinação aumentada.
 Com isso exploramos algumas das combinações de parâmetros possíveis
 nesses modelos, além das suas interpretações e consequências na evolução
 do padrão de correlação nas populações simuladas. 
-Um passo futuro seria estimar os equivalentes desses parâmetros em
-populações naturais e simular populações ``equivalentes'' às de
-interesse. 
 Outro caminho possível é criar diagramas de fase para parâmetros
 desconhecidos ou de medição difícil a partir dos parâmetros mensuráveis, 
 limitando assim sua faixa plausível e auxiliando a interpretação da

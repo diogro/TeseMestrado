@@ -47,7 +47,7 @@ Um caráter $\mathbf{z}_j$ é dado
 por:
 
 \begin{equation}
-    \mathbf{z}_j = \sum_{i=1}^m \mathbf{x}^i_j + e, \mathbf{z}_j \in \mathbb{R}, e \sim N(0, V_e)
+    \mathbf{z}_j = \sum_{i=1}^{2m} \mathbf{x}^i_j + e, \mathbf{z}_j \in \mathbb{R}, e \sim N(0, V_e)
 \end{equation}
 
 A seleção nesse modelo é gaussiana.
@@ -103,7 +103,8 @@ por um segundo conjunto de genes com seus próprios efeitos alélicos
 aditivos \citep{Jones2007}.
 Uma matriz mutacional variável permite explorar como mudanças nos
 efeitos pleiotrópicos se comportam em diferentes condições.
-A matriz mutacional variável é controlada por um conjunto de loci
+
+A matriz mutacional é controlada por um conjunto de loci
 mutacionais diploides, com alelos $\mu^{ij}_k$ (com $k \in \{1,\ldots,m_\mu\}$),
 que codificam valores de correlações mutacionais $r_\mu^{ij}$, que por
 sua vez são usados para gerar os valores das covariâncias entre os
@@ -150,7 +151,7 @@ Na extensão para mais de dois caracteres, nós optamos por verificar se a
 matriz $\mathbf{M}$ é positiva definida aplicando a decomposição de Cholesky:
 caso a decomposição exista, ela pode ser usada para gerar os valores
 de $\delta \mathbf{x}$ de forma eficiente; caso a decomposição não exista, um
-procedimento de extensão \citep{Marroig2011b} é realizado,
+procedimento de extensão \citep{Marroig2012} é realizado,
 substituindo todos os autovalores não positivos pelo último positivo.
 Esse procedimento garante uma matriz ainda próxima à matriz $\mathbf{M}$
 original, mas positiva definida.
@@ -200,12 +201,11 @@ a aproximação linear da função $f$ como:
 
 \begin{equation}
     \mathbf{x} = f(\mathbf{y}) = D[f(0)]\mathbf{y} = \mathbf{B}\mathbf{y}
-\label{matrizB}
 \end{equation}
 
 Onde $\mathbf{B}$ é definida como uma ``matriz ontogenética'', que descreve de
 forma simplificada como os efeitos genéticos são convertidos em 
-valores aditivo, resumindo, de forma linear, todos os efeitos pleiotrópicos e
+valores aditivos, resumindo, de forma linear, todos os efeitos pleiotrópicos e
 epistáticos entre os alelos.
 Essa aproximação é equivalente a supor que toda a variância genética é aditiva \citep{Wagner1989}.
 Como no modelo anterior, acrescentamos também um valor de ruido
@@ -215,36 +215,38 @@ tem o seu fenótipo $\mathbf{z}$ dado por:
 
 \begin{equation}
     \mathbf{z} = \mathbf{x} + \mathbf{e} = \mathbf{By} + \mathbf{e}
+\label{matrizB}
 \end{equation}
 
 A princípio as entradas da matriz $\mathbf{B}$ poderiam tomar qualquer
-valor real, porém como simplificação nós optamos por simular a matriz
-$\mathbf{B}$ como sendo apenas uma matriz de influência, ou seja, no
-nosso modelo ela codifica se um determinado gene tem seu valor aditivo
-adicionado a um caráter ou não.
-As entradas da matriz $\mathbf{B}$ no nosso modelo podem tomar os valores $0$ ou
-$1$.
+valor real, porém como uma simplificação adicional, nós optamos por
+simular a matriz $\mathbf{B}$ como sendo apenas uma matriz de
+influência, ou seja, no nosso modelo ela codifica se um determinado gene
+tem seu valor genético adicionado ao valor aditivo de um caráter ou não.
+Dessa forma, as entradas da matriz $\mathbf{B}$ no nosso modelo podem
+tomar os valores $0$ ou $1$.
 Caso $\mathbf{B}_{ij} = 1$ o caráter $\mathbf{z}_j$ tem seu valor
-incrementado por $\mathbf{y}_i$
-(que pode ser positivo ou negativo), caso contrário ($\mathbf{B}_{ij} = 0$) não.
-Nessas condições a equação \ref{matrizB} continua válida.
-A razão entre a dimensão de loci $m$ e o número de
-caracteres $p$ é relevante \citep{Wagner1984}, pois ela define a grosso modo
-a quantidade de recombinação presente no modelo.
-Quando maior for a razão $m/p$, mais recombinação teremos, pois cada
-um dos $2m$ alelos é herdado de forma independente.
+aditivo incrementado por $\mathbf{y}_i$ (que pode ser positivo ou
+negativo), caso contrário ($\mathbf{B}_{ij} = 0$) não.
+
+A razão entre a dimensão de loci $m$ e o número de caracteres $p$ é
+relevante \citep{Wagner1984}, pois ela define a grosso modo a quantidade
+de recombinação presente no modelo.
+Quando maior for a razão $m/p$, mais recombinação teremos, pois cada um
+dos $2m$ alelos é herdado de forma independente.
 Quando mais loci tivermos no modelo, mais unidades recombinantes
-independentes afetando potencialmente todos os caracteres estarão segregando
-na população.
+independentes, afetando potencialmente todos os caracteres, estarão
+segregando na população.
 Nesse sentido, os loci podem também ser interpretados como conjuntos de
 muitos genes, formando cromossomos, que afetam vários caracteres e são
 herdados independentemente.
 
-Mutações são consideravelmente mais simples que no caso da
-matriz $\mathbf{M}$, porém são divididas em duas classes: as genéticas e as
+Mutações são consideravelmente mais simples que no caso da matriz
+$\mathbf{M}$, porém são divididas em duas classes: as genéticas e as
 ontogenéticas.
-As genéticas afetam o valor de cada $\mathbf{y}_i$ individualmente, e possuem uma
-taxa de mutação $\mu$ por geração por locus definida {\it a priori}.
+As genéticas afetam o valor de cada $\mathbf{y}_i$ individualmente, e
+possuem uma taxa de mutação $\mu$ por geração por locus definida {\it a
+priori}.
 Uma mutação no locus $i$ altera o valor de $\mathbf{y}_i$ por um valor real tomado
 de uma distribuição normal com média zero e variância pré-definida.
 Já as mutações ontogenéticas alteram a matriz $\mathbf{B}$, afetando cada casela
@@ -255,7 +257,6 @@ Como esses dois tipos de mutação impõem dinâmicas temporais em escalas
 diferentes para os dois níveis de complexidade, nós testamos razões
 variadas para $\mu$ e $\mu_B$.
 
-
 A seleção nesse modelo toma a mesma forma que no caso anterior, expressa
 na equação \ref{selecao}.
 Novamente a seleção estabilizadora pode ser correlacionada ou não
@@ -264,23 +265,50 @@ aplicada utilizando um ótimo variável na superfície gaussiana.
 
 \section{Parâmetros}\label{cap2:parametros}
 
-Alguns parâmetros foram mantidos constantes em todas as simulações.  Os
-valores da variância mutacional de todos os caracteres foi fixada em
-$0.5$ no modelo com matriz $\mathbf{M}$ e $0.2$ no modelo com matriz $\mathbf{B}$.
-No caso do modelo com matriz $\mathbf{M}$, o valor da variância das mutações nos
-alelos mutacionais foi de $0.05$.
+Alguns parâmetros foram mantidos constantes em todas as simulações.
+O valor da variância mutacional de todos os caracteres foi fixada em
+$0.5$ no modelo com matriz $\mathbf{M}$ e $0.2$ no modelo com matriz
+$\mathbf{B}$.
+No caso do modelo com matriz $\mathbf{M}$, o valor da variância das
+mutações nos alelos mutacionais foi de $0.05$.
 A variância dos efeitos ambientais foi fixada em $0.4$ nas simulações com
 matriz $M$ e $0.8$ nas simulações com matriz $\mathbf{B}$.
-O valor da variância ambiental define a escala dos caracteres e é importante
-na determinação de herdabilidade dos caracteres.
-A taxa de mutação nos alelos aditivos ($\mu$) foi mantida em $0.0005$ em
-todas simulações.
+O valor da variância ambiental define a escala dos caracteres e é
+importante na determinação de herdabilidade dos caracteres.
 Todos esses parâmetros foram escolhidos de forma a manter a
 herdabilidade dos caracteres por volta de $0.6$ (no regime de seleção
 estabilizadora), um valor biologicamente plausível e capaz de responder
 a seleção direcional de forma eficiente \citep{Cheverud1988}.
 Escolhas iniciais foram baseadas nos valores utilizados em
 \cite{Jones2003, Jones2004, Jones2007}.
+
+A taxa de mutação nos alelos aditivos ($\mu$) foi mantida em $0.0005$ em
+todas simulações.
+Estimativas da taxa de mutação aditiva são relativamente
+simples e dependem da força de seleção estabilizadora para cada
+população e caráter \citep{Lynch1998}.
+Nosso valor para $\mu$ está dentro dos valores esperados para aumento de
+variância fenotípica para mutação na natureza \citep{Burger1994}.
+Por outro lado, o valor de $\mu_B$ é mais difícil de ser estimado empiricamente.
+A matriz $\mathbf{B}$ representa basicamente a influência de uma região
+genômica na porção aditiva de um caráter fenotípico.
+Alterações na relações entre genes e fenótipo podem ser reguladas de
+diversas formas, como alterações nas relações epistáticas entre genes,
+alterações nas pleiotropia ou mesmo ganho e perda de genes influenciando
+características fenotípicas.
+Todas essas interações são resumidas na matriz $\mathbf{B}$, e suas
+alterações representadas pela taxa de mutação $\mu_B$.
+O valor numérico de $\mu_B$ está relacionado, então, com a taxa de ganho
+e perda de regiões genômicas que afetam os caracteres fenotípicos em
+questão, os chamados loci de caráteres quantitativos (QTL).
+Para estimar $\mu_B$, seria necessário acompanhar uma população durante
+várias gerações, possivelmente com a aplicação de seleção direcional
+para gerar mudanças observáveis em escalas de tempo curtas, medir
+caracteres fenotípicos na população e sequenciar todos os indivíduos no
+início e no fim do processo, afim de detectar ganho e perda de QTL
+afetando os caracteres de interesse.
+Aumento da eficiência de sequenciamento e técnicas de inferência de QTL
+avançadas podem permitir esse tipo estimativa.
 
 Nas simulações nós alteramos o tamanho populacional ($Ne$), o número de
 caracteres ($p$), o número de alelos ($m$), a taxa de mutação nas caselas da
@@ -297,7 +325,19 @@ resultando num movimento total de cerca de 125 desvios padrões por caráter
 após $10.000$ gerações de seleção direcional; enquanto a seleção mais
 fraca é dada por movimento de $0.006$ desvios padrões por geração por caráter
 ($\Delta_S=0.01$), resultando num movimento total de cerca de 6 desvios
-padrões.
+padrões ao final de $10.000$ gerações.
+Na linguagem da equação de resposta a seleção (equação \ref{landeZGS}),
+os valores de $\Delta_S$ equivalem às entradas do vetor do diferencial
+de seleção $\mathbf{S}$.
+Supondo que inicialmente a matriz fenotípica seja diagonal, com as
+variâncias típicas de cerca de $1.6$, esses valores de $\mathbf{S}$
+levam a um gradiente de seleção ($\beta$, equação \ref{landeZGBETA}) com
+todas as entradas iguais  $\beta_i = 0.006$ no caso de $\Delta_S =
+\mathbf{S}_i = 0.01$ até $\beta_i = 0.125$ no caso de $\Delta_S =
+\mathbf{S}_i = 0.2$.
+Esses valores são consistentes com valores de gradientes de seleção
+estimados para populações naturais, indo de valores muito fracos a
+valores típicos \citep{Kingsolver2001}.
 
 \section{Estatísticas de Modularidade e Integração}
 
@@ -389,6 +429,7 @@ Em situações naturais, onde não conhecemos a estrutura de modularidade,
 essa técnica poderia ser usada para inferir a estrutura de modularidade
 utilizando apenas a matriz de correlação.
 
+\newpage
 \section{Resumo de Parâmetros}
 
 Para facilitar a leitura do texto, apresentamos aqui um resumo dos

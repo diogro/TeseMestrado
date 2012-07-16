@@ -158,10 +158,10 @@ Em organismos com sistemas de desenvolvimento estáveis, relativamente tamponado
 como é o caso dos mamíferos, podemos em geral ignorar o termo de interação em
 genótipo e ambiente ($V_{g \cdot e} = 0$).
 Podemos continuar particionando as variâncias.
-A variância genética é resultado de toda a variação devido a alelos sem
-dominância ($V_a$, aditivos), alelos com dominância ($V_d$, não
-aditivos) e alelos epistáticos ($V_{i}$, representando interações entre
-diferentes loci).
+A variância genética é resultado de toda a variação devido ao efeito
+aditivo dos alelos ($V_a$, variância aditiva), mais os efeitos não
+aditivos, efeitos de dominância ($V_d$, não aditivos) e efeitos
+epistáticos ($V_{i}$, representando interações entre diferentes loci).
 Ou seja:
 
 \begin{equation}
@@ -179,7 +179,7 @@ Essa quantidade é denominada diferencial de seleção e é representada por
 $S$.
 Esse tipo de seleção, que afeta média de um caráter na população, é
 chamado de seleção direcional.
-A resposta observada na média na geração seguinte ($\Delta z$) é dada
+A resposta observada na média na geração seguinte ($\Delta \overline z$) é dada
 por:
 
 \begin{equation}
@@ -203,6 +203,7 @@ conjunto de caracteres ($\Delta \mathbf{z}$) ao diferencial de seleção imposto
 
 \begin{equation}
     \Delta \mathbf{z} = \mathbf{GP}^{-1}\mathbf{S}
+    \label{landeZGS}
 \end{equation}
  
 $\Delta \mathbf{z}$ e $\mathbf{S}$ agora são vetores de mesma dimensão que o número
@@ -246,6 +247,7 @@ seleção como:
 
 \begin{equation}
     \Delta z = \mathbf{GP}^{-1}S = \mathbf{G}\beta
+    \label{landeZGBETA}
 \end{equation}
 
 A evolução dos caracteres por seleção direcional toma a forma de uma
@@ -374,7 +376,7 @@ populacionais nos valores aditivos de um alelo devido a interações entre locus
 Já a epistasia fisiológica se refere a interações na expressão de alelos
 em locus diferentes, dentro de cada indivíduo, ou seja, a expressão de
 um dado alelo depende do estado de outro locus.
-A epistasia fisiológica é um pré-requisito para a existência da a
+A epistasia fisiológica é um pré-requisito para a existência da 
 epistasia estatística.
 Enquanto a epistasia estatística afeta apenas o termo de interação
 ($V_i$) na partição de variância genética, a epistasia fisiológica pode
@@ -717,23 +719,26 @@ De qualquer forma, essa é mais uma evidência do poder da seleção
 direcional de criar associação entre caracteres e portanto promover a
 modularidade em condições naturais.
 
+\centerline { $ * \quad * \quad * $ }
+
 Nosso objetivo neste trabalho foi estabelecer uma técnica de modelagem
 que permita simular a evolução de caracteres quantitativos controlados
 por efeitos aditivos expressos em populações sujeitas a seleção natural.
 Com isso esperamos adquirir um melhor entendimento dos padrões de
-diversificação e integração morfológica observados em populações
-naturais, além de testar a viabilidade de possíveis cenários
-evolutivos que moldaram essas populações e seus padrões de covariação.
+diversificação e integração morfológica observados na natureza, além de
+testar a viabilidade de possíveis cenários evolutivos que moldaram essas
+populações e seus padrões de covariação.
 Não pretendemos aqui criar um formalismo totalmente quantitativo para a
 simulação de populações naturais, e sim capturar alguma parte dos
 complexos mecanismos que atuam na evolução de populações e de suas
 características fenotípicas.
 Com isso em mente, alguns dos parâmetros usados nas simulações são de
 difícil acesso experimental, apesar de terem interpretações claras.
-Na ausência de estimativas reais, nós optamos por testar vários valores
-possíveis desses parâmetros, de forma a evidenciar (1) se esses
-parâmetros são relevantes ou não; e (2) em que aspecto eles são
-relevantes na evolução dos padrões de covariação das populações.
+Na ausência de estimativas reais para alguns dos parâmetros utilizados,
+nós optamos por testar vários valores possíveis desses parâmetros, de
+forma a evidenciar (1) se esses parâmetros são relevantes ou não; e (2)
+em que aspecto eles são relevantes na evolução dos padrões de covariação
+das populações.
 Além disso, nossas simulações podem limitar o espectro de variação
 plausível para quantidades desconhecidas e ajudar nas suas eventuais
 estimativas.

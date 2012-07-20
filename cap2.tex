@@ -13,7 +13,7 @@ Esses caracteres seriam então apresentados à seleção natural.
 As populações são diploides, hermafroditas e se reproduzem sexuadamente,
 com gerações discretas e tamanho populacional fixo.
 Existem algumas possibilidades de como implementar as mutações e
-a transição de efeitos alélicos para caracteres fenotípicos, que serão
+a transição de efeitos genéticos para caracteres fenotípicos, que serão
 apresentadas a seguir.
 
 \section{Modelos}\label{cap2:mem}
@@ -40,7 +40,7 @@ sequencialmente, representando a formação de gametas nos indivíduos.
 Ou seja, para o locus $k$, do par $(\mathbf{x}^{k},\mathbf{x}^{k+1})$,
 apenas um deles será passado para a próxima geração.
 
-Cada um dos $p$ caracteres é formado pela soma dos efeitos alélicos de
+Cada um dos $p$ caracteres é formado pela soma dos efeitos aditivos de
 cada um dos $2m$ alelos agindo sobre esse caráter, além de um efeito
 ambiental $e$, com distribuição normal e média zero ($N(0,V_e)$).
 Um caráter $\mathbf{z}_j$ é dado
@@ -92,20 +92,21 @@ zero e matriz de covariância $\mathbf{M}$ ($N(0, \mathbf{M})$), chamada matriz 
     \delta \mathbf{x} \sim N(0, \mathbf{M}) = exp \left[-\frac{1}{2} (\delta \mathbf{x}^T \mathbf{M}^{-1} \delta \mathbf{x})\right] , \delta \mathbf{x} \in \mathbb{R}^p
 \end{equation}
 
-A matriz $\mathbf{M}$ resume todo o conjunto de interações pleiotrópicas em cada
-individuo, definindo como os efeitos de cada alelo se correlacionam no
-que diz respeito aos diferentes caracteres fenotípicos.
+A matriz $\mathbf{M}$ resume todo o conjunto de interações pleiotrópicas
+e epistáticas em cada individuo, definindo como os efeitos de cada alelo
+se correlacionam no que diz respeito aos diferentes caracteres
+fenotípicos.
 A diagonal da matriz $\mathbf{M}$, ou seja, as variâncias mutacionais, que
 definem a escala dos efeitos mutacionais, é definida {\it a priori}.
 Já os valores fora da diagonal, as covariâncias mutacionais, podem ser
 definidas a priori \citep{Jones2003, Jones2004} ou podem ser definidas
-por um segundo conjunto de genes com seus próprios efeitos alélicos
+por um segundo conjunto de loci com seus próprios efeitos 
 aditivos \citep{Jones2007}.
 Uma matriz mutacional variável permite explorar como mudanças nos
 efeitos pleiotrópicos se comportam em diferentes condições.
 
 A matriz mutacional é controlada por um conjunto de loci
-mutacionais diploides, com alelos $\mu^{ij}_k$ (com $k \in \{1,\ldots,m_\mu\}$),
+mutacionais diploides, com alelos $\mu^{ij}_k$ (com $k \in \{1,\ldots,2m_\mu\}$),
 que codificam valores de correlações mutacionais $r_\mu^{ij}$, que por
 sua vez são usados para gerar os valores das covariâncias entre os
 caracteres $i$ e $j$ na matriz $\mathbf{M}$:
@@ -117,7 +118,7 @@ caracteres $i$ e $j$ na matriz $\mathbf{M}$:
 Com
 
 \begin{equation}
-r_\mu^{ij} = \Phi \left(\sum_{k=1}^{m_\mu} \mu^{ij}_k\right)
+r_\mu^{ij} = \Phi \left(\sum_{k=1}^{2m_\mu} \mu^{ij}_k\right)
 \end{equation}
 
 Como todos os $r_\mu^{ij}$ são correlações, o valor deles deve ir de
@@ -155,9 +156,8 @@ procedimento de extensão \citep{Marroig2012} é realizado,
 substituindo todos os autovalores não positivos pelo último positivo.
 Esse procedimento garante uma matriz ainda próxima à matriz $\mathbf{M}$
 original, mas positiva definida.
-A escolha desse procedimento é relativamente arbitrária, mas
-considerações de eficiência computacional são importantes, pois a
-obtenção de autovalores é bastante custosa.
+A escolha desse procedimento é relativamente arbitrária e pode ser
+modificada em simulações futuras.
 
 \subsection{Modelo com Matriz $\mathbf{B}$}\label{cap2:mem:ModelB}
 
@@ -193,7 +193,7 @@ Supondo que $f$ seja diferenciável, podemos aproximá-la por uma série de
 Taylor:
 
 \begin{equation}
-\mathbf{x} = f(\mathbf{y}) = f(0) + \mathbf{y}^T D[f(0)] + \frac{1}{2!} \mathbf{y}^T D^2 [f(0)] \mathbf{y} + \ldots
+\mathbf{x} = f(\mathbf{y}) = f(0) + D[f(0)]\mathbf{y}  + \frac{1}{2!} \mathbf{y}^T D^2 [f(0)] \mathbf{y} + \ldots
 \end{equation}
 
 Tomando $f(0) = 0$ e mantendo apenas o termo linear, podemos considerar
@@ -219,9 +219,9 @@ tem o seu fenótipo $\mathbf{z}$ dado por:
 \end{equation}
 
 A princípio as entradas da matriz $\mathbf{B}$ poderiam tomar qualquer
-valor real, porém como uma simplificação adicional, nós optamos por
+valor real, porém, como uma simplificação adicional, nós optamos por
 simular a matriz $\mathbf{B}$ como sendo apenas uma matriz de
-influência, ou seja, no nosso modelo ela codifica se um determinado gene
+influência, ou seja, no nosso modelo ela codifica se um determinado loci
 tem seu valor genético adicionado ao valor aditivo de um caráter ou não.
 Dessa forma, as entradas da matriz $\mathbf{B}$ no nosso modelo podem
 tomar os valores $0$ ou $1$.
@@ -230,8 +230,8 @@ aditivo incrementado por $\mathbf{y}_i$ (que pode ser positivo ou
 negativo), caso contrário ($\mathbf{B}_{ij} = 0$) não.
 
 A razão entre a dimensão de loci $m$ e o número de caracteres $p$ é
-relevante \citep{Wagner1984}, pois ela define a grosso modo a quantidade
-de recombinação presente no modelo.
+relevante , pois ela define a grosso modo a quantidade
+de recombinação presente no modelo \citep{Wagner1984}.
 Quando maior for a razão $m/p$, mais recombinação teremos, pois cada um
 dos $2m$ alelos é herdado de forma independente.
 Quando mais loci tivermos no modelo, mais unidades recombinantes
@@ -288,7 +288,7 @@ Estimativas da taxa de mutação aditiva são relativamente
 simples e dependem da força de seleção estabilizadora para cada
 população e caráter \citep{Lynch1998}.
 Nosso valor para $\mu$ está dentro dos valores esperados para aumento de
-variância fenotípica para mutação na natureza \citep{Burger1994}.
+variância fenotípica causado por mutação \citep{Burger1994}.
 Por outro lado, o valor de $\mu_B$ é mais difícil de ser estimado empiricamente.
 A matriz $\mathbf{B}$ representa basicamente a influência de uma região
 genômica na porção aditiva de um caráter fenotípico.
@@ -316,7 +316,8 @@ matriz $\mathbf{B}$ ($\mu_B$), e o tipo de seleção (estabilizadora e direciona
 Alteramos também a intensidade da seleção direcional.
 Para isso, modificamos o quanto o pico adaptativo era alterado para cada
 caráter a cada geração, de $0.01$ até $0.2$.
-Esse deslocamento por caráter é chamado de $\Delta_S$.
+Esse deslocamento por caráter é chamado de $\Delta_S$ e equivale às
+entradas do vetor de diferencial de seleção da equação \ref{landeZGS}.
 A variância fenotípica das populações em equilíbrio mutação-seleção
 direcional era por volta de $1.6$.
 Então, nossa seleção mais intensa implicava um movimento de pico de
@@ -326,18 +327,21 @@ após $10.000$ gerações de seleção direcional; enquanto a seleção mais
 fraca é dada por movimento de $0.006$ desvios padrões por geração por caráter
 ($\Delta_S=0.01$), resultando num movimento total de cerca de 6 desvios
 padrões ao final de $10.000$ gerações.
-Na linguagem da equação de resposta a seleção (equação \ref{landeZGS}),
-os valores de $\Delta_S$ equivalem às entradas do vetor do diferencial
-de seleção $\mathbf{S}$.
-Supondo que inicialmente a matriz fenotípica seja diagonal, com as
-variâncias típicas de cerca de $1.6$, esses valores de $\mathbf{S}$
-levam a um gradiente de seleção ($\beta$, equação \ref{landeZGBETA}) com
-todas as entradas iguais  $\beta_i = 0.006$ no caso de $\Delta_S =
-\mathbf{S}_i = 0.01$ até $\beta_i = 0.125$ no caso de $\Delta_S =
-\mathbf{S}_i = 0.2$.
-Esses valores são consistentes com valores de gradientes de seleção
-estimados para populações naturais, indo de valores muito fracos a
-valores típicos \citep{Kingsolver2001}.
+
+Na linguagem da equação de resposta à seleção (equação
+\ref{landeZGBETA}), os valores de $\Delta_S$ equivalem às entradas do
+vetor do diferencial de seleção $\mathbf{S}$ e podem ser usados para
+calcular o valor do vetor do gradiente de seleção.
+\cite{Kingsolver2001}, revisando a literatura de experimentos de
+seleção, calculou uma distribuição para os valores de intensidades de
+seleção na natureza, utilizando a norma das entradas do gradiente de seleção
+($|\beta_i|$) como métrica.
+\cite{Kingsolver2001} coloca os valores de
+$|\beta_i|$ como variando entre zero e um, com uma mediana de $0.08$
+para caracteres de história de vida e mediana de $0.17$ para
+caracteres morfológicos.
+O valor de $|\beta_i|$ típico varia ao longo das simulações, pois ele
+depende da matriz de variância fenotípica $\mathbf{P}$.
 
 \section{Estatísticas de Modularidade e Integração}
 
@@ -453,7 +457,8 @@ parâmetros relevantes aos modelos.
         $\mu_B$    & taxa de mutação por casela da matriz $\mathbf{B}$ & $\mathbf{B}$\\
         $\Delta_S$ & taxa de mudança do pico adaptativo & $\mathbf{M}$ e $\mathbf{B}$\\
                    & por geração de seleção direcional & \\
-
+        $|\beta_i|$& valor do gradiente de seleção        &$\mathbf{M}$ e $\mathbf{B}$\\ 
+                   &   por caráter por geração            &  \\
         \bottomrule
     \end{tabular}
 \end{table}

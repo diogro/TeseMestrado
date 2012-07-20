@@ -73,30 +73,74 @@ regime de seleção direcional com intensidade variáveis, como na seção
 \ref{cap3:DirecB}. 
 Novamente nossa seleção é medida por mudanças no pico adaptativo, com
 $\Delta_S$ de $0.01$ até $0.2$. 
+Todas os caracteres sofrem seleção direcional simultânea correlacionada,
+de aumento nos $5$ primeiros e diminuição nos $5$ últimos, de forma
+concordante com estrutura modular da seleção estabilizadora
+correlacionada.
+Calculamos os valores de $|\beta_i|$, afim de comparar nossa
+intensidade de seleção com aquela medida em populações naturais.
+Os resultados estão na tabela \ref{tab:betasMFM}.
 Valores de AVG-Ratio e modularidade $L$ para essas corridas podem ser
 vistos na figura \ref{MFMStats}. 
 Incluímos também, por clareza, as últimas gerações de seleção
 estabilizadora, a seleção direcional começa a atuar a partir da geração
 20.000. 
 
-Nessa condições o sistema se modulariza rapidamente a partir de uma dada
+\begin{table}[htbp]
+    \centering
+    \caption{Intensidades de seleção, representadas pelo diferencial de
+        seleção por caráter e pelo valor do gradiente de seleção por caráter
+    $|\beta_i|$}
+    \label{tab:betasMFM}
+    \vspace{1em}
+    \begin{tabular}{c|c|c|c|c|c}
+        \toprule
+        $\Delta_S$ & 0.01 & 0.02 & 0.03 & 0.04 & 0.05 \\
+        \hline
+        $|\beta_i|$ médio & 0.0016 & 0.0032 & 0.0048 & 0.0062 & 0.0076 \\
+         $|\beta_i|$ total & 1.466 & 2.908 & 4.325 & 5.588 & 6.872 \\
+        \midrule
+        \midrule
+        $\Delta_S$ & 0.06 & 0.07 & 0.08 & 0.09 & 0.10 \\
+        \hline
+        $|\beta_i|$ médio & 0.0088 & 0.0103 & 0.0115 & 0.0128 & 0.0143 \\        
+         $|\beta_i|$ total & 7.975 & 9.290 & 10.398 & 11.583 & 12.913 \\
+        \midrule
+        \midrule
+        $\Delta_S$ & 0.11  & 0.12  & 0.13  & 0.14  & 0.15 \\ 
+        \hline
+        $|\beta_i|$ médio & 0.0152 & 0.0165 & 0.0175 & 0.0186 & 0.0200 \\    
+         $|\beta_i|$ total & 13.726 & 14.920 & 15.759 & 16.746 & 18.054 \\
+        \midrule
+        \midrule
+        $\Delta_S$ & 0.16  & 0.17  & 0.18  & 0.19  & 0.20  \\ 
+        \hline
+        $|\beta_i|$ médio & 0.0209 & 0.0224 & 0.0238 & 0.0242 & 0.0254 \\
+         $|\beta_i|$ total & 18.899 &  20.201 & 21.490 & 21.821 & 22.913  \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Nessa condições, o sistema se modulariza rapidamente a partir de uma dada
 intensidade de seleção.
-Vimos o mesmo efeito na figura \ref{IntSelStats10100}, por exemplo, onde
-vemos um aumento tanto da modularidade $L$ quanto do AVG-Ratio,
-indicando a presença de modularidade variacional na estrutura de
-covariação da população simulada.
+O aumento tanto da modularidade $L$ quanto do AVG-Ratio, indica presença
+de modularidade variacional na estrutura de covariação da população
+simulada.
+A concordância desses duas estatísticas nos leva a crer que os módulos
+presentes na superfície de seleção estão realmente se manifestando na
+estrutura de covariação da população.
 Podemos ainda dissecar o efeito da seleção direcional nas correlações
 dentro e entre módulos, olhando para a evolução de cada uma
 separadamente. 
 Na figura \ref{AVGEntreIntra} podemos ver essa separação para diferentes
 valores de $\Delta_S$. 
 O padrão de aumento das correlações dentro módulos é esperado. 
-Além disso, observados uma concomitante diminuição das correlações entre
+Além disso, observamos uma concomitante diminuição das correlações entre
 módulos. 
 Novamente, isso é característico de uma estrutura variacional modular,
 com duas classes de correlação correspondendo a relação de caracteres
 dentro e entre módulos.
-Como cada módulo responde a forças seletivas antagônicas a correlação
+Como cada módulo responde a forças seletivas antagônicas, a correlação
 entre eles tente a diminuir, permitindo que os caracteres dentro de cada
 módulo evoluam independentemente dos outros módulos. 
 Isso é coerente com simulações em sistemas simples feitas por
@@ -108,7 +152,8 @@ ativamente a criação de linhas de menor resistência evolutiva
 \citep[direções do espaço morfológico ricas em
 variação, veja][]{Schluter1996},  alinhadas com a seleção. 
 Reorganização de estrutura variacional relacionada a eventos de seleção
-prolongada também já foram descritos na literatura \citep{Young2010}. 
+prolongada também já foram descritos na literatura \citep{Berg1960,
+Young2005, Young2010}. 
 Nossos resultados mostram que isso pode acontecer em sistemas
 bastante complexos, via seleção indireta nos padrões de
 covariação, gerando variação nas direções privilegiadas pela seleção
@@ -121,12 +166,199 @@ pela quantidade de variação disponível na população na direção da
 seleção direcional, caso a população não possua variação herdável na
 direção da seleção, não existe resposta evolutiva.
 O alinhamento da estrutura de covariação da população com o vetor de
-resposta evolutiva basicamente representa o aumento de variação
-fenotípica da população na direção da seleção.
+seleção basicamente representa o aumento de variação fenotípica da
+população na direção da seleção.
 Dessa forma, esse tipo de plasticidade na estrutura de covariação pode
 ser muito vantajosa, permitindo com que populações sofrendo seleção
 direcional aumentem sua variabilidade na direção da seleção, aumentando
 sua resposta adaptativa.
+
+\begin{figure}[htbp]
+   \centering
+   \subfloat [$\Delta_S = 0.01$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats10.png}}\vspace{11pt}
+   \subfloat [$\Delta_S = 0.03$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats30.png}}\\ 
+   \vspace{-18pt}
+   \subfloat [$\Delta_S = 0.05$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats50.png}}\vspace{11pt} 
+   \subfloat [$\Delta_S = 0.07$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats70.png}}\\
+   \vspace{-18pt}
+   \subfloat [$\Delta_S = 0.09$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats90.png}}\vspace{11pt}
+   \subfloat [$\Delta_S = 0.11$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats110.png}}\\
+   \vspace{-18pt}
+   \subfloat [$\Delta_S = 0.13$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats130.png}}\vspace{11pt}
+   \subfloat [$\Delta_S = 0.15$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats150.png}}\\
+   \vspace{-18pt}
+   \subfloat [$\Delta_S = 0.17$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats170.png}}\vspace{11pt}
+   \subfloat [$\Delta_S = 0.19$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats190.png}}\\
+   \caption{ AVG-Ratio e modularidade $L$ para corridas com
+      $\mu/\mu_B = 5$, $Ne = 5.000$, $m/p=5$, sofrendo seleção
+      estabilizadora correlacionada com 2 módulos e seleção direcional com
+   diferentes valores de $\Delta_S$. Seleção direcional a partir da
+   geração $20.000$.}
+   \label{MFMStats}
+\end{figure}
+
+\begin{figure}[htbp]
+   \centering
+   \subfloat [$\Delta_S = 0.01$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPlusMinus10.png}}\vspace{11pt}
+   \subfloat [$\Delta_S = 0.03$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPlusMinus30.png}}\\ 
+   \vspace{-18pt}
+   \subfloat [$\Delta_S = 0.09$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPlusMinus90.png}}\vspace{11pt}
+   \subfloat [$\Delta_S = 0.11$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPlusMinus110.png}}\\
+   \vspace{-18pt}
+   \subfloat [$\Delta_S = 0.18$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPlusMinus180.png}}\vspace{11pt}
+   \subfloat [$\Delta_S = 0.20$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPlusMinus200.png}}\\
+   \caption{ Evolução da média das correlações dentro de cada módulo
+      e entre módulos de uma população sofrendo seleção estabilizadora
+      correlacionada com 2 módulos e seleção direcional com diferentes
+   valores de $\Delta_S$. $\mu/\mu_B = 5$, $Ne = 5.000$, $m/p=5$. Seleção
+   direcional a partir da geração $20.000$.}
+   \label{AVGEntreIntra}
+\end{figure}
+
+\centerline { $ * \quad * \quad * $ }
+
+Nossos valores de seleção direcional, apesar de promoverem
+diferenciações extremas ao longo de milhares de gerações, são
+relativamente baixos se comparados com estimativas em populações
+naturais.
+Nesse seção, o valor mais alto de diferencial de seleção direcional
+($\Delta_S = 0.2$), levando em conta a
+estrutura de covariação emergente da população, resultou em um gradiente de
+seleção médio de apenas $|\beta_i| = 0.0254$.
+Com esse gradiente baixo, apenas $15\%$ de um gradiente típico em
+sistemas morfológicos e apenas $2\%$ de um gradiente extremo
+\citep{Kingsolver2001}, nós observamos modularidade aparecendo de forma
+inequívoca em apenas alguns milhares de gerações, dependendo da força da
+seleção direcional aplicada (figuras \ref{MFMStats} e
+\ref{AVGEntreIntra}).
+Partindo das mesmas populações iniciais, já em equilíbrio
+seleção-mutação-deriva, decidimos então testar gradientes de seleção
+mais extremos, com corridas durando apenas $1.000$ gerações.
+Essas populações foram submetidas a forças de seleção $10\times$ maiores que
+as anteriores, com $\Delta_S$ variando de $0.1$ até $2.0$. 
+Dessa forma, a quantidade de modificação fenotípica total permaneceu
+constante, mas os gradientes de seleção foram aumentados sensivelmente.
+A relação dos $|\beta_i|$ calculados para uma corrida aparece na tabela
+\ref{tab:betasSS}.
+Os $|\beta_i|$ totais são semelhantes aos da tabela \ref{tab:betasMFM},
+porém os $|\beta_i|$ médios são cerca de $10\times$ maiores, como esperado.
+Podemos comparar a evolução das correlações para as corridas de $10.000$
+gerações de seleção com as de $1.000$ gerações.
+Vemos esses dados na figura \ref{MFMxSS}, para alguns valores de
+$\Delta_S$.
+Ao final das corridas, vemos valores bastante semelhantes para os
+valores de correlações médias dentro e entre módulos.
+Isso sugere que o tempo em gerações para o sistema assumir um nível
+determinado de modularidade depende linearmente da força de seleção
+aplicada.
+
+Podemos quantificar o tempo de convergência da estrutura variacional da
+população para a estrutura de covariação da seleção direcional medindo
+diretamente a correlação da matriz de correlação da população com a
+matriz de correlação da superfície de seleção.
+Vemos esses resultados na figura \ref{CorrMat}, onde são mostrados a
+correlação entre a matriz de correlação da população a cada geração com
+a matriz $\omega$ da superfície de seleção, para os
+extremos de força de seleção direcional nas corridas curtas, de $1.000$
+gerações, e longas, de $10.000$, além de todo o periodo de inicialização
+descrito anteriormente, que serviu de estado inicial para ambas as
+corridas seletivas.
+Aqui vemos uma diferença entre os dois tipos  de simulação.
+Para as corridas longas, sobre seleção fraca ($\Delta_S = 0.01$) a
+correlação entre as matrizes não aumenta, enquanto para seleção forte
+($\Delta_S = 0.2$), após cerca de $4.000$ gerações a correlação chega
+num patamar estável mais alto.
+Nas corridas curtas isso não acontece, e a semelhança da matriz não se
+estabiliza após um período correspondente, só se tornando
+consistentemente mais alto que na corrida com seleção mais baixa após
+cerca de $750$ gerações.
+Com isso vemos que a dinâmica da resposta à seleção direcional não é
+totalmente linear, e existem complicações associadas à
+interação entre a quantidade de variação introduzida na população por
+mutação e a variação removida pela seleção natural.
+Quando aumentamos a intensidade da seleção direcional, mais variação é
+removida a cada geração pela seleção, e o número de indivíduos que
+compõem a próxima geração diminui, pelo aumento na variância dos valores
+de aptidão causado pela distância maior entre o pico adaptativo e a
+média da população.
+Uma consequência desse ``gargalo seletivo'' é o aumento da deriva genética,
+que implica numa variação maior da estrutura de covariação.
+Todos esses fatores contribuem para que a população demore mais para se
+estabilizar na estrutura de covariação privilegiada pela seleção, e a
+correlação entre a matriz de correlação da população e da superfície de
+seleção acaba flutuando muito e não aumentando tanto quanto no caso de
+seleção mais fraca e continuada.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Intensidades de seleção, representadas pelo diferencial de
+        seleção por caráter e pelo valor do gradiente de seleção por
+        caráter $|\beta_i|$ para as simulações com $1.000$ gerações de
+        seleção direcional correlacionada.}
+    \label{tab:betasSS}
+    \vspace{1em}
+    \begin{tabular}{c|c|c|c|c|c}
+        \toprule
+        $\Delta_S$ & 0.1 & 0.2 & 0.3 & 0.4 & 0.5 \\
+        \hline
+        $|\beta_i|$ médio & 0.014 & 0.025 & 0.036 & 0.048 & 0.057 \\
+         $|\beta_i|$ total & 1.431 & 2.564 & 3.640 & 4.824 & 5.786 \\ 
+        \midrule
+        \midrule
+        $\Delta_S$ & 0.6 & 0.7 & 0.8 & 0.9 & 1.0 \\
+        \hline
+        $|\beta_i|$ médio & 0.066 & 0.077 & 0.087 & 0.098 & 0.104 \\
+         $|\beta_i|$ total & 6.629 & 7.782 & 8.792 & 9.898 & 10.454 \\ 
+        \midrule
+        \midrule
+        $\Delta_S$ & 1.1  & 1.2  & 1.3  & 1.4  & 1.5 \\ 
+        \hline
+        $|\beta_i|$ médio & 0.113 & 0.129 & 0.138 & 0.157 & 0.154 \\
+         $|\beta_i|$ total & 11.348 & 12.937 & 13.875 & 15.733 & 15.499 \\ 
+        \midrule
+        \midrule
+        $\Delta_S$ & 1.6  & 1.7  & 1.8  & 1.9  & 2.0 \\ 
+        \hline
+        $|\beta_i|$ médio & 0.163 & 0.177 & 0.184 & 0.207 & 0.207 \\
+         $|\beta_i|$ total & 16.305 & 17.702 & 18.441 & 20.762 & 20.775 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+   \centering
+   \subfloat [$\Delta_S = 0.01$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPM10.png}}\vspace{11pt}
+   \subfloat [$\Delta_S = 0.1$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPMShortSel10.png}}\\ 
+   \vspace{-18pt}
+   \subfloat [$\Delta_S = 0.11$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPM110.png}}\vspace{11pt}
+   \subfloat [$\Delta_S = 1.1$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPMShortSel110.png}}\\
+   \vspace{-18pt}
+   \subfloat [$\Delta_S = 0.2$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPM200.png}}\vspace{11pt}
+   \subfloat [$\Delta_S = 2.0$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPMShortSel200.png}}\\
+   \caption{ Evolução da média das correlações dentro de cada módulo
+      e entre módulos de uma população sofrendo seleção estabilizadora
+      correlacionada com 2 módulos e seleção direcional com diferentes
+   valores de $\Delta_S$. $\mu/\mu_B = 5$, $Ne = 5.000$, $m/p=5$. 
+   Todas as populações partem da mesma população inicial, e cada linha
+   tem o mesmo $|\beta_i|$ total ao final da corrida. São mostradas apenas
+   as gerações de seleção direcional.}
+   \label{MFMxSS}
+\end{figure}
+
+\begin{figure}[htbp]
+   \centering
+   \subfloat [Estabelecimento do equilíbrio inicial]{\includegraphics[width=140mm, height=50mm]{figuras/CorMatBurnin.png}}\\ 
+   \subfloat [$\Delta_S = (0.01, 0.2)$, $10.000$ gerações]{\includegraphics[width=140mm, height=50mm]{figuras/CorMatMFM.png}}\\ 
+   \subfloat [$\Delta_S = (0.1, 2.0)$, $1.000$ gerações]{\includegraphics[width=140mm, height=50mm]{figuras/CorMatSS.png}}\vspace{11pt}
+   \caption{ Evolução da correlação entre a matriz de correlação da
+       população a cada geração com a matriz de correlação da superfície
+       de seleção $\omega$, para corridas de diferentes números de
+       gerações e intensidades de seleção direcional divergente entre
+   módulos. O painel (a) mostra a evolução da correlação antes da
+   seleção direcional, com $10000$ gerações de deriva e $10.000$
+   gerações de seleção estabilizadora correlacionada. $\mu/\mu_B = 5$, $Ne = 5.000$, $m/p=5$}
+   \label{CorrMat}
+\end{figure}
 
 \section{Seleção direcional ``corredor''}
 
@@ -174,48 +406,7 @@ caracteres não diretamente envolvidos na seleção direcional, eventos
 subsequentes de seleção direcional em grupos distintos de caracteres
 morfológicos podem gerar o padrão intrincado de módulos que observamos na
 natureza, sem para isso ser necessária a atuação de seleção direcional
-divergente simultânea sobre os módulos. 
-
-
-\begin{figure}[htbp]
-   \centering
-   \subfloat [$\Delta_S = 0.01$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats10.png}}\vspace{11pt}
-   \subfloat [$\Delta_S = 0.03$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats30.png}}\\ 
-   \vspace{-18pt}
-   \subfloat [$\Delta_S = 0.05$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats50.png}}\vspace{11pt} 
-   \subfloat [$\Delta_S = 0.07$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats70.png}}\\
-   \vspace{-18pt}
-   \subfloat [$\Delta_S = 0.09$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats90.png}}\vspace{11pt}
-   \subfloat [$\Delta_S = 0.11$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats110.png}}\\
-   \vspace{-18pt}
-   \subfloat [$\Delta_S = 0.13$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats130.png}}\vspace{11pt}
-   \subfloat [$\Delta_S = 0.15$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats150.png}}\\
-   \vspace{-18pt}
-   \subfloat [$\Delta_S = 0.17$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats170.png}}\vspace{11pt}
-   \subfloat [$\Delta_S = 0.19$]{\includegraphics[width=70mm, height=30mm]{figuras/MFMStats190.png}}\\
-   \caption{ AVG-Ratio e modularidade $L$ para corridas com
-      $\mu/\mu_B = 5$, $Ne = 5.000$, $m/p=5$, sofrendo seleção
-      estabilizadora correlacionada com 2 módulos e seleção direcional com
-   diferentes valores de $\Delta_S$.}
-   \label{MFMStats}
-\end{figure}
-
-\begin{figure}[htbp]
-   \centering
-   \subfloat [$\Delta_S = 0.01$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPlusMinus10.png}}\vspace{11pt}
-   \subfloat [$\Delta_S = 0.03$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPlusMinus30.png}}\\ 
-   \vspace{-18pt}
-   \subfloat [$\Delta_S = 0.90$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPlusMinus90.png}}\vspace{11pt}
-   \subfloat [$\Delta_S = 0.11$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPlusMinus110.png}}\\
-   \vspace{-18pt}
-   \subfloat [$\Delta_S = 0.18$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPlusMinus180.png}}\vspace{11pt}
-   \subfloat [$\Delta_S = 0.20$]{\includegraphics[width=70mm, height=50mm]{figuras/AVGPlusMinus200.png}}\\
-   \caption{ Evolução da média das correlações dentro de cada módulo
-      e entre módulos de uma população sofrendo seleção estabilizadora
-      correlacionada com 2 módulos e seleção direcional com diferentes
-   valores de $\Delta_S$. $\mu/\mu_B = 5$, $Ne = 5.000$, $m/p=5$}
-   \label{AVGEntreIntra}
-\end{figure}
+divergente simultânea sobre todos os módulos. 
 
 \begin{figure}[htbp]
    \centering
@@ -230,7 +421,8 @@ divergente simultânea sobre os módulos.
    \caption{ Evolução da média das correlações dentro de cada módulo
       e entre módulos de uma população sofrendo seleção estabilizadora
       correlacionada com 2 módulos e seleção direcional em apenas um dos
-   módulos, com diferentes valores de $\Delta_S$. $\mu/\mu_B = 5$, $Ne = 5.000$, $m/p=5$}
+   módulos, com diferentes valores de $\Delta_S$. $\mu/\mu_B = 5$, $Ne =
+   5.000$, $m/p=5$. Seleção direcional a partir da geração $20.000$.}
    \label{CoAVG}
 \end{figure}
 

@@ -61,7 +61,7 @@ distintas \citep{Cheverud1984}.
 Além disso, as estruturas e processos ontogenéticos responsáveis pela
 formação dos indivíduos apresentam uma independência relativa, sendo
 possível alterar parte do processo ou estrutura sem um efeito cascata
-sobre outros processos ou estruturas \citep{Klingenberg2008}
+sobre outros processos ou estruturas \citep{Klingenberg2008}.
 Talvez o exemplo mais simples seja imaginar um organismo onde todos os
 caracteres ou processos ontogenéticos estejam integrados (altamente
 correlacionados) entre si, ou, dito de outra forma, pertencentes ao mesmo módulo.
@@ -79,8 +79,7 @@ do organismo.
 Evolutivamente, integração e modularidade permitem que grupos de
 características funcionalmente ou ontogeneticamente ligadas se
 modifiquem de forma harmoniosa; e que características em módulos
-diferentes possam se alterar de forma relativamente independente
-.
+diferentes possam se alterar de forma relativamente independente.
 
 \begin{figure}[h!]
   \centering
@@ -108,7 +107,7 @@ específicas, como mastigação, inserção muscular ou proteção
 \citep{Cheverud1997}.
 Novamente, seleção privilegia interações pleiotrópicas e ontogenéticas restritas
 a características ligadas a uma função comum, que resulta em
-covariação entre essas características na população.
+covariação entre essas características na população \citep{Wagner1996}.
 
 
 \section{Genética Quantitativa e Modularidade}\label{intro:genquant}
@@ -119,7 +118,7 @@ A genética quantitativa estuda a herança de características contínuas
 nos indivíduos de uma população, como peso, altura ou taxas de
 crescimento \citep{Falconer1996}.
 A partir desse formalismo, originário do melhoramento genético de animais e plantas, 
-podemos prever como a média e distribuição de
+podemos prever como a média e a distribuição de
 características fenotípicas varia em uma população de uma geração para
 outra.
 
@@ -154,9 +153,9 @@ Como as variâncias são aditivas, podemos escrever:
     V_p = V_g + V_e + V_{g \cdot e}
 \end{equation}
 
-Em organismos com sistemas de desenvolvimento estáveis, relativamente tamponados,
-como é o caso dos mamíferos, podemos em geral ignorar o termo de interação em
-genótipo e ambiente ($V_{g \cdot e} = 0$).
+Em organismos com sistemas de desenvolvimento estáveis, relativamente
+tamponados, como é o caso dos mamíferos, podemos em geral ignorar o
+termo de interação entre genótipo e ambiente ($V_{g \cdot e} = 0$).
 Podemos continuar particionando as variâncias.
 A variância genética é resultado de toda a variação devido ao efeito
 aditivo dos alelos ($V_a$, variância aditiva), mais os efeitos não
@@ -173,8 +172,8 @@ O termo aditivo, $V_a$, representa a porção da variância genética
 responsável pela semelhança por parentesco.
 Isso se reflete na equação de resposta à seleção direcional univariada.
 A pressão seletiva sobre alguma característica fenotípica pode ser descrita
-pela diferença na média da população parental antes ($\overline p$) e depois
-($\overline p^*$) do evento de seleção.
+pela diferença na média da população parental antes ($\overline z$) e depois
+($\overline z^*$) do evento de seleção.
 Essa quantidade é denominada diferencial de seleção e é representada por
 $S$.
 Esse tipo de seleção, que afeta média de um caráter na população, é
@@ -183,7 +182,7 @@ A resposta observada na média na geração seguinte ($\Delta \overline z$) é d
 por:
 
 \begin{equation}
-    \Delta z = \frac{V_a}{V_p} (\overline p^* - \overline p) = h^2S
+    \Delta \overline z = \frac{V_a}{V_p} (\overline z^* - \overline z) = h^2S
 \end{equation}
 
 Ou seja, a parcela da variância fenotípica devido à variação genética
@@ -218,7 +217,7 @@ forma isolada em cada caráter.
 Seleção direcional, ainda que restrita a um caráter, provoca respostas
 evolutivas em todos os caracteres que covariam com o caráter sobre
 seleção.
-
+e
 Utilizando o conceito de superfície de seleção, proposto por
 \cite{Wright1932}, podemos interpretar o termo de seleção
 $\mathbf{P}^{-1}\mathbf{S}$ de forma geométrica.
@@ -246,7 +245,7 @@ No caso de seleção direcional, podemos escrever a equação de resposta a
 seleção como:
 
 \begin{equation}
-    \Delta z = \mathbf{GP}^{-1}S = \mathbf{G}\beta
+    \Delta \mathbf{\overline z} = \mathbf{GP}^{-1}S = \mathbf{G}\beta
     \label{landeZGBETA}
 \end{equation}
 
@@ -258,7 +257,7 @@ covariação genética, representada pela matriz $\mathbf{G}$.
 
 Na seção \ref{intro:modularidade}, nós descrevemos como os processos
 seletivos interagem com o desenvolvimento e arquitetura genética das
-populações ,gerando modularidade.
+populações, gerando modularidade.
 Dissemos também que a modularidade presente nos processos internos dos
 organismos se manifesta na população na sua estrutura de covariação.
 Essa estrutura de covariação é representada pela matriz $\mathbf{G}$.
@@ -364,7 +363,8 @@ Apesar de menos intuitivo, o formalismo baseado em cumulantes é mais
 simples no caso de alelos aditivos, e fornece equações
 recursivas para a evolução dos caracteres, que podem ser calculadas
 computacionalmente.
-Apesar disso, ainda temos que ignorar efeitos epistáticos.
+Apesar disso, ainda temos que ignorar efeitos epistáticos, que podem ter
+efeitos importantes na evolução.
 
 Epistasia pode ser definida de duas formas: epistasia fisiológica e
 estatística \citep{Cheverud1995}.
@@ -536,7 +536,7 @@ Como mutações são geradas preferencialmente ao longo dos eixos de maior
 variação da matriz $\mathbf{M}$, a direção do primeiro componente
 principal da matriz mutacional tende ser aquele com maior variação
 disponível para resposta à seleção.
-Apesar disso, alterações na matriz $\mathbf{G}$ devido à seleção e
+Apesar disso, alterações na matriz $\mathbf{G}$ devido a seleção e
 deriva podem alterar essa situação e criar variação maior em alguma
 outra direção do morfoespaço, 
 Já as outras duas direções de movimento do pico se dão em eixos
@@ -571,7 +571,7 @@ evolução da própria matriz mutacional e das consequências das mudanças
 nessa matriz para o confronto entre as visões de Lande (gaussiana) e de
 Turelli (alelos raros) na questão das distribuições dos efeito alélicos
 atuando em caracteres quantitativos.
-Para tal foi definido um terceiro caráter que controla o valor de
+Para tal foi definido um terceiro caráter, que controla o valor de
 $r_\mu$ e está sujeito a mudanças via mutação, de forma análoga aos
 outros caracteres (veja seção \ref{cap2:mem:ModelM} para mais detalhes).
 Isso permitiu aos autores estudar como o padrão de pleiotropia e

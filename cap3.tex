@@ -45,6 +45,25 @@ Mesmo assim, o resultado é bastante semelhante, ainda com a correlação
 entre os 3 caracteres se alinhando com a matriz $\pmb{\omega}$ (figuras
 \ref{jones3tracos} e \ref{MatJones3tracos}).
 
+
+Na figura \ref{MatJones3tracos} vemos representações gráficas da matriz
+de correlação fenotípica ao final da simulação e da matriz $\pmb{\omega}$ de
+seleção estabilizadora correlacionada.
+Caselas mais claras indicam correlação maior.
+Nesse caso, a matriz de correlação da superfície de seleção foi:
+
+\begin{equation}
+    Corr(\pmb{\omega}) = \left( \begin{smallmatrix} 1 & 0.9 & 0.1\\  0.9 & 1 & 0.1 \\ 0.1 & 0.1 & 1 \end{smallmatrix}  \right)
+    \label{romega}
+\end{equation}
+\newpage
+E a matriz de covariância da superfície de seleção: 
+
+\begin{equation}
+    \pmb{\omega} = \left( \begin{smallmatrix} 9 & 8.1 & 0.9\\  8.1 & 9 & 0.9 \\ 0.9 & 0.9 & 9 \end{smallmatrix}  \right)
+\end{equation}
+                  
+
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=150mm, height=80mm]{figuras/jones3tracos.png}
@@ -57,24 +76,7 @@ entre os 3 caracteres se alinhando com a matriz $\pmb{\omega}$ (figuras
     \label{jones3tracos}
 \end{figure}
 
-Na figura \ref{MatJones3tracos} vemos representações gráficas da matriz
-de correlação fenotípica ao final da simulação e da matriz $\pmb{\omega}$ de
-seleção estabilizadora correlacionada.
-Caselas mais claras indicam correlação maior.
-Nesse caso, a matriz de correlação da superfície de seleção foi:
-
-\begin{equation}
-    Corr(\pmb{\omega}) = \left( \begin{smallmatrix} 1 & 0.9 & 0.1\\  0.9 & 1 & 0.1 \\ 0.1 & 0.1 & 1 \end{smallmatrix}  \right)
-    \label{romega}
-\end{equation}
-
-E a matriz de covariância da superfície de seleção: 
-
-\begin{equation}
-    \pmb{\omega} = \left( \begin{smallmatrix} 9 & 8.1 & 0.9\\  8.1 & 9 & 0.9 \\ 0.9 & 0.9 & 9 \end{smallmatrix}  \right)
-\end{equation}
-
-\begin{figure}[htbp]
+\begin{figure}[tb]
     \centering
     \includegraphics[width=150mm, height=80mm]{figuras/Mat3tracos}
     \caption{Comparação entre a matriz de correlação final para 3
@@ -87,6 +89,7 @@ Quando procuramos ampliar o número de caracteres, porém, o alinhamento da
 matriz $\mathbf{G}$ com a matriz $\pmb{\omega}$ se mostrou problemático.
 Nesse caso a matriz de correlação da superfície de seleção continha dois
 módulos, e era dada por:
+
 
 \begin{equation}
     Corr(\pmb{\omega}) = \left( 
@@ -236,14 +239,13 @@ Todas as simulações dessa seção começam com o mesmo estado inicial, com
 a matriz $\mathbf{B}$ totalmente formada por $1$, ou seja, integração total, e
 todos os valores aditivos $0$, ou seja, todos os caracteres determinados
 apenas por efeitos ambientais e com sua porção aditiva igual a zero.
-As primeiras gerações são dependentes desses estado inicial e não trazem
+As primeiras gerações são dependentes desse estado inicial e não trazem
 informação.
 Após cerca de $2.000$ gerações o sistema se encontra em equilíbrio
 seleção-mutação-deriva e pode ser analisado independentemente do estado
 inicial.
 Isso se reflete em todos os gráficos como um transiente instável, seguido
-de estabilidade dependente principalmente do tamanho populacional.
-Discutimos esses efeitos e outros na próxima seção.
+de uma região estável.
 
 \subsection{Seleção Estabilizadora}
 
@@ -342,7 +344,7 @@ se tornar incapaz de responder à seleção direcional.
     \caption{Comparação entre a matriz de correlação final média de 10
         corridas para o 10 caracteres após 10.000 gerações de seleção direcional e
         estabilizadora com a matriz $\pmb{\omega}$ da superfície de seleção e
-    $\frac{\mu}{\mu_B}=0.1$, $Ne=2.500$, $\Delta_S=0.2$, $m/p=2$}
+    $\mu/\mu_B=0.1$, $Ne=2.500$, $\Delta_S=0.2$, $m/p=2$}
     \label{RMu01}
 \end{figure}
 
@@ -408,26 +410,67 @@ intensidade de seleção variável.
 Para isso, modificamos o quanto o pico adaptativo era alterado para cada
 caráter a cada geração, de $0.01$ até $0.2$ por geração durante 10.000
 gerações.
+
+Podemos calcular os valores de $|\beta_i|$ para essas simulações,
+obtendo uma estimativa de seleção direcional comparável com dados
+empíricos.
+No caso de seleção mais fraca, com $\Delta_S = 0.01$, o $|\beta_i|$
+médio para as primeiras gerações foi de $0.002$ aumentando para $0.004$
+nas últimas, caracterizando seleção fraca. 
+O $|\beta_i|$ total para seleção fraca foi de $2.9$.
+Já para seleção forte, com $\Delta_S = 0.2$, o $|\beta_i|$ médio começa em um
+valor de cerca de $0.02$ e rapidamente, após cerca de 1500 gerações,
+atinge um valor estável de $0.04$. 
+Para uma geração, esse valor de $|\beta_i|$ não seria considerado uma
+seleção forte nos critérios delimitados por \cite{Kingsolver2001}.
+Porém, essa seleção é mantida ao longo de muitas gerações.
+Para caráteres morfológicos, o valor típico de $|\beta_i|$ seria
+estabelecido após cerca de 4 gerações ($|\beta_i|=0.17$), e para caráteres de história de vida,
+cerca de 2 gerações ($|\beta_i|=0.08$).
+A tabela \ref{tab:betas} resume os valores de $|\beta_i|$ médio e total
+por caráter para todos os valores de seleção.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Intensidades de seleção, representadas pelo diferencial de
+        seleção por caráter e pelo valor do gradiente de seleção por caráter
+    $\beta_i$}
+    \label{tab:betas}
+    \vspace{1em}
+    \begin{tabular}{c|c|c|c|c|c}
+        \toprule
+        $\Delta_S$ & 0.01 & 0.02 & 0.03 & 0.04 & 0.05 \\
+        \hline
+        $\beta_i$ médio & 0.003 & 0.005 & 0.008 & 0.010 & 0.013 \\
+         $\beta_i$ total & 2.969 & 5.326 & 7.974 & 9.847 & 12.196 \\
+        \midrule
+        \midrule
+        $\Delta_S$ & 0.06 & 0.07 & 0.08 & 0.09 & 0.10 \\
+        \hline
+        $\beta_i$ médio & 0.015 & 0.017 & 0.019 & 0.020 & 0.022 \\
+         $\beta_i$ total & 13.856 & 16.160 & 17.381 & 18.881 & 20.502 \\
+        \midrule
+        \midrule
+        $\Delta_S$ & 0.11  & 0.12  & 0.13  & 0.14  & 0.15 \\ 
+        \hline
+        $\beta_i$ médio & 0.024 & 0.027 & 0.028 & 0.030 & 0.030 \\     
+         $\beta_i$ total & 21.774 & 24.571 & 25.207 & 27.209 & 27.561 \\
+        \midrule
+        \midrule
+        $\Delta_S$ & 0.16  & 0.17  & 0.18  & 0.19  & 0.20  \\ 
+        \hline
+        $\beta_i$ médio & 0.031 & 0.032 & 0.035 & 0.037 & 0.039 \\     
+       $\beta_i$ total & 28.709 & 29.473 & 32.301 & 33.914 & 35.528 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
 Nas figuras \ref{IntSelStats10100} e \ref{IntSelStats110200} vemos
 evoluções típicas de AVG-Ratio e modularidade $L$ para corridas com
 várias intensidades de seleção, mostrando o quão estáveis e o quão
 rápido os padrões modulares se estabelecem nessas condições.
 Vemos que mesmo com um tamanho populacional considerável ($Ne = 2.500$)
 ainda observamos flutuações grandes.
-
-Quando aumentamos a intensidade de seleção, os módulos se tornam
-mais evidentes, mas acima de uma certa intensidade ($\Delta_S \simeq 0.06$)
-esse efeito se torna mais discreto.
-Esse platô na resposta à seleção direcional pode ser explicado por como
-funciona a nossa seleção.
-Quando a variância entre as aptidões na população for suficientemente
-alta, apenas os indivíduos com maior aptidão vão se reproduzir, e,
-dentro de limites\footnote{ Quando o pico se encontra suficientemente
-    longe da média da população, a variância nos valores de aptidão cai
-    novamente, pois todos os indivíduos tem aptidão próxima de zero, e a
-    chance de um indivíduo se reproduzir deixa de depender do fenótipo.
-    Isso é uma limitação do esquema de seleção estritamente gaussiano.}, as
-mudanças em $\Delta_S$ não alteram quais são esses indivíduos.
 
 \begin{figure}[htbp]
     \centering
@@ -624,19 +667,19 @@ a aumentar a força de recombinação, pois o valor de $m$ define o número
 de unidades recombinantes segregando na população.
 Podemos pensar em $m$ como o número de cromossomos no genoma do
 indivíduo (na ausência de recombinação homologa), em vez de pensar nele
-como número de alelos individualmente.  Até agora a razão $m/p$ foi
+como número de loci. Até agora a razão $m/p$ foi
 mantida em 2, um valor suficiente para promover respostas complexas de
 todos os caracteres mas ainda computacionalmente viável.
 Razões maiores de $m/p$ teoricamente aumentam o espaço de variação
 possível para população, pois mais genes estão disponíveis para atuar
-sobre cada caráter, separadamente ou não.
+sobre cada caráter, separadamente ou de forma coordenada.
 A figura \ref{MB} mostra como o aumento na razão $m/p$ afeta a evolução
 das correlações fenotípicas nas populações sujeitas à seleção direcional
 intensa e seleção estabilizadora correlacionada.
 Vemos na figura \ref{MB} que o aumento do número de alelos torna o
 sistema mais lento em adquirir um caráter modular.
 Isso pode ser associado com o aumento na recombinação, que age na
-direção oposta a das forças seletivas direcionais e estabilizadora
+direção oposta à das forças seletivas direcionais e estabilizadora
 correlacionada.
 Isso nos levou a crer que tempos mais longos de seleção poderiam gerar o
 mesmo resultado que o obtido com valores baixos de $m/p$.
@@ -644,49 +687,7 @@ Na figura \ref{MBLR} vemos duas corridas longas, de 20.000 gerações, com
 $m/p = 9$ e $10$, mostrando o tempo de estabilização mais longo e a
 modularidade mais discreta, com menor diferença nas correlações dentro
 de e entre módulos.
-Isso novamente pode ser explicado pela força de recombinação aumentada.
-
-Praticamente todos os exemplos de surgimento de modularidade mostrados
-neste capítulo podem ser interpretados como seleção natural
-privilegiando determinados alelos e interações entre alelos que formem
-de fenótipos com aptidão maior.
-Associações modulares na estrutura genética e aditiva são privilegiadas
-por responderem melhor a pressão seletiva imposta.
-Porém, essas associações não são herdáveis, apenas os alelos individuais
-são passados para a próxima geração.
-Isso significa que recombinação pode quebrar as associações criadas pela
-seleção, dificultando o estabelecimento da estrutura modular.
-Dessa forma, recombinação maior leva a menor eficiência na resposta à
-seleção natural.
-Essa discussão se encaixa no contexto de alvo e unidade de seleção.
-Alvo de seleção é definido como o nível de organização que apresenta o
-fenótipo sendo selecionado.
-No nosso caso o indivíduo é o único alvo de seleção.
-Já a unidade de seleção se refere ao nível de organização genética que
-permite prever a resposta à seleção.
-Para tal, a unidade de seleção deve ter continuidade entre uma geração e
-outra.
-Essa definição pode abarcar diferentes níveis, dependendo da estrutura
-genética da população.
-O alvo de seleção pode ser um único locus ou o genoma todo.
-As associações criadas pela seleção natural são exemplos de unidades de
-seleção, onde diversos loci interagem para formar um indivíduo com
-determinado valor de aptidão.
-As associações modulares observadas nos nossos resultados são um
-exemplo de unidade de seleção maiores que um locus.
-É nesse ponto que a recombinação se torna relevante para definir a
-unidade de seleção, pois recombinação age no sentido de quebrar
-associação entre loci ao longo das gerações, reduzindo a unidade de
-seleção e embaralhando associações modulares.
-
-\centerline { $ * \quad * \quad * $ }
-
-Com isso exploramos algumas das combinações de parâmetros possíveis
-nesses modelos, além das suas interpretações e consequências na evolução
-do padrão de correlação nas populações simuladas.
-No próximo capitulo vamos utilizar combinações plausíveis de parâmetros
-no nosso modelo para testar a viabilidade de trajetórias evolutivas que
-levem a modularidade variacional.
+Isso pode ser explicado pela força de recombinação aumentada.
 
 \begin{figure}[htbp]
     \centering
@@ -721,4 +722,47 @@ levem a modularidade variacional.
         para diferentes valores do número de loci. ($Ne=5.000$, $\mu/\mu_B=5$, $\Delta_S=0.2$)}
     \label{MBLR}
 \end{figure}
+
+Praticamente todos os exemplos de surgimento de modularidade mostrados
+neste capítulo podem ser interpretados como seleção natural
+privilegiando determinados alelos e interações entre alelos que formem
+de fenótipos com aptidão maior.
+Associações modulares na estrutura genética e aditiva são privilegiadas
+por responderem melhor a pressão seletiva imposta.
+Porém, essas associações não são herdáveis, apenas os alelos individuais
+são passados para a próxima geração.
+Isso significa que recombinação pode quebrar as associações criadas pela
+seleção, dificultando o estabelecimento da estrutura modular.
+Dessa forma, recombinação maior leva a uma menor eficiência na resposta à
+seleção natural.
+Essa discussão se encaixa no contexto de alvo e unidade de
+seleção \citep{Templeton2003}.
+Alvo de seleção é definido como o nível de organização que apresenta o
+fenótipo sendo selecionado.
+No nosso caso o indivíduo é o único alvo de seleção.
+Já a unidade de seleção se refere ao nível de organização genética que
+permite prever a resposta à seleção.
+Para tal, a unidade de seleção deve ter continuidade entre uma geração e
+outra.
+Essa definição pode abarcar diferentes níveis, dependendo da estrutura
+genética da população.
+O alvo de seleção pode ser um único locus ou o genoma todo.
+As associações criadas pela seleção natural são exemplos de unidades de
+seleção, onde diversos loci interagem para formar um indivíduo com
+determinado valor de aptidão.
+As associações modulares observadas nos nossos resultados são um
+exemplo de unidade de seleção maiores que um locus.
+É nesse ponto que a recombinação se torna relevante para definir a
+unidade de seleção, pois recombinação age no sentido de quebrar
+associação entre loci ao longo das gerações, reduzindo a unidade de
+seleção e embaralhando associações modulares.
+
+\centerline { $ * \quad * \quad * $ }
+
+Com isso exploramos algumas das combinações de parâmetros possíveis
+nesses modelos, além das suas interpretações e consequências na evolução
+do padrão de correlação nas populações simuladas.
+No próximo capitulo vamos utilizar combinações plausíveis de parâmetros
+no nosso modelo para testar a viabilidade de trajetórias evolutivas que
+levem a modularidade variacional.
 

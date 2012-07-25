@@ -157,14 +157,14 @@ Em organismos com sistemas de desenvolvimento estáveis, relativamente
 tamponados, como é o caso dos mamíferos, podemos em geral ignorar o
 termo de interação entre genótipo e ambiente ($V_{g \cdot e} = 0$).
 Podemos continuar particionando as variâncias.
-A variância genética é resultado de toda a variação devido ao efeito
-aditivo dos alelos ($V_a$, variância aditiva), mais os efeitos não
-aditivos, efeitos de dominância ($V_d$, não aditivos) e efeitos
-epistáticos ($V_{i}$, representando interações entre diferentes loci).
+A variância genética é resultado de toda a variação no efeitos 
+aditivos dos alelos ($V_a$, variância aditiva), mais os efeitos não
+aditivos, efeitos de dominância ($V_d$) e efeitos
+epistáticos ($V_i$, representando interações entre diferentes loci).
 Ou seja:
 
 \begin{equation}
-    V_g = V_a + V_d + V_{i}
+    V_g = V_a + V_d + V_i
     \label{compgen}
 \end{equation}
 
@@ -271,9 +271,9 @@ de modularidade e de como os caracteres estão relacionados entre si.
 
 A equação de \cite{Lande1979} também pode ser invertida e usada de forma
 retrospectiva.
-Ou seja, partindo da matriz $\mathbf{G}$ e da diferença observada entre as médias
-antes de depois do evento de seleção, podemos inferir qual foi o
-gradiente de seleção que gerou essa resposta.
+Ou seja, partindo da matriz $\mathbf{G}$ e da diferença observada entre
+as médias antes de depois do evento de seleção, podemos inferir qual foi
+o gradiente de seleção que gerou essa resposta.
 Mais claramente:
 
 \begin{equation}
@@ -286,11 +286,11 @@ macroevolutivos de resposta ao longo de muitas gerações
 
 Porém, nossa habilidade de inferir a resposta evolutiva a muitas
 gerações de seleção depende fundamentalmente da constância da matriz G
-ao longo do tempo, e a teoria de Lande não explora
-detalhadamente a dinâmica da própria matriz $\mathbf{G}$, assumindo implicitamente
-nas equações sua constância.
-Dizer que a distribuição das características na população é 
-gaussiana implica que essa distribuição não é afetada pela seleção direcional
+ao longo do tempo, e a teoria de Lande não explora detalhadamente a
+dinâmica da própria matriz $\mathbf{G}$, assumindo implicitamente nas
+equações sua constância.
+Dizer que a distribuição das características na população é gaussiana
+implica que essa distribuição não é afetada pela seleção direcional
 \citep{Barton1987}.
 Isso se reflete na equação de resposta a seleção direcional, que envolve
 apenas mudanças na média dos caracteres.
@@ -371,8 +371,8 @@ estatística \citep{Cheverud1995}.
 A epistasia estatística, cuja variância $V_i$ aparece na equação
 \ref{compgen}, se refere a desvios nos valores aditivos individuais de
 cada alelo quando em condições multi locus, ou seja, desvios
-populacionais nos valores aditivos de um alelo devido a interações entre locus
-\citep{Falconer1996}.
+populacionais nos valores aditivos de um alelo devido a interações entre
+locus \citep{Falconer1996}.
 Já a epistasia fisiológica se refere a interações na expressão de alelos
 em locus diferentes, dentro de cada indivíduo, ou seja, a expressão de
 um dado alelo depende do estado de outro locus.
@@ -405,20 +405,20 @@ Dessa forma, novos nichos adaptativos podem ser ocupados e mudanças
 grandes no fenótipo podem se estabelecer com a ação da epistasia.
 
 Dada a complexidade do problema da dinâmica das variâncias em um caso
-multivariado, o estudo da estabilidade da matriz $\mathbf{G}$ e suas consequências
-para o estudo da evolução de caracteres quantitativos se tornou um
-problema eminentemente experimental, sejam esses experimentos conduzidos
-de forma retrospectiva, amostrando a diversidade dos seres vivos, seja
-em experimentos manipulativos feitos com colônias de animais em
-cativeiro ou, como é o caso do presente trabalho, por via de simulações
-computacionais \citep[para uma revisão sobre estabilidade da matriz $\mathbf{G}$
-veja][]{Arnold2008}.
+multivariado, o estudo da estabilidade da matriz $\mathbf{G}$ e suas
+consequências para o estudo da evolução de caracteres quantitativos se
+tornou um problema eminentemente experimental, sejam esses experimentos
+conduzidos de forma retrospectiva, amostrando a diversidade dos seres
+vivos, seja em experimentos manipulativos feitos com colônias de animais
+em cativeiro ou, como é o caso do presente trabalho, por via de
+simulações computacionais \citep[para uma revisão sobre estabilidade da
+matriz $\mathbf{G}$ veja][]{Arnold2008}.
 Vamos agora revisar as principais abordagens computacionais.
 
 A sequência de artigos \cite{Jones2003, Jones2004, Jones2007} foi
-pioneira nos estudos computacionais de estabilidade da matriz $\mathbf{G}$ num
-contexto multivariado moderno, abordando o tema da evolução de dois
-caracteres correlacionados em diferentes situações.
+pioneira nos estudos computacionais de estabilidade da matriz
+$\mathbf{G}$ num contexto multivariado moderno, abordando o tema da
+evolução de dois caracteres correlacionados em diferentes situações.
 O estilo de simulação apresentado em \cite{Jones2003} e utilizado em
 todos os artigos subsequentes serviu de ponto de partida para nossas
 simulações e será descrito em detalhes nas próximas seções.
@@ -446,7 +446,8 @@ dada pelos valores diagonais da matriz de mutação.
 Já o valor de $r_\omega$ define o quão forte é a seleção estabilizadora
 no sentido de manter os dois caracteres correlacionados.
 Nas condições das simulações, o fator mais importante para a
-estabilidade da matriz $\mathbf{G}$ foi a existência de mutações correlacionadas.
+estabilidade da matriz $\mathbf{G}$ foi a existência de mutações
+correlacionadas.
 Quando $r_\mu$ e $r_\omega$ são similares, a matriz tende a ser bastante
 estável.
 Além disso, tamanhos populacionais grandes também contribuem para a
@@ -532,7 +533,7 @@ eixo de maior variação da matriz $\mathbf{M}$.
 Esta direção é denominada eixo de menor resistência evolutiva
 \citep{Schluter1996}, e  representa a direção do morfoespaço com maior
 quantidade de variação para responder a seleção natural.
-Como mutações são geradas preferencialmente ao longo dos eixos de maior
+Como neste modelo mutações são geradas preferencialmente ao longo dos eixos de maior
 variação da matriz $\mathbf{M}$, a direção do primeiro componente
 principal da matriz mutacional tende ser aquele com maior variação
 disponível para resposta à seleção.
@@ -676,17 +677,16 @@ alterações deletérias a alguma outra parte não envolvida no processo de
 seleção em questão.
 Apesar disso, um balanço entre modularidade e integração deve se
 estabelecer no organismo para que este forme um todo coeso.
-Um indivíduo constituído unicamente de caracteres completamente
-independentes poderia em teoria ter evolvabilidade e flexibilidade
-máximas, mas a ausência de interrelação entre suas partes torna tal
-organismo impossível.
-Neste organismo hipotético, mudanças em um caráter não implicariam em
-mudanças correlacionadas nos caracteres ao qual o caráter sobre seleção está
-associado funcionalmente ou estruturalmente.
+Uma população de indivíduos constituídos unicamente de caracteres
+completamente independentes poderia em teoria ter evolvabilidade e
+flexibilidade máximas, mas a ausência de interrelação entre suas partes
+torna tais organismos impossíveis.
+Nesta população hipotética, respostas evolutivas em um caráter não
+implicariam em mudanças correlacionadas nos caracteres ao qual o caráter
+sobre seleção está associado funcionalmente ou estruturalmente.
 Como o organismo não se modifica de forma harmoniosa, praticamente
-qualquer alteração seria deletéria, por romper com relações funcionais e
+qualquer alteração seria deletéria por romper com relações funcionais e
 estruturais.
-
 
 \section{Evolução da Modularidade}\label{intro:evolucao}
 
@@ -728,10 +728,10 @@ Com isso esperamos adquirir um melhor entendimento dos padrões de
 diversificação e integração morfológica observados na natureza, além de
 testar a viabilidade de possíveis cenários evolutivos que moldaram essas
 populações e seus padrões de covariação.
-Não pretendemos aqui criar um formalismo totalmente quantitativo para a
-simulação de populações naturais, e sim capturar alguma parte dos
-complexos mecanismos que atuam na evolução de populações e de suas
-características fenotípicas.
+Não pretendemos aqui criar um formalismo totalmente quantitativo e
+preditivo para a simulação de populações naturais, e sim capturar alguma
+parte dos complexos mecanismos que atuam na evolução de populações e de
+suas características fenotípicas.
 Com isso em mente, alguns dos parâmetros usados nas simulações são de
 difícil acesso experimental, apesar de terem interpretações claras.
 Na ausência de estimativas reais para alguns dos parâmetros utilizados,

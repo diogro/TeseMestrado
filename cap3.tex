@@ -236,9 +236,10 @@ Pretendemos explorar essa solução no futuro.
 \section{Resultados e Discussão $\cdot$ Matriz $\mathbf{B}$}
 
 Todas as simulações dessa seção começam com o mesmo estado inicial, com
-a matriz $\mathbf{B}$ totalmente formada por $1$, ou seja, integração total, e
-todos os valores aditivos $0$, ou seja, todos os caracteres determinados
-apenas por efeitos ambientais e com sua porção aditiva igual a zero.
+a matriz $\mathbf{B}$ totalmente formada por $1$, ou seja, integração
+total, e todos os valores aditivos $0$, ou seja, todos os caracteres
+quantitativos determinados apenas por efeitos ambientais e com sua
+porção aditiva igual a zero.
 As primeiras gerações são dependentes desse estado inicial e não trazem
 informação.
 Após cerca de $2.000$ gerações o sistema se encontra em equilíbrio
@@ -417,7 +418,7 @@ empíricos.
 No caso de seleção mais fraca, com $\Delta_S = 0.01$, o $|\beta_i|$
 médio para as primeiras gerações foi de $0.002$ aumentando para $0.004$
 nas últimas, caracterizando seleção fraca. 
-O $|\beta_i|$ total para seleção fraca foi de $2.9$.
+O $|\beta_i|$ total média por caráter para seleção fraca foi de $2.9$.
 Já para seleção forte, com $\Delta_S = 0.2$, o $|\beta_i|$ médio começa em um
 valor de cerca de $0.02$ e rapidamente, após cerca de 1500 gerações,
 atinge um valor estável de $0.04$. 
@@ -434,33 +435,33 @@ por caráter para todos os valores de seleção.
     \centering
     \caption{Intensidades de seleção, representadas pelo diferencial de
         seleção por caráter e pelo valor do gradiente de seleção por caráter
-    $\beta_i$}
+    $|\beta_i|$}
     \label{tab:betas}
     \vspace{1em}
     \begin{tabular}{c|c|c|c|c|c}
         \toprule
         $\Delta_S$ & 0.01 & 0.02 & 0.03 & 0.04 & 0.05 \\
         \hline
-        $\beta_i$ médio & 0.003 & 0.005 & 0.008 & 0.010 & 0.013 \\
-         $\beta_i$ total & 2.969 & 5.326 & 7.974 & 9.847 & 12.196 \\
+        $|\beta_i|$ médio & 0.003 & 0.005 & 0.008 & 0.010 & 0.013 \\
+         $|\beta_i|$ total médio & 2.969 & 5.326 & 7.974 & 9.847 & 12.196 \\
         \midrule
         \midrule
         $\Delta_S$ & 0.06 & 0.07 & 0.08 & 0.09 & 0.10 \\
         \hline
-        $\beta_i$ médio & 0.015 & 0.017 & 0.019 & 0.020 & 0.022 \\
-         $\beta_i$ total & 13.856 & 16.160 & 17.381 & 18.881 & 20.502 \\
+        $|\beta_i|$ médio & 0.015 & 0.017 & 0.019 & 0.020 & 0.022 \\
+         $|\beta_i|$ total médio & 13.856 & 16.160 & 17.381 & 18.881 & 20.502 \\
         \midrule
         \midrule
         $\Delta_S$ & 0.11  & 0.12  & 0.13  & 0.14  & 0.15 \\ 
         \hline
-        $\beta_i$ médio & 0.024 & 0.027 & 0.028 & 0.030 & 0.030 \\     
-         $\beta_i$ total & 21.774 & 24.571 & 25.207 & 27.209 & 27.561 \\
+        $|\beta_i|$ médio & 0.024 & 0.027 & 0.028 & 0.030 & 0.030 \\     
+         $|\beta_i|$ total médio & 21.774 & 24.571 & 25.207 & 27.209 & 27.561 \\
         \midrule
         \midrule
         $\Delta_S$ & 0.16  & 0.17  & 0.18  & 0.19  & 0.20  \\ 
         \hline
-        $\beta_i$ médio & 0.031 & 0.032 & 0.035 & 0.037 & 0.039 \\     
-       $\beta_i$ total & 28.709 & 29.473 & 32.301 & 33.914 & 35.528 \\
+        $|\beta_i|$ médio & 0.031 & 0.032 & 0.035 & 0.037 & 0.039 \\     
+       $|\beta_i|$ total médio & 28.709 & 29.473 & 32.301 & 33.914 & 35.528 \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -664,7 +665,7 @@ Um parâmetro ainda não mencionado é o número de loci $m$ envolvidos na
 determinação do valor fenotípico de cada um dos $p$ caracteres.
 No nosso esquema de simulação, aumentar o valor da razão $m/p$ é análogo
 a aumentar a força de recombinação, pois o valor de $m$ define o número
-de unidades recombinantes segregando na população.
+de unidades recombinantes independentes segregando na população.
 Podemos pensar em $m$ como o número de cromossomos no genoma do
 indivíduo (na ausência de recombinação homologa), em vez de pensar nele
 como número de loci. Até agora a razão $m/p$ foi
@@ -725,7 +726,7 @@ Isso pode ser explicado pela força de recombinação aumentada.
 
 Praticamente todos os exemplos de surgimento de modularidade mostrados
 neste capítulo podem ser interpretados como seleção natural
-privilegiando determinados alelos e interações entre alelos que formem
+privilegiando alelos e interações entre alelos que formem
 de fenótipos com aptidão maior.
 Associações modulares na estrutura genética e aditiva são privilegiadas
 por responderem melhor a pressão seletiva imposta.

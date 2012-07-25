@@ -23,7 +23,7 @@ apresentadas a seguir.
 O modelo usado em \cite{Jones2003, Jones2004, Jones2007} se baseia em um
 conjunto de loci pleiotrópicos.
 Nesse sistema, todos os loci afetam todos os caracteres.
-Num sistema com $p$ caracteres, podemos pensar em cada um $m$ loci
+Num sistema com $p$ caracteres, podemos pensar em cada um dos $m$ loci
 diploides abrigando dois alelos, representados por vetores em
 $\mathbb{R}^p$.
 O conjunto de todos os alelos $\mathbf{x}^i$ em um indivíduo seria
@@ -285,7 +285,7 @@ Escolhas iniciais foram baseadas nos valores utilizados em
 A taxa de mutação nos alelos aditivos ($\mu$) foi mantida em $0.0005$ em
 todas simulações.
 Estimativas da taxa de mutação aditiva são relativamente
-simples e dependem da força de seleção estabilizadora para cada
+simples, porém dependem da força de seleção estabilizadora para cada
 população e caráter \citep{Lynch1998}.
 Nosso valor para $\mu$ está dentro dos valores esperados para aumento de
 variância fenotípica causado por mutação \citep{Burger1994}.
@@ -335,10 +335,11 @@ calcular o valor do vetor do gradiente de seleção.
 \cite{Kingsolver2001}, revisando a literatura de experimentos de
 seleção, calculou uma distribuição para os valores de intensidades de
 seleção na natureza, utilizando a norma das entradas do gradiente de seleção
-($|\beta_i|$) como métrica.
+($|\beta_i|$) como métrica, ou seja, os valores por caráter do vetor do
+gradiente de seleção direcional.
 \cite{Kingsolver2001} coloca os valores de
 $|\beta_i|$ como variando entre zero e um, com uma mediana de $0.08$
-para caracteres de história de vida e mediana de $0.17$ para
+para caracteres de estratégias bionômicas e mediana de $0.17$ para
 caracteres morfológicos.
 O valor de $|\beta_i|$ típico varia ao longo das simulações, pois ele
 depende da matriz de variância fenotípica $\mathbf{P}$.
@@ -433,7 +434,6 @@ Em situações naturais, onde não conhecemos a estrutura de modularidade,
 essa técnica poderia ser usada para inferir a estrutura de modularidade
 utilizando apenas a matriz de correlação.
 
-\newpage
 \section{Resumo de Parâmetros}
 
 Para facilitar a leitura do texto, apresentamos aqui um resumo dos

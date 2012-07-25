@@ -23,8 +23,9 @@ facilitando sua estimativa por vias indiretas ou limitando sua
 influência em outros processos de interesse. 
 
 Nosso trabalho também se coloca como a primeira tentativa de simulação
-de sistemas morfológicos complexos o suficiente para permitir o
-surgimento de estruturas de modularidade variacional complexas. 
+de sistemas morfológicos complexos o suficiente, com mais de dois
+caracteres, para permitir o surgimento de estruturas de modularidade
+variacional complexas. 
 Tentativas anteriores se limitam a apenas simular um, ou um número
 pequeno, de caracteres. 
 Por isso também as exigências computacionais são consideravelmente
@@ -44,6 +45,66 @@ Com uma implementação mais sofisticada dos
 nossos algoritmos, aliada a um poder computacional maior, acreditamos
 que uma extensão quantitativa dos resultados seja não só possível como
 bastante proveitosa. 
+Pretendemos implementar nosso modelo em linguagens de programação
+acessíveis, possibilitando seu uso pela comunidade em geral, com suporte
+para paralelização, manipulação de parâmetros com interface amigável e
+até criar um projeto integrado de varias possibilidades de simulações
+com caracteres quantitativos.
+
+Varias questões interessantes permanecem abertas, e pretendemos
+continuar nesta linha de pesquisa.
+Já de principio, acreditamos que o modelo nulo, de mutação e deriva, sem
+seleção, merece ser extensamente replicado, criando um distribuição nula
+para testes estatísticos rigorosos e estudando que tipos de estruturas
+variacionais podem surgir por mero acaso.
+Seriam essas estruturas estáveis por um tempo apreciável?
+Com que frequência o nível de modularidade observado em populações
+naturais é observado nesse modelo nulo? 
+Além disso, a interação entre tamanho populacional, recombinação,
+mutação e seleção se mostrou relevante tanto para o nível de
+modularidade observado quanto para a velocidade de estabelecimento do
+padrão modular.
+Explorar de forma sistemática a relação entre esses parâmetros é um
+caminho natural para a continuidade deste trabalho.
+
+Pretendemos também abordar possíveis soluções analíticas para o modelo
+proposto. 
+Existe algum trabalho em esquemas semelhantes \citep{Wagner1984,
+Wagner1989, Jones2007}, mas com abordagens diferentes, não tratando de
+modularidade ou regiões fora do equilíbrio, como nas nossas simulações.
+
+Extensões metodológicas também são possíveis.
+Em população naturais, a organização genômica em forma de cromossomos
+traz uma série de consequências interessantes relacionadas a
+desequilíbrio de ligação e recombinação, tema frequentemente
+negligenciado mesmo em estudos teóricos complexos \citep{Barton1987,
+Turelli1994}.
+A ação da seleção cria associações entre regiões
+cromossômicas baseadas em características funcionais, aproximando genes
+ligados a uma mesma função espacialmente e gerando desequilíbrio de
+ligação e herança conjunta de blocos funcionais \citep{Templeton2003}.
+Esse processo pode ser importante em definir a velocidade de criação e
+reorganização da estruturas genômicas modulares.
+A formação dessas associações, que nada mais são que unidades de seleção
+acima do nível de genes, é contrabalanceado pela ação da recombinação,
+que embaralha as regiões genômicas e quebra ligações formadas pela ação
+da seleção.
+Incluir estruturas cromossômicas de fato, possibilitando desequilíbrio
+de ligação e reestruturações na ligação entre loci traria mais um camada
+de complexidade importante na compreensão da evolução da modularidade,
+permitindo estudar a dinâmica de formação de unidades de seleção
+ao longo da evolução, e sua relação com forças de seleção e recombinação.
+Da mesma forma, estudar várias populações simultaneamente, permitindo
+migração entre elas, pode trazer resultados interessantes na teoria de
+especiação e diversificação de populações.
+Atualmente a teoria de genética quantitativa é relativamente pobre para
+tratar do problema de fluxo gênico.
+Abordagens computacionais podem mudar esse cenário.
+
+Eventos populacionais são reconhecidamente importantes na evolução de
+populações naturais, como gargalos, efeito fundador ou mesmo ou
+episódios consecutivos de seleção ou mesmo seleção dependente de
+frequência podem ter consequências interessantes. 
 
 Outra extensão clara é a de utilizar o nosso modelo para reproduzir
 padrões específicos de diversificação observados na natureza. 
@@ -56,12 +117,12 @@ extrema diferença na magnitude de integração observada entre babuínos e gran
 primatas?
 A mesma pergunta pode ser feita em relação aos valores altíssimos de
 integração presentes em marsupiais. 
-Estes são apenas exemplos de problemas em aberto que podem ser abordados
-por meio de simulações semelhantes às desenvolvidas neste trabalho. 
+Seriam esses valores de altos de integração causados por seleção
+direcional correlacionada a todos os caracteres?
 Para abordar esses problemas, poderíamos estudar sistemas já com padrões
 modulares estabelecidos e simular situações capazes de alterar esses padrões 
 nas diferentes populações. 
-No momentos nossas populações sempre são inciadas totalmente integradas
+No momento nossas populações sempre são inciadas totalmente integradas
 ou desintegradas, seria interessante estudar a interação da seleção com
 padrões já estabelecidos.
 Consequências evolutivas claras, na forma de seleção indireta, são
@@ -69,12 +130,3 @@ previstas pela teoria de genética quantitativa quantitativa
 \citep{Lande1983, Barton1987}, mas essas situações não foram abordadas
 computacionalmente em sistemas de muitos caracteres.
 
-Ainda existem muitas extensões possíveis ao nosso modelo. 
-Eventos populacionais, como gargalos ou episódios consecutivos de
-seleção ou mesmo seleção dependente de frequência podem ter
-consequências interessantes. 
-O estudos de especiação ou diferenciação entre populações filhas, com
-diversas filogenias também são possíveis. 
-Inclusão de interação entre populações, como migração ou competição por
-recursos ou qualquer outro tipo de interação ecológica pode ser incluído
-no contexto de simulação de caracteres quantitativos. 
